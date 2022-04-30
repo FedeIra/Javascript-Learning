@@ -1,0 +1,21 @@
+
+
+body{
+	background-color:rgb(18, 37, 46);
+}
+
+h1{
+	color:rgb(51, 255, 0);
+	border-top:2px solid rgb(255, 255, 255);
+	border-bottom:2px solid rgb(255, 255, 255);
+	padding-bottom:50px;
+	text-align:center;
+}
+
+p{
+	color:rgb(0, 255, 0);
+	font-size:2em;
+}
+
+p span{font-size:2em;
+}

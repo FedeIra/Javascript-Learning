@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Necromancer</title>
+<link href="css/micss.css" rel="stylesheet">
+
+<script src="Jquery\jquery-1.6.3.min.js"></script> <!--como no esta en la misma carpeta q el html le tengo q poner la ruta-->
+
+<script>
+$(function(){
+    $("body").hide().fadeIn(6000); 
+});
+
+</script> <!-- esto es para darle un efecto de q se desvanace y asi ocultarlo. Es de la biblioteca jquery-->
+<!-- se escribe 3000 por 3 segundos ya que son milisegundos-->
+
+<script>document.write("WORLD OF WARCRAFT");</script>
+
+<script src="codejs.js"></script> <!-- esto es para usar codigo de java desde un archivo externo que seria el codejs.js . En este caso esta en el mismo directo el archivo
+si no esta en el mismo directorio tengo que poner la ruta del archivo--> 
+
+<script>alert("choose subclass");</script>
+
+</head>
+
+<body>
+
+<h1>Sorcerer</h1>
+
+<p>Name:<span>Kalistines</span></p> 
+<img src="imgs/Necromancer.jpg" width="50%">
+
+<script>alert("Build your char!"); // se abren en ventana modal, es decir en primer plano y no te dejan tocar nada del segundo plano. Ni tampoco se pueden minimizar. 
+// ademas detienen el flujo del programa. 
+</script>
+
+</body>
+</html>
