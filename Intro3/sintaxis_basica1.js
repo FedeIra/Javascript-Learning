@@ -8,7 +8,20 @@ document.write("Hola alumnos");
 
 /* Funciones predefinidas: las que vienen con el lenguaje. Biblioteca con funciones. Las funciones siempre llevan unos parentesus
 
-Hay funciones propias tambien: las q armas vos.*/
+Ejemplo:
+
+Math.pow (2,2) = 4; Esto te devuelve un numero elevado a un exponente
+
+Math.round(6.98) = 7; Esto te redondea el numero para arriba a partir del .5 
+Math.floor(6.98) = 6; Esto te lo redondea siempre para abajo
+Math.ceil(6.0001) = 7; Te lo redondea siempre para arriba
+
+Otro ejemplo: length */
+
+var prueba_length = "largo";
+console.log(prueba_largo.lenght); 
+
+// Hay funciones propias tambien: las q armas vos.
 
 alert();
 document.write();
@@ -34,7 +47,11 @@ Pueden contener solo letras, numeros, $ y _
 son case sensitive: cambia el tema de mayuscula y minuscula
 Hay palabras reservables con las q no se puede nombrar variables: como alert
 Se recomienda que sean descriptivos
+
+Hay un tipo de variable que es permanente y no puede ser modificacada: const variable_inmodificable = "Pizza";
 */
+
+const variable_inmodificable = "Pizza";
 
 // nombres de variables
 var nombre_variable0 = 0;

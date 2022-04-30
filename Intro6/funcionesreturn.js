@@ -3,7 +3,7 @@ function retorna (a,b){
 
 }
 
-retorna(2,3) // no es necesario poner el punto y coma ; para invocar funciones
+retorna(2,3);
 
 var edad_fede = retorna(3,11)
 
@@ -14,7 +14,7 @@ function return_simple(){
 
 }
 
-console.log(return_simple())
+console.log(return_simple());
 
-console.log(return_simple() + 13)
+console.log(return_simple() + 13);
 
