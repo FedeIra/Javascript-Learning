@@ -19,6 +19,12 @@ numeros  (Number),
 strings: texto. Siempre entre comillas. Comillas dobles o simples. Es lo mismo en general. Pero cambia con comillas embutidas o anidadas.
 booleans: True o False
 
+Tenes tambien null que es igual a nada
+
+undefined cuando una variable no esta definida.
+
+Despues tenes NaN que es 'not a number' ejemplo: null + undefined
+
 VARIABLE: espacio en la memoria del ordenador donde se almacena un valor. Puede ir cambiando.
 
 le pongo var y nombre de la variable y luego de doy valor
