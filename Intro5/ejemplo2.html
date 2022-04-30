@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Build your char</title>
+<link rel="stylesheet" href="css/micss2.css">
+
+<script>
+	document.write("<p>");
+	document.write("Welcome to your char builder")
+	document.write("</p>");
+	
+	var name = prompt("Enter your name"); // el prompt es como en input. Pide un dato al usuario
+	var surname = prompt("Enter your last name");
+	var edad = prompt("enter your age");
+
+	var restando = prompt("your gift! decrease your age. Introduce how many years!")
+
+	edad -= restando; // es lo mismo q decir edad = edad - restando
+
+</script>
+</head>
+
+<body>
+<div class="contenedor">
+<div class="header">
+	<p class="logo">World of Warcraft</p>
+</div>
+<div class="contenido">
+	<div class="principal">
+<h1>Choose your name</h1>
+
+<script>
+
+	document.write("<p>"); // introducir una etiqueta html dentro del document.write. Abris un parrafo nuevo
+
+	document.write(name + " " + surname + "<br/>" + "your age is: " + edad); // aca le agrego el contenido del parrafo. Con la etiqueta <br/> hago un salto de linea
+
+	document.write("</p>") // y aca lo cierro
+</script>
+
+</div>
+</div>
+
+</div>
+
+
+
+</body>
+</html>
