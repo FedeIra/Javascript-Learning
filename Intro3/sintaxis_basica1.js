@@ -15,7 +15,7 @@ document.write();
 isNan();
 
 /* tipos de datos: 
-numeros o interdigit (int), 
+numeros  (Number), 
 strings: texto. Siempre entre comillas. Comillas dobles o simples. Es lo mismo en general. Pero cambia con comillas embutidas o anidadas.
 booleans: True o False
 

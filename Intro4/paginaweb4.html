@@ -6,17 +6,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intro3</title>
+    <title>Intro4</title>
 
 <script>
-    alert(5+6*3);
+    //alert((5+6)*3); // las multiplicaciones y divisiones siempre se realizan antes que las sumas y restas. El // tambien puede invalidar codigo si lo pongo adelante.
 
-</script>   
+    // alert(5+6*3);
 
+    var precioUnidad, cantidad, total;
+
+    precioUnidad = 5;
+    cantidad = 100;
+    total = precioUnidad*cantidad;
+
+    alert("el total de la compra es: "+ total + " pesos argentinos"); //  con la operacion mas tambien se puede concatenar
+
+    var camisetas, pantalones, articulo;
+
+    camisetas = "5"
+    pantalones = 5
+
+    totalArticulos = Number(camisetas) + pantalones; // en este caso el operador mas concatena, en lugar de sumar. Esto es pq uno de las variables en un string
+// el number es una funcion predefinida. Convierte el string a numero
+    alert(totalArticulos);
+</script>    
+
+<!-- Con esto comento entre medio del codigo de html-->
 </head>
 
-<body>
-    
+<body>  
+
 </body>
 
 </html>
