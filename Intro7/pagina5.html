@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="button" id="boton1"> <!-- con esto creo un boton en la pagina web-->
+    <input type="button" id="boton2">
+    <input type="text" id="texto3">
+
+<script>
+    var miboton = document.getElementById("boton1"); // almacenamos dentro de la variable miboton el objeto boton1 dentro del document // a partir de ahora con poner miboton js sabe q nos referimos a boton1
+    miboton.style.width = "250px"; // le cambio el tamanio, y el px se refiere a pixeles. El valor de la propiedad siempre va entre comillas
+    miboton.style.height = "250px"; // esto es para modificar altura
+    miboton.style.backgroundColor = "yellow";
+
+    var miboton2 = document.getElementById("boton2");  
+    miboton2.style.width = "250px"; 
+    miboton2.style.height = "250px"; 
+    //miboton2.style.backgroundColor = "red";
+    miboton2.focus(); //aca selecciona el foco. Si tiene varios objetos y seleccionas uno ese aparece seleccionado desde el principio. Le saque el color para q se vea mejor esto
+    // este ultimo se trata de un metodo. te das cuenta por el . seguido de la funcio seguido de entre parentseis
+
+    var mitexto3 = document.getElementById("texto3");  
+    mitexto3.style.width = "100px"; 
+    mitexto3.style.height = "100px"; 
+    mitexto3.style.background = "red"; // para cambiar el color no hace faltar agregarle Color a background. Funciona igual agregandole Color.
+    mitexto3.value = "escriba aqui" // con esto aparece escrito escriba aqui en el cuadro de texto apenas se abre
+// todo lo anterior es para acceder a las propiedades. Ahora vemos como acceder a metodos:
+
+</script>
+</body>
+
+</html>
