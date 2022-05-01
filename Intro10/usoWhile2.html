@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+    #contenedor{
+        width: 25%;
+        background-color: #ffc;
+        margin: auto;
+        padding: 15px;
+    }
+
+</style>
+
+<script>
+
+    //nombre = prompt("Introduce tu nombre por favor");
+    //edad = prompt("Introduce tu edad por favor");
+    //poblacion = prompt("Introduce poblacion");
+
+    var nombre = prompt("Introduce tu nombre por favor", "nombre"), edad = prompt("Introduce tu edad por favor", "edad"), poblacion = prompt("Introduce poblacion", "poblacion");
+                                                    // el ,"" es para internet explorer. De esta forma cuando lo abris no aparece rellenado con undefined. Asi aparece vacio o le podes poner contenido
+    while (!isNaN(nombre)) { // el ! equivale al not de python
+        nombre = prompt("Introduce tu nombre de vuelta");
+    }
+
+    while (edad > 90 || edad <= 0 || isNaN(edad)) {
+        edad = prompt("Edad imposible. Introduce tu edad nuevamente");
+    }
+
+    while (!isNaN(poblacion)) { // el ! equivale al not de python
+        poblacion = prompt("Introduce la población correcta");
+    }
+
+</script>
+
+</head>
+
+<body>
+
+<div id="contenedor"> 
+
+<p>Nombre:
+    <script>document.write(nombre)</script>
+</p>
+<p>Edad:
+    <script>document.write(edad)</script>
+</p>
+<p>Población:
+    <script>document.write(poblacion)</script>
+</p>
+
+</div>
+
+</body>
+
+</html>
