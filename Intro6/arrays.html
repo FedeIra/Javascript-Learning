@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="css/micss.css">
 <script>
   var articulos = ["zapatillas", "camiseta", "pantalon", "calcetines"];
-
+  var lista_pedido = [];
 	//var articulos = new Array("zapatillas", "camiseta", "pantalon", "calcetines") // otra forma de hacer array
 
   //var articulos = []; de esta forma creo un array, pero sin articulos todavia
@@ -39,17 +39,59 @@
         document.write(articulos[4] + "</strong></p>");  // al no haber un quinto articulo te tira undefined pq arranca a contar desde 0
 
 
-        document.write("<p> El articulo <strong>" + articulos[articulos.length-1] + "</strong> esta sin stock</p>"); // al poner articulos.lenght se q te va a dar 3 por lo q te agarra el ultimo articulo
+        document.write("<p> El articulo <strong>" + articulos[articulos.length-1] + "</strong> esta sin stock</p>"); // al poner articulos.lenght te va a contar realmente la cantidad de elementos en la lista por lo q te agarra el ultimo articulo
                                                                                           // le pongo menos uno pq al haber 4 articulos te trataria de decir el articulo 4 de la lista
                                                                                           //pero la lista comienza en 0, por lo que hay 3. Entocnes seria undefined
       
         articulos.push("Balon");
+        document.write(articulos[5] + "</strong></p>");
 
-        document.write("<p> Acaba de llegar stock del articulo <strong> " + articulos[articulos.length-1]) + "</strong></p>"
+        articulos.unshift(5);
 
-      alert("Contamos con " + articulos.length + " articulos");
+        document.write("<p> Acaba de llegar stock del articulo <strong> " + articulos[articulos.length-1]) + "</strong></p>";
 
-	  </script>
+        alert("Contamos con " + articulos.length + " articulos");
+
+
+        lista_pedido.push(prompt("Agrega primer articulo"));
+        lista_pedido.push(prompt("Agrega primer articulo"));
+        lista_pedido.push(prompt("Agrega primer articulo"));
+
+        document.write("<p>Has solicitado los siguientes productos: " + lista_pedido + "</p>");
+
+        document.write("<p> El ultimo producto pedido es: <strong>" + lista_pedido[lista_pedido.length-1] + "</strong></p>");
+
+        document.write("<p> Resumen articulos a disposicion:</br>"); // el <br/> es para hacer un salto de linea
+        
+        document.write(articulos[0] + "</br>");
+        document.write(articulos[1] + "</br>");
+        document.write(articulos[2] + "</br>");
+        document.write(articulos[3] + "</br>");
+        document.write(articulos[4] + "</br>");
+        document.write(articulos[5] + "</br></p>");
+
+        alert("Borraremos el primer elemento que no es un articulo");
+        articulos.shift();
+        
+        document.write("<p> Quedan los siguientes articulos:</br>");
+        document.write(articulos[0] + "</br>");
+        document.write(articulos[1] + "</br>");
+        document.write(articulos[2] + "</br>");
+        document.write(articulos[3] + "</br>");
+        document.write(articulos[4] + "</br></p>");
+
+        alert("Ahora borraremos el ultimo articulo porque no tenemos balones");
+        
+        articulos.pop();
+        document.write("<p> Quedan los siguientes articulos:</br>");
+        document.write(articulos[0] + "</br>");
+        document.write(articulos[1] + "</br>");
+        document.write(articulos[2] + "</br>");
+        document.write(articulos[3] + "</br>/p>");
+       
+
+      </script>
+    
      </div>
   </div>
   
