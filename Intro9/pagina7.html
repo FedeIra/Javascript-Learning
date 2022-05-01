@@ -63,31 +63,23 @@
 		
 		<script>
 			
-            var cuerpo = document.getElementById("cuerpo"); // quiero asignarle a una variable un elemento del documento, que seria el cuerpo 	<body id="cuerpo">
+            var cuerpo = document.getElementById("cuerpo"); 
             
-            var colorWeb = prompt("Introduce el color de fondo. Azul/Verde/Rojo").toLowerCase(); //esto le convierte lo q se almancena en la variable todo a lower case
-																				// se podria hacer con toUpperCase. en ese caso tenes q corregir los colores abajo a todo mayuscula
-            if(colorWeb == "azul") { // cambio a minuscula estos colores para q no te tiren error por el tolowercase
+            var colorWeb = prompt("Introduce el color de fondo. Azul/Verde/Rojo").toLowerCase(); 
+																				
+            if (colorWeb != "azul" && colorWeb != "verde" && colorWeb != "rojo") {
+                alert("Ese color no esta contemplado");
+            } 
+            else if (colorWeb == "azul") {
                 cuerpo.style.backgroundColor = "blue";
             } 
-            else if (colorWeb == "verde") { // tambien funcionaria si esta if sin el else, pero el tema es q en el if siguiente al no cumplir te tira q seleccionaste mal.
+            else if (colorWeb == "verde") {
                 cuerpo.style.backgroundColor = "green";
-            } 
-            else if (colorWeb == "rojo") {
+            }
+            else {
                 cuerpo.style.backgroundColor = "red";
-            } 
-            else {           // al haber puesto en todos los anteriores else if hace que este else pertenezca a todos los if y else if.
-                alert("Selecciona bien man, tiraste cualquier");
             }
 
-		/* 
-		el tema del script anterior es q no te toma si escribis los colores sin mayuscula.
-		Esto se puede corregir con las siguientes funciones:
-
-		toLowerCase()   te lo transforma todo a minuscula
-		toUpperCase()	te lo transforma todo a mayuscula
-
-		*/
 		</script>
 		
 
