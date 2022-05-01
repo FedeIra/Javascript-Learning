@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Usando Arrays</title>
+<link rel="stylesheet" href="css/micss.css">
+<script>
+  var articulos = ["zapatillas", "camiseta", "pantalon", "calcetines"];
+
+	//var articulos = new Array("zapatillas", "camiseta", "pantalon", "calcetines") // otra forma de hacer array
+
+  //var articulos = []; de esta forma creo un array, pero sin articulos todavia
+</script>
+</head>
+
+<body>
+<div class="contenedor">
+  <div class="header">
+    <p class="logo">JavaScript Arrays <i class="mm">Píldoras Informáticas
+     </p>
+  </div>
+  <div class="contenido">
+    <div class="principal">
+      <h1>Manejando Arrays</h1>
+      <script>
+        document.write("<p> Primer articulo es <strong>");
+        document.write(articulos[0] + "</strong></p>");
+		
+        document.write("<p> Segundo articulo es <strong>");
+        document.write(articulos[1] + "</strong></p>");
+
+        document.write("<p> Tercer articulo es <strong>");
+        document.write(articulos[2] + "</strong></p>");
+
+        document.write("<p> Cuarto articulo es <strong>");
+        document.write(articulos[3] + "</strong></p>");
+
+        document.write("<p> Quinto articulo es <strong>");
+        document.write(articulos[4] + "</strong></p>");  // al no haber un quinto articulo te tira undefined pq arranca a contar desde 0
+
+
+        document.write("<p> El articulo <strong>" + articulos[articulos.length-1] + "</strong> esta sin stock</p>"); // al poner articulos.lenght se q te va a dar 3 por lo q te agarra el ultimo articulo
+                                                                                          // le pongo menos uno pq al haber 4 articulos te trataria de decir el articulo 4 de la lista
+                                                                                          //pero la lista comienza en 0, por lo que hay 3. Entocnes seria undefined
+      
+        articulos.push("Balon");
+
+        document.write("<p> Acaba de llegar stock del articulo <strong> " + articulos[articulos.length-1]) + "</strong></p>"
+
+      alert("Contamos con " + articulos.length + " articulos");
+
+	  </script>
+     </div>
+  </div>
+  
+</div>
+</body>
+</html>
