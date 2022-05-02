@@ -17,4 +17,19 @@ While (condicion) {
 Si la condicion siempre es verdad entonces se va a repetir infinitamente el bucle.
 
 En un momento la condicion deja de ser verdad para ser mentira y continua la ejecucion del programa.
+
+
+BUCLE DO WHILE
+
+la utilidad es exactamente igual q el bucle while pero una matiz distinta
+
+do {
+    //codigo a repetir mientras la condicion del bucle sea cierta
+} while (condicion);
+// continuacion del programa
+
+La diferencia con el while es q si la condicion del while no se cumple entonces no se llega a realizar nunca.
+
+En Do While, se hace la primera vez, y luego se continua haciendo en la medida que cumpla su condicion
+
 */

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <table width="25%" border="0">
+        <tr>
+            <td><label for="textfield"></label>
+            <input type="text" name="textfield" id="c_mensaje"></td>
+            <td><label for="textfield2"></label>
+            <input type="text" name="textfield2" id="c_intentos"></td>
+        </tr>
+    </table>
+
+    <script>
+        var numero_aleatorio = Math.round(Math.random()*100); // el math tiene metodos nada mas. Es para programas matematicos complejos, no los operadores basicos. Ademas tira numeros aleatorios.
+                                // Tira un numero decimeal entre 0 y 1, por eso le agregue un *100
+                                // con el Math.round lo redondeo
+    
+        var minum, intentos;
+    
+        minum = 0;
+        intentos = 0;
+        
+        var mensaje = document.getElementById("c_mensaje");
+
+        var mensaje2 = document.getElementById("c_intentos");
+
+        do {
+            minum = prompt("Introduce un numero entre 0 y 100");
+            
+            if(numero_aleatorio > minum) {
+                mensaje.value = "Mas alto"; // el value hace referencia al valor q hay adentro   
+                mensaje.style.fontSize = "18px";
+            }
+    
+            if(numero_aleatorio<minum) {
+                mensaje.value = "Mas bajo";  
+                mensaje.style.fontSize = "18px"; 
+            }
+            intentos++;
+
+            mensaje2.value = intentos;
+            mensaje2.style.fontSize = "18px";
+            mensaje2.style.color = "red";
+            mensaje2.style.textAlign = "center";
+
+        } while (numero_aleatorio != minum);
+    
+    //document.write("Correcto, lo hiciste en: " + intentos + " intentos");
+    mensaje.value= "Correcto!";
+    mensaje.style.color = "red"
+    </script>
+</body>
+</html>
