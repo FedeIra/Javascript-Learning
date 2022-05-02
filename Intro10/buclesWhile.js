@@ -32,4 +32,12 @@ La diferencia con el while es q si la condicion del while no se cumple entonces 
 
 En Do While, se hace la primera vez, y luego se continua haciendo en la medida que cumpla su condicion
 
+El bucle determinado for sabemos cuantas veces va a ejecutar el codigo en su interior
+
+BUCLES FOR:
+
+for (inicio; condicion; incremento/decremento) {
+    // codigo a repetir mientras la condicion del bucle sea cierta
+}
+// continuacion del programa
 */

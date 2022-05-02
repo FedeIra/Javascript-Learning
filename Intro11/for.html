@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+    /*
+        for (var i = 0; i<10; i++) {   //con el inicio le decimos que i= 0
+                                        // luego viene la condiciones que es mientras i sea menor a 10
+            document.write("Aplicamos for " + i + "</br>");  //el incremento le estamos diciendo q cada vez q ejecute su interior tiene que aumentar en uno su valor 
+ 
+        }                              
+
+        for (var i = 0; i<10; i+=2) {   
+            document.write("Aplicamos for " + i + "</br>");  
+        }     
+
+        for (var i = 10; i>10; i--) {   
+        document.write("Aplicamos for " + i + "</br>");  
+        }     
+*/
+        var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+        
+        for (var i = 0; i < 12; i++) { // igual a 0 pq un array arranca desde 0. Menos a 12 pq se q diciembre es la posicion 11 del array
+            document.write(meses[i] + "<br/>");      // el nombre de la variable del for, por convenio, suele ser i, z o j porque no se utiliza fuera del bucle. Igual se puede poner lo q quieras.
+        }       //casi siempre se usa para arrays, especialmente para leer su informacion
+    </script>  
+
+<!-- los bucles for son muy utiles para los arrays. Por ejemplo para leer los valores de un array-->
+
+
+</head>
+<body>
+    
+</body>
+</html>
