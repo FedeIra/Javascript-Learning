@@ -31,6 +31,8 @@ isNan();
 numeros  (Number), 
 strings: texto. Siempre entre comillas. Comillas dobles o simples. Es lo mismo en general. Pero cambia con comillas embutidas o anidadas.
 booleans: True o False
+null : no significan nada
+undefined : no esta definido
 
 Tenes tambien null que es igual a nada
 
