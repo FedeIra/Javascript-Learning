@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora</title>
+
+  <script>
+
+    let repetir = "si";
+
+    function sumar(num1, num2) {
+      alert("la suma es: " + (num1 + num2));
+    }
+
+    function restar(num1, num2) {
+      alert("la resta es: " + (num1 - num2));
+    }
+
+    function multiplicar(num1, num2) {
+      alert("la multiplicacion es: " + (num1 * num2));
+    }
+
+    function dividir(num1, num2) {
+      alert("la division es: " + (num1 / num2));
+    }
+
+    do {
+      let operacion = prompt("Que operacion deseas realizar?");
+
+      let num1 = parseInt(prompt("elegi primer numero")); // el partseint te convierte lo introducido como string a numero.
+      let num2 = parseInt(prompt("elegi segundo numero"));
+
+      if (operacion == "sumar") {
+        sumar(num1, num2);
+      }
+      else if (operacion == "restar") {
+        restar(num1, num2);
+      }
+      else if (operacion == "multiplicar") {
+        multiplicar(num1, num2);
+      }
+      else if (operacion == "dividir") {
+        dividir(num1, num2);
+      }
+      else {
+        alert('operacion no contemplada');
+      }
+
+      repetir = prompt("Desea repetir?");
+    } while (repetir == "si");
+
+  </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
