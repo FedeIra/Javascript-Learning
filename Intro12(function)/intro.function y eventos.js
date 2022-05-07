@@ -56,6 +56,6 @@ onmouseup---soltar el boton que estaba pulsado en el raton -----------todos los 
 
 onreset----inicializar el formulario(borrar todos sus datos) ---------- <form>
 
-onresize---se ha modifiaado el tamanio de la ventana del navegador --- <body>
+onresize---se ha modificado el tamanio de la ventana del navegador --- <body>
 
 */

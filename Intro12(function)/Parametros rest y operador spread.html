@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    /* //REST  
+    function sumar(a, b, ...c) { // aca pongo los 3 puntos suspensivos
+      let resultado = a + b;
+      c.forEach(function (n) {
+        resultado += n
+      });
+      return resultado;
+    }
+    console.log(sumar(1, 2));
+    console.log(sumar(1, 2, 3, 4, 5));
+    console.log(sumar(1, 2, 3, 4, 5, 6, 7, 8)); //gracias a los puntos suspensivos le puedo ir agregando parametros.
+    */
+    // SPREAD OPERATOR
+    const arr1 = [1, 2, 3, 4, 5];
+    arr2 = [6, 7, 8, 9, 10];
+
+    console.log(arr1, arr2);
+
+    const arr3 = [arr1, arr2];
+    console.log(arr3); //con este arreglo tengo un arreglo de dos posiciones con 5 numeros cada uno, como si fuera dos arreglos
+
+    const arr4 = [...arr1, ...arr2];
+    console.log(arr4); //ahora con los puntos suspensivos, se convierte en una posicion con un solo arreglo de 10 numeros
+
+  </script>
+</body>
+
+</html>
+
+<!-- PARAMETROS REST Y OPERADOR SPREAD
+REST: forma de virtualmente ir agregando parametros infinitos a una funcion o dentro de una variable.
+Hay q definirlos anteponiendole tres puntos suspensivos...
+
+-->
