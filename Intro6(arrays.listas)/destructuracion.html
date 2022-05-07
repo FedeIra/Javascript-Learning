@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destructuracion</title>
+</head>
+
+<body>
+  <script>
+    // DESTRUCTURACION: forma de asignar valores a arreglos y objetos. de una manera mas agil.
+
+    // con los arreglos (arrays) se hace asi:
+
+    //asi lo haces sin destructuracion:
+    const numeros = [1, 2, 3, 4];
+
+    let uno = numeros[0];
+    dos = numeros[1];
+    tres = numeros[2]; //le asigno el elemento dos del array (3) a la variable 3
+
+    console.log(uno, dos, tres);
+
+    //con estructruracion es asi:
+    const [one, two, three] = numeros; //le asigno una variable a cada uno de los elementos del array, pero en un solo codigo
+    console.log(one, two, three); // te tira los mismos vales q sin destructuracion, pero es mas simple el codigo
+
+    let persona = {
+      nombre: "Fede",
+      apellido: "Ira",
+      edad: 35,
+    } //si bien eran propiedad de persona, estas propiedades no son variables de por si. 
+
+    let { nombre, apellido, edad } = persona; //aca creo las variables y les asigno el valor usando el objeto persona y sus propiedades
+
+    //console.log(nombre, apellido, age); //para q la destructuracion funciones en los objetos, la variable tiene q llamarse igual a la propiedad q quiero aislar en una variable. De lo contrario, te tira undefined. En este ejemplo, age es undifined
+
+    console.log(apellido, nombre, edad); //aca esta correcto. Si no se respeta el orden, igual capta cada nombre del objeto con el nombre de la variable y te lo define correctamente
+
+  </script>
+</body>
+
+</html>
