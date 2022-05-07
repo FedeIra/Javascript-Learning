@@ -29,21 +29,21 @@ renault.color = "azul";   nombre del ojeto.propiedad igual a valor que quiera as
 */
 
 class coches {
-    ancho = 3;
-    largo = 5;
-    color = "amarillo";
-
+  ancho = 3;
+  largo = 5;
+  color = "amarillo";
 }
 
-var coche1 = coches
+var coche1 = coches;
 
 coche1.ancho = 4;
 coche1.color = "azul"; // esto son las propiedades
 
-coche1.acelera(); // esto es un metodo 
+coche1.acelera(); // esto es un metodo
 
 // Ejemplo con un boton de una pagina web
 
+/*
 class boton1 {
     document.write();
     window.alert(); // antes lo poniamos sin el window pq en el alert siempre esta presente el objeto window. Por eso lo podemos omitir. Si lo pones funciona igual
@@ -51,5 +51,5 @@ class boton1 {
     boton.style.backgroundColor="red"; // con esto modifico el color del boton
     boton.focus(); // esto es para acceder a la funcion del boton
 }
-
+*/
 // prompt(); tambien es un metodo del window y por eso no es necesario ponerle el window inicialmente. Si lo pones no cambia nada

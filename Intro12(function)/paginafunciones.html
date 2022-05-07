@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Funciones1</title>
+
+  <script>
+    function dia_de_hoy() {
+      let hoy = new Date(); //esto para tener fecha
+      document.write(hoy.toDateString()); //le agrego el toDateString() para acortar la fecha sino te tiraba uno largo
+    }
+
+  </script>
+</head>
+
+<body>
+  <h1 class="centrado"><strong>y qué dia es hoy</strong></h1>
+  <p> Hoy es dia:
+    <script>dia_de_hoy()</script> <!-- lo escribe en el formato largo q tenes-->
+  </p>
+  <p>Hemos dicho que hoy es dia:
+    <script>dia_de_hoy()</script>
+  </p>
+  <!--aca abro script para llamar a la funcion-->
+</body>
+
+</html>
