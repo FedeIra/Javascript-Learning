@@ -2,7 +2,7 @@
 
 Puedo crear varias variables de la siguiente forma */ 
 
-var a =1, b = 2, c= 3
+var a =1, b = 2, c= 3;
 
 /* 
 
@@ -16,9 +16,9 @@ Como un archivador con varias pestanias y cada pestania es un valor. O como una 
 
 */
 
-var articles = ["snickers", "trouser", "shirt", true, 0, "sockets"]
+var articles = ["snickers", "trouser", "shirt", true, 0, "sockets", funcion(), {hola: "hola"}, [1 ,2 ,3, 4]]; // puede tener todo tipo de cosas adentro, incluyendo funciones, diccionarios y arreglos.
 
-var articles2 = new Array("jacket", 1.56, false) // estas dos son las formas de crear arrays o conjunto de valores. Es parecido a las listas de python
+var articles2 = new Array("jacket", 1.56, false); // estas dos son las formas de crear arrays o conjunto de valores. Es parecido a las listas de python
 
 // el primer elemento de un array arranca desde 0. Los podes usar con el [0] , [1], etc.
 

@@ -43,37 +43,38 @@ Aparte contamos con los OPERADORES LOGICOS
 
 */
 
-if (!(1 == 2)) {                      // cualquier numero para js es true (incluso numeros negativos), salvo el 0 que es false
-    console.log("Es true")              // agregandole el ! le digo lo contrario. Es decir, si 1 es distinto a 2 devolveme true.
-}
-else {
-    console.log("es false")
+if (!(1 == 2)) {
+  // cualquier numero para js es true (incluso numeros negativos), salvo el 0 que es false
+  console.log("Es true"); // agregandole el ! le digo lo contrario. Es decir, si 1 es distinto a 2 devolveme true.
+} else {
+  console.log("es false");
 }
 
-if (!!(1 == 2)) {                      // le puedo agregar todos los ! q quiera, haciendolo la negativa de la negativa de la negativa...
-    console.log("Es true")                 // en este aso te dice si paso lo contrario a que uno no es distinto a 2, entonces tirame true. Aca sale false entonces
-}
-else {
-    console.log("es false")
+if (!!(1 == 2)) {
+  // le puedo agregar todos los ! q quiera, haciendolo la negativa de la negativa de la negativa...
+  console.log("Es true"); // en este aso te dice si paso lo contrario a que uno no es distinto a 2, entonces tirame true. Aca sale false entonces
+} else {
+  console.log("es false");
 }
 
 // Hay otros datos que de por si son verdaderos aparte de los numeros:
-[]
-{}
-""
-function hola (){};
+[];
+{
+}
+("");
+function hola() {}
 // Todos estos datos son de por si true.
 
 // Utilidad del ===
 
-1 == 1 // es true
+1 == 1; // es true
 
-1 == "1" // tambien es true aunque sean valores de distintos tipos, string y numero. Te convierte el string a numero asi, no al revez.
+1 == "1"; // tambien es true aunque sean valores de distintos tipos, string y numero. Te convierte el string a numero asi, no al revez.
 // Pero a veces tambien quiero comparar el valor
-1 === "1" // aca te va tirar false, pq te compara el numero, pero tambien el dato
+1 === "1"; // aca te va tirar false, pq te compara el numero, pero tambien el dato
 // PAra no tener estos errores es sugerible usar el triple igual (===)
 // Para usar el triple, pero diciendo que son distintos se usa lo siguiente:
-1 !== 2
+1 !== 2;
 
 // En condicionales se usa mucho el AND, OR y NOT
 
