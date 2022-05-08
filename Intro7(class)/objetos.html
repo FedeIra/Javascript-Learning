@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objetos</title>
+
+  <p>Bienvenido a objetos</p>
+  <script>
+    const b = {
+      // es bueno usar const cuando creamos objetos, para evitar q un nuevo objeto cambie la referencia a este
+    };
+    console.log(b);
+
+    // se puede crear objetos de la siguiente forma tambien
+
+    const c = new Object(); // pero casi nadie utiliza esta estrcutura
+    console.log(c);
+
+    const fede = {
+      nombre: "Fede", //va con coma en lugar de punto y coma
+      apellido: "Irarrazaval",
+      edad: 33,
+      comportamiento: ["correr", "estudiar"],
+      soltero: false, //puede tener todo tipo de datos
+      contacto: {
+        email: "fedeirar@gmail.com",
+        cell: 1567887879  //hasta puede tener sus propios objetos
+      },
+      saludos: function () {
+        console.log("HOLA!") //hasta le puedo agregar una funcion
+      },
+      decirMiNombre: function () {
+        console.log(`Hola me llamo ${this.nombre} ${this.apellido} y tengo ${this.edad} anios y me podes llamar a ${this.contacto.cell}`) //this es el contexto en el que nos encontramos. This hace referencia al mismo objeto. De vos mismo, hace tal cosa
+      }
+    }
+    console.log(fede); //con esto te imprime los datos
+    console.log(fede["apellido"]); //con esto le digo q acceda a una propiedad especifica, en este caso el nombre.Los rectangulitos son las propiedades o los ATRIBUTOS.
+
+    //Los atributos son variables q tiene un objeto. Las funciones no son atributos. Es un METODO.
+    // a modo de ejemeplo, el .length es un atributo o propiedad de un objeto, su largo
+    console.log(fede.nombre); //con esto te imprime el valor del atributo del objeto (variable)
+    console.log(fede.comportamiento[1]);
+    console.log(fede.contacto); //con esto imprime todos los atributos del objeto contacto que es un objeto de fede
+    console.log(fede.contacto.email); //puede seleccionar incluso uno solo de los atributos del sub objeto
+    fede.saludos(); //con esto invoco la funcion saludos de fede
+
+    fede.decirMiNombre();
+
+    // hay algunos metodo de object que es el prototipo u objeto de javascrip q tiene metodos importantes o utiles
+
+    console.log(Object.keys(fede)); //es un metodo del Object q me permite listar todas las llaves de un objeto. Te lista los atributos y metodos
+
+    console.log(Object.values(fede)); // esto es casi lo mismo q key pero te lista los valores, no los atributos. Los valores son los valores del atributo. El atributo seria como una variable
+
+    console.log(fede.hasOwnProperty("nombre")); // esto te tira true si hay una propiedad en el objeto fede q sea nombre. Aca te tira true
+
+    console.log(fede.hasOwnProperty("nacimiento")); // Aca te tira false
+
+
+
+  </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

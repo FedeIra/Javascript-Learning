@@ -53,3 +53,14 @@ class boton1 {
 }
 */
 // prompt(); tambien es un metodo del window y por eso no es necesario ponerle el window inicialmente. Si lo pones no cambia nada
+
+let a = new String("Hola");
+console.log(a);
+
+// podemos usar constantes para definir objetos
+
+const b = {
+  // es bueno usar const cuando creamos objetos, para evitar q un nuevo objeto cambie la referencia a este
+};
+
+// un objeto es una coleccion de llaves valor parecido a una regla de css.
