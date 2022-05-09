@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objetos literales</title>
+</head>
+<!-- Se dice OBJETOS LITERALES pq son objetos q literalmente definimos en una variable y los utilizamos despues con los objetos-->
+
+<body>
+
+  <script>
+    let nombre = "kEnAi",
+      edad = 7;
+
+    const perro = {
+      nombre: nombre, //aca le estoy asignando como valor de nombre la variable nombre cuyo valor es kEnAi
+      edad: edad, //aca le estoy asignando como valor de edad la variable edad cuyo valor es 7
+      ladrar: function () {
+        console.log("GUAU")
+      }
+    }
+    //con esto agilizamos el proceso de escritura de nuestro objeto.
+    console.log(perro);
+    perro.ladrar();
+
+    const dog = {
+      nombre, // Si no le meto un valor, me toma el mismo valor que los definidos en el const perro, es decir: nombre:nombre, edad:edad, en definitiva: kEnAi y 7.
+      edad,
+      raza: "callejero",
+      ladrar() { // aca tambien me ahorro codigo, directamente toma la funcion definida arriba en ladrar: function(), e incluso le puedo poner q haga algo distinto
+        console.log("MIAU")
+      }
+    }
+
+    console.log(dog);
+
+    dog.ladrar(); //aca usa el ladrar de dog, q dice MIAU pero aprovechando la funcion de perro.
+  </script>
+
+</body>
+
+</html>
