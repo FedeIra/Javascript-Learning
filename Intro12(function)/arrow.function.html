@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrow Function</title>
+</head>
+
+<body>
+  <script>
+    /*
+    las arrow functions son una implementacion q vino a mejorar para ser mas expresivo y sintetico.
+    Es una nueva forma de definir funciones anonimas q sean expresadas.  
+    
+    */
+    // ejemplo de funcion anonima:
+
+    const saludo = function () {
+      console.log("Hola");
+    }
+    saludo(); //no es una funcion declarada
+
+    // una funcion declarada es lo siguiente:
+    saludar(); // aca invocamos una funcion declarada antes de crearla
+
+    function saludar() { //aca la creamos
+      console.log("Holaaaaa"); // una funcion declarada incluso se la puede invocar antes de ser creada
+    }
+
+    const funcion_no_declarada = function () {
+      console.log("Esto es una funcion no declarada normal");
+    }
+    funcion_no_declarada();
+
+    // Ahora creo una arrow function:
+    const funcion_arrow = () => {   //le agrego el igual y mayor que, simboliza una flecha (arrow)
+      console.log("Hola"); //es una nueva manera de expresar
+    }
+
+    // lo util de la funcion arrow del caso anterior es que podes hacer lo siguiente con el arrow:
+    const funcion_arrow_2 = () => console.log("Hola aca estoy aprovechando el arrow");
+    funcion_arrow_2();
+
+    const saludemos = nombre => console.log(`hola ${nombre}`); //cuando una funcion flecha no recibe parametros tenemos q poner los parentesis. En el anterior tuve q poner parentesis pq no tenia parametro. En este no. Directamente pongo el parametro (nombre)
+    // La funcion anterior es un return implicito
+    saludemos("Fede"); // aca la creo con un parametro para introducir.
+
+    // funcion normal
+    const sumar = function (a, b) {
+      return a + b; // en los arrow no tenes q escribir la palabra return
+    }
+
+    console.log(sumar(8, 9));
+
+    // la diferencia es q en los arrow function nos permite hacer un return implicito, sin tener q poner el console.log  Evitas escribir varias palabras
+
+    const restar = (a, b) => a - b; //al tener varios parametros tiene que llevar parentesis. No lleva si tiene un solo parametro
+    console.log(restar(5, 3));
+
+    const functionDeVariasLineas = () => { // le puedo agregar varias lineas de codigos
+      console.log("Uno");
+      console.log("dos");
+      console.log("tres");
+    }
+    functionDeVariasLineas()
+
+    const numeros = [1, 2, 3, 4, 5];
+
+    numeros.forEach = (el, index) => console.log(`${el} esta en la posicion ${index}`);
+
+    // aca uso la funcion de forEach. Como tengo una linea de codigo en la funcion me evito usar los {}
+    // las arrow function vuelven muy expresivo nuestro codigo de javascript
+
+    // las arrow function tienen la capacidad de capturar el objeto del contexto en el que se encuentren. 
+
+    /*function perro() {
+      console.log(this); //como aca this esta en el contexto navegador, se vuelve window
+    }
+    perro();
+*/
+    const gato = {
+      nombre: "kenai",
+      ladrar: () => {
+        console.log(this) // aca el this al estar dentro de global es window. Tienen la capacidad de capturar el contexto del objeto en el que se encuentra. Hay q tener cuidado de usar arrow function para declarar objetos literales por este problema. Una funcion normalita respeta el contexto en el que se encuentra y su this haria referencia al objeto de esa funcion. Pero al transformarla al arrow function reconoce el contexto en el que se encuentra su objeto padre en el que fue declarado. Esto es importante para react por ejemplo. El arrow function ignora el contexto del objeto dentro de la funcion, por eso va a aparecer como window en lugar del objeto de la funcion.
+      }
+    }
+    gato.ladrar();
+
+  </script>
+</body>
+
+</html>
