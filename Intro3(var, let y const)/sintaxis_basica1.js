@@ -1,8 +1,44 @@
+/*
+ESTRUCTURA DE CODIGO:
+
+Es recomendado escribir con la siguiente estructura:
+1) Importacion de modulos
+2) Declaracion de variables
+3) Declaracion de funciones
+4)Ejecucion de codigo
+
+
+
+TIPOS DE DATOS:
+1) Primitivos: string, number, boolean, null, undefined, NaN
+
+2) Compuestos: object = {} , array = [],  function () {}  , class {}  , etc.
+
+
+PALABRAS RESERVADAS:
+A: abstract
+B: boolean, break, byte
+C: case, catch, char, class, const, continue
+D: debugger, default, delete, do, double
+E: else, enum, export, extends
+F: false, final, finally, float, for, function
+G: goto
+I: if, implements, import, in, instanceof, int, interface
+L: let, long
+N: native, new, null
+P: package, private, protected, public
+R: return
+S: short, static, super, switch, synchronized
+T: this, throw, throws, transient, true, try, typeof
+V: var, volatile, void
+W: while, with
+*/
+
 /* SENTENCIAS 
 
  con el punto y coma termina la sentencia. Aparte te puede tirar error. Sirve para ver donde termina la sentencia. */
 
-alert ("Hola alumnos");
+alert("Hola alumnos");
 
 document.write("Hola alumnos");
 
@@ -19,7 +55,7 @@ Math.ceil(6.0001) = 7; Te lo redondea siempre para arriba
 Otro ejemplo: length */
 
 var prueba_length = "largo";
-console.log(prueba_largo.lenght); 
+console.log(prueba_largo.lenght);
 
 // Hay funciones propias tambien: las q armas vos.
 
@@ -62,14 +98,21 @@ var _nombre_variable2 = 2;
 
 // iniciar una variable
 var nombre_variable3;
-nombre_variable3= 3;
+nombre_variable3 = 3;
 
 var nombre_variable4 = 4;
 
 // Declaracion de varias variables en la misma linea
-var nombre_variable5, nombre_variable6, nombre_variable7 
-nombre_variable5 = 5; 
-nombre_variable6 = 6; 
+var nombre_variable5, nombre_variable6, nombre_variable7;
+nombre_variable5 = 5;
+nombre_variable6 = 6;
 nombre_variable7 = 7;
 
-var nombre_variable8 = 8, nombre_variable9 = True, nombre_variable10 = "Fede"
+var nombre_variable8 = 8,
+  nombre_variable9 = True,
+  nombre_variable10 = "Fede";
+
+/* los nombres de las variables pueden iniciar con letra, signo de dolar, guion bajo (_). Nunca con numeros o caracteres especiales. Los nombres es lo que se llaman IDENTIFICADORES.
+
+No utilizar espacios en blanco y tildes u otras funciones de castellano como enie
+ */

@@ -26,3 +26,7 @@ console.log(objeto_persona2);
 
 objeto_persona2.correo = "agusaceiro@gmail.com"; // el const tambien te permite agregarle valores a un objeto o elementos a un array. accedemos a una referencia de ese valor. El const nos permite agregarle valores pq no estamos cambiando uno de los valores q tenia. Sigue siendo el mismo objeto.
 console.log(objeto_persona2);
+
+//es recomendado que cuando uses constantes q no vas a modificar le pongas el nombre en mayuscula:
+
+const UNA_CONSTANTE = "soy una constante"; //es lo que se llama tecnica del UPPER_CASE

@@ -26,20 +26,22 @@ NOMENCLATURA DEL PUNTO:
 
 renault.color = "azul";   nombre del ojeto.propiedad igual a valor que quiera asignarle
 
+Cuando laburas con classes es recomendado usar la tecnica de UpperCamelCase. Es usar mayusculas al inicio de la clase. ejemplo:
 */
 
-class coches {
+class VehiculosMotorizados {
   ancho = 3;
   largo = 5;
   color = "amarillo";
 }
 
-var coche1 = coches;
+// tambien es recomendable usar el lowerCamelCase cuando creas objetos (es la primera minuscula y la segunda mayuscula). Tambien se usa para funciones, primitivos e instancias:
+var unCoche = VehiculosMotorizados;
 
-coche1.ancho = 4;
-coche1.color = "azul"; // esto son las propiedades
+unCoche.ancho = 4;
+unCoche.color = "azul"; // esto son las propiedades
 
-coche1.acelera(); // esto es un metodo
+unCoche.acelera(); // esto es un metodo
 
 // Ejemplo con un boton de una pagina web
 
