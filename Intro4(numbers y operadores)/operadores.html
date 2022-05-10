@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operadores</title>
+</head>
+
+<body>
+  <script>
+    // OPERADORES ARITMETICOS: + - / % * 
+
+    let modulo = 5 % 2; //te devuelve el residuo de una division: 1
+    console.log(modulo);
+
+    // OPERADORES RELACIONALES: < , > , <= , >= , == , === , != , !==
+
+    console.log(8 > 9); // te devuelve falso pq 8 no es mayor a 9
+    console.log(8 <= 9); //operador compuesto cuando esta acompaniado de un igual. Aca devuelve true pq nueve no es igual pero si es mayor
+
+    // = es asignarle un valor a algo, mientras que == es comparacion de dos valores que te devuelve true or false
+
+    console.log(0 == false); //te devuelve true pq 0 tiende a falso
+    console.log("7" == 7); // aca tambien te tira true pq solo comparamos los valores. Si usamos === tambien compara el tipo de datos (ademas del valor)
+
+    // LA BUENA PRACTICA TE DICE SIEMPRE UTILIZAR LA COMPARACION TRIPLE ===
+
+    //utilizar doble igual es una mala practica pq te tira las truthy y falsi anteriores.
+
+    console.log(0 === false);
+    console.log("7" === 7);// ahora tir ambos falsos pq no son el mismo tipo de dato
+
+    // OPERADORES DE DECREMENTO Y INCREMENTO
+
+    let i = 1;
+    i = i + 2;
+    console.log(i); //te tira tres
+
+    i += 3; //aca le digo que i es igual a la suma de i +3
+    console.log(i); //como i antes era 3 y ahora le sumo 3 te devuelve 6
+
+    i -= 3; //se puede usar con todos los operadores aritmeticos
+    i /= 3;
+    i *= 3;
+
+    //operador unario: cuando sumas y restas de a uno
+
+    i++; //aca le sumo uno al valor i. Es lo mismo q decir i += 1 o i = i+1
+    console.log(i);
+
+    // tambien se puede escribir de la siguiente forma:
+    ++i; //te suma 1 al igual que el i++; 
+    --i;
+    console.log(i);
+    // PERO MUCHO CUIDADO CON ESTAS DOS OPERACIONES POR LO SIGUIENTE:
+    let a = 2;
+    console.log(a++); //aca todavia no te lo suma. La consola te devuelve 2, y a partir de esa operacion el a pasa a ser 3, por eso en el proximo console.log(a); te devuelve 3. Esto se debe a que el programa primero lee el a entonces te lo devuelve como 2, y luego le suma el ++ osea 1, pero no te lo lee.
+    console.log(a);
+
+    console.log(++a); //aca si le suma uno pq primero lee la suma y luego lee la variable a que paso a ser 4 por la suma anterior y por leer esta suma
+
+    //LA RECOMENDACION ES SIEMPRE UTILIZAR EL i++ o i--  pq el tiempo de ejecucion podriamos tener ciertas diferencias.
+
+
+    /* OPERADORES LOGICOS: !(Not o negacion), ||(or), &&(and o y)
+    Not: significa que niega, lo que es verdadera lo devuelve falso y viceversa
+    Or: cuando tengas mas de una condicion, con que una se cumpla (sea verdadera), el or validara
+    &&: para que valide a verdadero necesita que todas las condiciones se cumplan
+    */
+
+    console.log(8 > 9); //aca es false porque es false
+    console.log(!(8 > 9)); //aca te devuelve true pq es not true lo q es correcto
+
+    console.log(!true); //aca te devuelve false que es lo equivalente a not true
+    console.log(!false); //devuelve true
+
+    console.log(9 === 9 || ("9" === 9)); // sabemos que la segunda condicion es falsa, pero la primera es cierta y cocmo se cumplio una de las or se valida todo, y te devuelve true
+
+    console.log(9 === 9 && ("9" === 9)); // aca te va a tirar falso pq no se cumple la segunda condicion
+
+  </script>
+</body>
+
+</html>
