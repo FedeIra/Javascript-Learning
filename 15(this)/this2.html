@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>This2</title>
+</head>
+
+<body>
+  <script>
+    let persona = {
+      nombre: "Fede",
+      saludo: function () {
+        console.log("Hola " + this.nombre); // si no le pongo this, te dice que el nombre no esta definido. this hace referencia a este objeto, es decir, persona. El this se transforma en el objeto. Es equivalente a lo siguiente: 
+        /*
+         saludo: function () {
+        console.log("Hola " + persona.nombre);   // el this reemplaza a "persona", es decir, el objeto.
+        */
+      }
+    }
+
+    persona.saludo();
+
+    let persona2 = {
+      nombre: "Agus",
+      saludo2: () => console.log("Hola" + this.nombre) // me devuelde undefined pq al ser una arrow function el this busca en el contexto global donde no esta definido nombre
+    }
+
+    persona2.saludo2();
+
+    persona.nombre = "NuevoNombre"; // la funcion de arriba me va a seguir tirando hola Fede . 
+    persona.saludo(); //aca si dice Hola NuevoNombre 
+    // PERO SI ESTAS CAMBIANDO ALGO DOS VECES ES PQ ESTAS HACIENDO ALGO MAL
+
+    persona.saludo(persona.nombre = "OtroNombre"); // Aca ya lo estoy cambiando con una linea en lugar de dos como el anterior ejemplo
+
+    persona.saludo(); //aca ya te tira OtroNombre pq se cambio el nombre
+
+    // MUCHOS OBJETOS CON MISMO METODO:
+
+    let person1 = {
+      nombre: "Fede",
+      saludar: function () {
+        console.log(`Hola ${this.nombre}`);
+      }
+    }
+
+    let alumno1 = {
+      nombre: "Fede",
+      saludar: function () {
+        console.log(`Hola ${this.nombre}`);
+      }
+    }
+
+    let alumno2 = {
+      nombre: "Agus",
+      saludar: function () {     // ES UNA REPETICION DE CODIGO AL PEDO
+        console.log(`Hola ${this.nombre}`);
+      }
+    }
+    // Entonces para no repetir codigo hago lo siguiente:
+
+    //Defino la funcion en el contexto global
+    function saludar() {
+      console.log(`Hola ${this.nombre}`); // SIN EL THIS TENDRIA Q HACER UNA FUNCION ESPECIFICA PARA CADA UNO YA Q EL VALUE DE NOMBRE SE DEFINE EN EL CONTEXTO DE CADA OBJETO. No quiero crear una funcion para cada uno. Es mejor definir una funcion global que use el keyword this, y luego puedo ponerle el nombre de la funcion a cada objeto
+    }
+
+    // Creo el objeto
+    let alumno3 = {
+      nombre: "Javier",
+      saludar // ahora en lugar de poner la funcion completa, me limito a poner el nombre de la funcion
+    }
+
+    alumno3.saludar();
+    // Puedo hacerlo con otros objetos y ya no tengo q repetir la funcion pq esta en el global
+
+    let alumno4 = {
+      nombre: "Ricardo",
+      saludar
+    }
+
+    alumno4.saludar();
+
+    saludar(); // puedo invocarla sin hacer referencia a objeto, pero te va a tirar undefined pq en el contexto global la variable nombre no esta definida
+
+    //si lo defino globalmente a nombre va a funciona saludar() solo:
+
+    var nombre = "NombreGlobal"; // no funciona con el let porque let es un contexto de bloque, no global como es el caso de var. Puedo funcionar tambien con this.nombre
+    saludar();
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objetos2</title>
+</head>
+
+<body>
+  <script>
+    /*
+    Un objeto es una coleccion de propiedades y una propiedad es una asociacion entre un nombre (o clave) y un valor. Valor se llama KEY VALUE: quiere decir q accedo a ese valor a traves del key. En el caso de los arreglos las key son las posiciones arrancando desde 0 con la limitacion de q son numericos.
+
+    No podes representar una persona a traves de una lista. Podes hacer una lista de nombres... pero no asignarle propiedades como notas, sexo, etc. Podrias crear una variable de la persona, asignarle una array poniendole las propiedades var persona = ["agus", 28, "sexo"]. Un arreglo es un objeto con indices numeros. Pero es complicado, confuso y limitado en comparacion con un objeto definido entre {}
+
+    Los objetos son una estructura de datos donde tengo variables (KEYS) del objeto a los q le asigno propiedades (KEY VALUES)
+    
+    */
+
+    let objeto1 = {
+      propiedad1: "Agus",
+      propiedad2: 27,
+      propiedad3: false,
+    }
+
+    let objeto2 = {
+      propiedad3: true,
+      propiedad2: 33,
+      propiedad1: "Fede",
+      saludo() { console.log(`Hola ${this.propiedad1}`) },
+      propiedad4: ["elemento1", "elemento2", "elemento3"],
+    }
+
+    objeto2.saludo();
+
+    objeto1["saludo2"] = function () {  // puedo invocar el objeto y asignarle una nueva propiedad y o metodo
+      console.log(`hola ${this.propiedad1}`)
+
+    }
+
+    objeto1.saludo2();
+
+    console.log(objeto2.propiedad1); //la ventaja de invocar la propiedad con el objeto.propiedad es q es mas facil. 
+    console.log(objeto2["propiedad1"]); // se puede invocar de esta forma tambien. Cuando hay que intercalar con variables o recorrer objeto es mejor esta pq se pueden hacer mas cosas
+
+    objeto1.propiedad3 = false; // con esto le cambio el valor
+    objeto1["propiedad3"] = true; // con esto tambien puedo cambiar el valor
+
+    objeto1.propiedad4 = "poneleeeee"; //le agregue una nueva propiedad
+    objeto1["propiedad5"] = "poneleeeee2" // le agregue otra propiedad a traves de esto
+
+    console.log(objeto1.propiedad4);
+    console.log(objeto1["propiedad5"]);
+
+    console.log(objeto1); // aca veo las 5 propiedades
+
+    //Puedo eliminar propiedades
+
+    delete objeto1.propiedad5;
+
+    console.log(objeto1); // aca te imprime las 4 propiedades
+
+    console.log(objeto2.propiedad4[2]);
+
+
+  </script>
+</body>
+
+</html>

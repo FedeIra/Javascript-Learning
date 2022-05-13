@@ -13,7 +13,34 @@
     /*
     las arrow functions son una implementacion q vino a mejorar para ser mas expresivo y sintetico.
     Es una nueva forma de definir funciones anonimas q sean expresadas.  
-    
+
+    1) Una funcion declarada es la mas usual:
+    function saludo () {
+      console.log("Hola");
+    }
+
+    2) Una funcion expresada es cuando a una variable la defino con una expresion anonima: 
+
+    const saludo = function() {
+      console.log("Hola");
+    }
+    saludo();
+
+    3) Una arrow function parte de una funcion expresada, pero con las siguiente modificaciones:
+    const saludo = () => {
+      console.log("Hola");
+      console.log("como estas");
+    }
+
+    Si la arrow function tiene una sola linea de codigo entonces podes evitar el corchete:
+    const saludo = () => console.log("Hola");
+
+    Otra posibilidad, si le paso parametro es la siguiente:
+    const saludo = nombre => console.log("Hola ${nombre}");         le saco el parentesis pq recibe un solo parametro
+
+    saludo("Irma"); con esto la invoco
+
+
     */
     // ejemplo de funcion anonima:
 
@@ -82,11 +109,20 @@
 */
     const gato = {
       nombre: "kenai",
-      ladrar: () => {
+      ladrar: () => { // no es una buena practica crear una arrow function dentro de un objeto pq no respeta el contexto del objeto
         console.log(this) // aca el this al estar dentro de global es window. Tienen la capacidad de capturar el contexto del objeto en el que se encuentra. Hay q tener cuidado de usar arrow function para declarar objetos literales por este problema. Una funcion normalita respeta el contexto en el que se encuentra y su this haria referencia al objeto de esa funcion. Pero al transformarla al arrow function reconoce el contexto en el que se encuentra su objeto padre en el que fue declarado. Esto es importante para react por ejemplo. El arrow function ignora el contexto del objeto dentro de la funcion, por eso va a aparecer como window en lugar del objeto de la funcion.
       }
     }
     gato.ladrar();
+
+    // En su lugar se recomienda esta funcion: 
+
+    const gato2 = {
+      nombre: "kenai2",
+      ladrar() { // no es una buena practica crear una arrow function dentro de un objeto pq no respeta el contexto del objeto
+        console.log(this) //aca this si respeta el contexto de este objeto
+      }
+    }
 
   </script>
 </body>
