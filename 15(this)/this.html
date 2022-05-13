@@ -10,8 +10,77 @@
 
 <body>
   <script>
-// la palabra reservada this hace referencia al objeto q estamos trabajando asi podemos invocar propiedades y/o metodos de dicho objeto.
+    /* la palabra reservada this hace referencia al objeto q estamos trabajando asi podemos invocar propiedades y/o metodos de dicho objeto.
+    
+    This hace referencia al scope donde se encuentra.
 
+    Las funciones anonimas crean scope pero las arrow functions no y estas ultimas se brincan al scope superior o global para buscar la propiedad
+
+    This va a hacer referencia al objeto global y el objeto global es windows
+    
+    */
+
+    console.log(this);
+    console.log(window);
+    console.log(this === window); //esto te devuelve true
+
+    this.nombre = "Contexto Global"; //este this esta dentro del contexto global ya que no esta entre corchetes especificos o en una funcion
+
+    console.log(this.nombre);
+
+    function imprimir() { // esta es una funcion declarada en el scope global
+      console.log(this.nombre);
+    }
+    imprimir();
+
+    const obj = {
+      nombre: "Contexto Objeto",
+      imprimir: function () { //es una funcion anonima y no esta declarada en el scope global
+        console.log(this.nombre); //este this esta en un contexto no global, especifico de esta funcion
+      }
+    }
+
+    obj.imprimir(); //al estar el this de esta funcion en un contexto especifico de la funcion, imprime el this.nombre de la funcion que es contexto objeto
+
+    const obj2 = {
+      nombre: "Contexto Objeto 2",
+      imprimir //imprimir: imprimir // creo una propiedad imprimir que le asigno la funcion imprimir que hace referencia a la funcion declarada en el scope global. Si el nombre de la propiedad y variable es el mismo se puede simplifcar a su solo nombre. Pasa de imprimir: imprimir a imprimir.
+    }
+
+    const obj3 = {
+      nombre: "Contexto Objeto 3",
+      imprimir: () => {  // uso arrow function. Mantiene el enlace del contexto en el que fue creado, es decir, el contexto global. Las funciones arrow no crean su propio scope porlo que el this.nombre ==  "Contexto Global" que es el this.nombre global. En cambio, en el resto que son funciones anonimas y crean su propio scope, el this.nombre es el nombre que haya definido su propia funcion.
+        // Por esto, cuando definis funciones dentro de objetos no es recomendable usar arrow functions porque la arrow function no crea un scope.
+        console.log(this.nombre);
+      }
+    }
+
+    const obj4 = {
+      imprimir //en este caso te da undifined pq no hay definicion de this.nombre en este contexto y al ser una funcion anonima no busca el this.nombre global, por lo tanto tira undefined
+    }
+
+    obj2.imprimir(); // me devuelve a contexto objeto 2
+    obj3.imprimir();
+    obj4.imprimir();
+
+
+    function persona(nombre) { // no es una funcion anonima.
+      this.nombre = nombre;
+      //return console.log(this.nombre);
+      return function () {
+        console.log(this.nombre);
+      }
+    }
+
+    let jon = new persona("Jon");
+    jon(); //con esto invoco la persona ya que jon es igual a una nueva funcion de persona con el parametro nombre = "Jon", pero a pesar de que el parametro sea Jon, al haber una funcion dentro de esa funcion en la que no esta definido el this.nombre, lo busca en el contexto global, es decir, el this.nombre pasa a ser "Contexto global". En lugar de tener la funcion en una anonima sin la definicion de nombre, la podes convertir en una arrow function ya que use el this.nombre de ese contexto definido por la funcion persona, en lugar de buscarla en el contexto global
+
+    function persona2(nombre) {
+      this.nombre = nombre;
+      return () => console.log(this.nombre); //ahora al ser una arrow function busca el this.nombre primero en el contexto de la funcion donde fue creada, es decir, person2, y por eso te imprime Jon2
+    }
+    let jon2 = new persona2("Jon2");
+    jon2();
 
   </script>
 </body>
