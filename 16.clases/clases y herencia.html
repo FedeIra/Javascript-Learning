@@ -10,11 +10,65 @@
 
 <body>
   <script>
+    /*
+        Desde el 2015 en Js podemos escribir clases. El tema es q JS es un programa orientada a objetos pero q esta basado en prototipos. Aunq escribamos nuestras clases, JS lo va a compilar a prototipos.
+
+        Es muy similar los prototipos y las clases.
+    */
+
+    // Usamos la funcion prototipo que usamos en el archivo prototipos y lo convertimos en clase.
 
 
+    class Animal {                // las clases no reciben parametros
+      constructor(nombre, genero) {  // las clases tienen un metodo especial constructor q recibe las propiedades
+        this.nombre = nombre;
+        this.genero = genero;
+      }
+      sonar() {   // los metodos no se definen igual que en los prototipos. Las clases simplifican la escritura.
+        console.log("groarrr");
+      };
+      saludar() { // los metodos los hacia fuera de la funcion constructora en los prototipos. Pero aca los dejamos en el constructor. No hay que sacarlos pq al estar en clases JS lo arregla solo.
+        console.log(`Hola ${this.nombre}`);
+      }
+    }
 
+    const tigre = new Animal("Tigre", "Hembra"),
+      tigreDeBengala = new Animal("Tigre de Bengala", "Macho");
 
+    tigre.sonar();
+    tigre.saludar();
 
+    tigreDeBengala.sonar();
+    tigreDeBengala.saludar();
+
+    console.log(tigre);
+    console.log(tigreDeBengala); // si me fijo en la consola las funciones automaticamente aparecen dentro del prototipo a pesar de que las cree dentro del constructor de la clase. En los prototipos tenia q crearlas fuera de la funcion constructora. 
+
+    // Es raro pq si bien le pusimos clases, en la consola te dice que es un "proto", es decir prototipos. Esto es pq JS trabajaba con prototipos, no con clases. Las clases nos las dieron para facilitar la escritura. Nos ahorramos codigo y la sigue interpretando como un prototipo.
+
+    // HERENCIA
+    // Si quiero crear ahora una clase que hereda del prototipo (o clase) Animal: 
+
+    class Perro extends Animal {   // el extends se refiere a que hereda de tal lugar, en este caso, de Animal
+      constructor(nombre, genero, tamanio) {
+        super(nombre, genero); // super es un metodo que manda a llamar al constructor de la clase padre. Con la funcion super obtengo de la clase padre lo siguiente: this.nombre = nombre; y this.genero = genero; Por esa razon es q le tengo q pasar parametros de nombre y genero
+        this.tamanio = tamanio;  // le tengo q agregar this.tamanio pq se trata de una propiedad que la clase padre no tenia
+      };
+      sonar() { // aca le pongo la misma funcion de sonar, pero le agrego algo, por lo q pasa a ser una nueva funcion
+        console.log("groarrr soy un perro");
+      }
+      ladrar() { // aca le agrego una nueva funcion a la clase perro. No le agregue la funcion de saludar, ya que directamente la hereda del prototipo Animal y la quiero dejar tal cual esta.
+        console.log("Guauuu Guauuu")
+      }
+    }
+
+    const billy = new Perro("Billy", "macho", "pequenio");
+
+    billy.sonar();
+    billy.saludar();
+    billy.ladrar();
+
+    console.log(billy); // ahora en la consola en lugar de tirarme prototipo object, me dice que prototipo Animal. Mientras que en los objetos q se crean en Animales te tiran prototipos objetcs. Se va creando una CADENA PROTOTIPICA. Sigue siendo un lenguage de programacion orientada a objetos, pero basada en prototipos. Esto es azucar sintactico pq es una simplificacion de como escribir prototipos.
 
   </script>
 </body>
