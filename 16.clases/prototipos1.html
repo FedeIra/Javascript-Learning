@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototipos</title>
+</head>
+
+<body>
+  <script>
+    /* PROTOTIPOS: Un PROTOTIPO es una mecanismo por el cual un objeto puede heredar atributos y metodos de un objeto padre.
+
+    JS es un lenguage de multiparadigma. Podemos utilizar diferentes paradigmas de programacion, funcional, orientada a objetos, etc.
+
+    La orientacion a objetos en JS es muy diferentes al resto.
+
+    Las clases en JS es una manera mas facil para poder hacer la programacion basada en prototipos.
+
+    En programacion orientada a objetos (PO), hay 4 conceptos importantes:
+
+    1) Clases: es un modelo a seguir. Sirve como esquema o modelo a seguir para de ahi generar instancias. Entonces un objeto es una instancia (copia) de una clase (modelo).
+
+    2) Objetos. Tienen dos facultades: atributos y metodos. 
+        2.a) Atributo: es caracteristica o propiedad del objeto. Los atributos son variables dentro de un objeto. 
+        2. b) Metodos: son las acciones q un objeto puede realizar. El mismo log (console.log) son acciones que tienen los objetos. Los metodos son funciones dentro de un objeto.
+
+*/
+
+    const animal = {  //este es el prototipo mas primitivo, objeto
+      nombre: "tigre",
+      sonido() {
+        console.log("groarrr");
+      },
+    };
+
+    //Quiero crear un nuevo animal:
+
+    const animal2 = { // son muy similares. Estoy repitiendo codigo al pedo. Esto nos lleva a las clases. Pero puedo hacer prototipos tambien.
+      nombre: "leon",
+      sonido() {
+        console.log("groarrr");
+      },
+    };
+
+    console.log(animal);
+    console.log(animal.sonido());
+    // Entonces pruebo creando un prototipo: 
+
+    // FUNCION CONSTRUCTORA: con esto creo prototipos. La creo una vez y a partir de ahi genero nuevas instancias u objetos de este tipo de funcion constructora. Genera un prototipo vacio. Recordar que para escribir clases se usa el UpperCamelCase. Ejemplo: class SerHumano
+
+    function Animal(nombre, genero) {                  // nombre en mayuscula por UpperCamelCase
+      this.nombre = nombre;                   // this va a hacer referencia al contexto de la funcion (salvo que sea arrow function que ahi el this seria window o el nombre del contexto global y no de esta funcion)
+      this.genero = genero;
+
+      this.sonar = function () {
+        console.log("groarrr");
+      };                          // para q forme parte de este constructor llamado animal usamos this. Cuando trabajamos con funciones constructoras en JS, tanto los atributos como los metodos tienen que tener this.
+      this.saludar = function () {
+        console.log(`Hola ${this.nombre}`);
+      }
+    }
+
+    // Habiendo creado una Funcion Constructora ya puedo crear variables usando esta funcion y de ese modo crear objetos sin repetir codigo
+
+    const tigreDeBengala = new Animal("tigre de bengala", "masculino"), // el new nos permite crear una nueva instancia o del tipo q les especifiquemos. Queremos crear una nueva variable de Animal dandole dos parametros
+      gato = new Animal("gato", "femenino");
+
+    console.log(tigreDeBengala); // en la consola te los reconoce como objetos pero ademas lo reconocen como un objeto dentro de Animal. 
+    console.log(gato);
+
+    tigreDeBengala.sonar();
+    tigreDeBengala.saludar();
+
+    gato.sonar();
+    gato.saludar();
+
+    // Nos ahorramos muchisimo codigo con la funcion constructora. Ahora bien, en la consola podemos ver que mientras que cambiamos los atributos de nombre y genero, la funcion sigue siendo la misma. Es decir, en la consola aparecen 3 objetos con la misma funcion repitiendose. Esto representa codigo y espacio que se esta utilizando demas. Desperdiciamos memoria.
+
+    // Se puede hacer la siguiente mejora. En lugar de poner las funciones en las funciones constructoras, lo ideal es q las funciones constructoras solo tengan los atributos y sacar las funciones de la funcion constructora y los metodos se los pegamos al prototipo.
+
+    // FUNCIONES CONSTRUCTORA 2: donde asignamos metodos al prototipo y no a la funcion como tal:
+
+    function Animal2(nombre2, genero2) {
+      this.nombre2 = nombre2;
+      this.genero2 = genero2;
+    }
+
+    // Metodos agregados al prototipo de la funcion constructora: asigno por fuera al prototipo. Entonces las funciones quedan al prototipo inicial, es decir Animal2. Pero los objetos o instancias que se crean a partir de este prototipo no duplican estos metodos. mejora el rendimiento y espacio.
+    Animal2.prototype.sonar2 = function () {
+      console.log("groarrr");
+    };
+    Animal2.prototype.saludar2 = function () {
+      console.log(`Hola ${this.nombre2}`);
+    }
+
+
+    const tigreDeBengala2 = new Animal2("tigre de bengala2", "masculino"),
+      gato2 = new Animal2("gato2", "femenino");
+
+    tigreDeBengala2.sonar2(); // siguen funcionando estas funciones a pesar de que las puse como prototipo y no en la funcion constructora
+    tigreDeBengala2.saludar2();
+
+    gato2.sonar2();
+    gato2.saludar2();
+
+    console.log(tigreDeBengala2); // en la consola ya no te aparece la funcion dentro de este objeto, sino que te aclara que esta dentro del prototipo
+    console.log(gato2);
+
+  </script>
+</body>
+
+</html>
