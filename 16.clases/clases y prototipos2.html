@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clases y prototipos</title>
+</head>
+
+<body>
+  <script>
+    /*
+      Clases: usamos las clases para representar entidades y conceptos. Son como los sustantivos.
+      Ej: CLASE seria animales, e INSTANCIAS serian gatos, perros, ratones, etc.
+
+    */
+
+    // OBJETO LITERAL:
+    const objeto_literal = {  // const, var o let. Esto es un OBJETO LITERAL: literal pq escribo exactamente lo q es
+      nombre: "Agus", // propiedades y metodos
+      apellido: "Aceiro",
+    }; // esta es la formula para crear un objeto literal
+
+    console.log(objeto_literal); // en la consola, a diferencia del objeto fede, no te aparece adelante "Persona". Esto es pq no hereda de nada al ser un objeto literal 
+
+    // FUNCION CONSTRUCTORA (o factory como fabrica de objetos) y NEW:
+    function Persona(nombre, apellido) { // cuando se hace una funcion constructora se pone MAYUSCULA. Es buenas practicas
+      this.nombre = nombre; // sin el this no te sirven los atributos de los objetos que heredan de Persona
+      this.apellido = apellido;
+      // la funcion constructora no returna
+      // la funcion constructora tiene this
+    }
+
+    const fede = new Persona("Fede", "Irarrazaval");
+    // el new instancia una nueva Persona. Crea un objeto nuevo vacio. Luego invoca la funcion car con los nombres que usamos. Luego "bindea" con el objeto nuevo. Bindear le da un control al desarrollar de lo q va a valer el this.
+    /* el bind hace lo siguiente:
+    fede.nombre = nombre;
+    fede.apellido = apellido;  el "fede" es reemplazado por el this. Pero esto no podria hacerlo al momento de crear la funcion constructora
+*/
+    console.log(fede);
+
+    // Le puedo agregar mas propiedades al igual que con cualquier objeto:
+    fede.sexo = "masculino";
+    fede.edad = 33;
+    fede.abogado = true;
+    fede.seriesFavoritas = ["rome", "game of thrones", "spartacus"];
+
+    console.log(fede);
+
+    // Hay algo que se llama DEFAULT OPERATOR:
+
+    function Animal(animal, sexo, tamanio) {
+      this.animal = animal || "perro"; // con el || le digo q en caso de que no le pongan el parametro correspondiente va a ser perro. Lo mismo con macho
+      this.sexo = sexo || "macho";
+      this.tamanio = tamanio && "grande"; // si se le da valor a tamanio te tira "grande". Es para controlar si existe una propiedad en el objeto.
+    }
+
+    const gato = new Animal();
+
+    const tiburon = new Animal("tiburon");
+
+    const dinosaurio = new Animal("dinosaurio", "macho", 10);
+
+    console.log(gato); // en la consola le asigna directamente perro y macho.
+    console.log(tiburon); // aca me tira tiburon, pero en sexo macho a pesar de que no se lo asigne.
+    console.log(dinosaurio); // en la consola te tira gigante pq al haber sido true el valor tamanio, te lo asigna por el && a "gigante"
+    /*
+    this.animal = animal || "perro"; 
+
+    Explicamos esto: esto se aplica por la tabla de la verdad:
+    animal || "perro"
+
+    T || T = T
+    T || F = T
+    F || T = T
+    F || F = F
+    si animal es false, entonces "perro". Cuando no asignamos valor y el string esta vacia, recordemos q algo es false, y por lo tanto, seria "perro". Al ser un valor undefined pasa a ser perro por default. Pq undefined es igual a false.
+
+    Tambien hay otra forma con el && (and)
+
+    AND
+    shortcircuit: se llama asi pq si es undefined directamente ni lo lee entonces hace como corto circuito
+    animal || "perro"
+    T && T = T
+    T && F = F
+    F && T = F
+    F && F = F
+    
+    si animal es true entonces define b. Es decir si hay valor en animal, es perro. Ver el caso del DINOSAURIO.
+    si a es false es directamente a.
+
+    Se usa cuando hay una variable que no sabes si esta definida o no. Y si esta definida queres saber si esta definida o no.
+    */
+
+    /*
+    PROTOTIPO: JS es un programa basado en prototipos. Todos los objetos de JS tiene referencia a otro objeto q es llamado su prototipo.
+
+    */
+    function Auto(modelo, marca) {
+      this.modelo = modelo;
+      this.marca = marca;
+    }
+
+    const audi = new Auto("2015", "audi"); // el prototipo de audi es Auto y, a su vez, el prototipo de Auto es object que es el ultimo prototipo. Los metodos salen del prototipo. Al ser un prototipo de objeto tiene sus propias funciones relativas a un objeto. Si lo haces con un array, como su prototipo es un array, tiene sus propios metodos correspondientes a un array.
+    console.log(audi);
+    console.log(audi.__proto__); //con esto veo el prototipo
+
+    let arreglo = [1, 2, 3, 4];
+    console.log(arreglo.__proto__);
+
+    // cuando busco una propiedad en un objeto, lo busca primero en el ultimo objeto, si no esta ahi, busca en su prototipo. Si esa propiedad tampoco esta en el prototipo te tira error. Un ejemplo de esto es que puedo tener un array al que jamas le defini sus funciones sin embargo puedo invocarlas. Esto se debe a que recurre a las funciones definidas en su prototipo array o constructor. Por eso puedo invocar el push(), unshift(), etc.
+
+    // POLIMORFISMO: es la capacidad de que objetos distintos puedan responder a un llamado igual de acuerdo a su propia naturaleza
+
+    /* EJEMPLO DE PROTOTIPO DE ARRAY Y SUS FUNCIONES DEFINIDAS EN EL CONSTRUCTOR:
+[constructor: ƒ, concat: ƒ, copyWithin: ƒ, fill: ƒ, find: ƒ, …]
+at: ƒ at()
+concat: ƒ concat()
+constructor: ƒ Array()
+copyWithin: ƒ copyWithin()
+entries: ƒ entries()
+every: ƒ every()
+fill: ƒ fill()
+filter: ƒ filter()
+find: ƒ find()
+findIndex: ƒ findIndex()
+findLast: ƒ findLast()
+findLastIndex: ƒ findLastIndex()
+flat: ƒ flat()
+flatMap: ƒ flatMap()
+forEach: ƒ forEach()
+includes: ƒ includes()
+indexOf: ƒ indexOf()
+join: ƒ join()
+keys: ƒ keys()
+lastIndexOf: ƒ lastIndexOf()
+length: 0
+map: ƒ map()
+pop: ƒ pop()
+push: ƒ push()
+reduce: ƒ reduce()
+reduceRight: ƒ reduceRight()
+reverse: ƒ reverse()
+shift: ƒ shift()
+slice: ƒ slice()
+some: ƒ some()
+sort: ƒ sort()
+splice: ƒ splice()
+toLocaleString: ƒ toLocaleString()
+toString: ƒ toString()
+unshift: ƒ unshift()
+values: ƒ values()
+Symbol(Symbol.iterator): ƒ values()
+Symbol(Symbol.unscopables): {copyWithin: true, entries: true, fill: true, find: true, findIndex: true, …}
+[[Prototype]]: Object
+
+    */
+
+    // Las implicancias de que puedas acceder a funciones por el prototipo es q no tengo q definir las funciones en cada uno de los objetos sino q puedo definirlos en un prototipo asi no repito codigo.
+
+    // ESTA ES LA MEJOR PARA TRABAJAR CON CLASES, HERENCIA Y PROTOTIPOS:
+
+    function Persona(edad) {
+      this.edad = edad; // el this es pq no sabes q objeto vas a crear despues de haber hecho la funcion constructora.
+    }
+
+    Persona.prototype.getEdad = function () {   // con esto le agrego una funcion al prototipo
+      return this.edad;
+    };
+
+    const objt1 = new Persona(22);
+    objt1.getEdad = function (edad) {
+      return this.edad * 2;
+    }
+
+    const objt2 = new Persona(23);
+
+    const objt3 = new Persona(24);
+
+    console.log(objt3.edad);
+    console.log(objt3);
+
+    console.log(objt2.edad / 2);
+    // NUNCA CAMBIAR EL VALOR DE UNA PROPIEDAD QUE ESTA CON GUIONES COMO __edad__: 33
+
+    console.log(objt1.getEdad()); // yo le puedo sobreescribir la misma funcion del prototipo en el objeto q hereda del prototipo. En ese caso, tiene prioridad la funcion del nuevo objeto sobre la funcion del prototipo.
+
+    console.log(objt2.getEdad()); // en este caso recurre a la funcio de getEdad del prototipo pq no esta definida esta funcion en el objeto q hereda del prototipo
+
+    // HAY OTRA FORMA DE CREAR OBJETOS Q HEREDEN DE UN PROTOTIPO. Pero es sugerible la anterior.
+
+    let ropa = {
+      tela: "lana",
+      marca: "prana",
+    }; // un objeto cualquiera
+
+    let pantalon = Object.create(ropa); // le paso el objeto que creamos. Object es el objeto alfa, el primer objeto de JS. El objet tiene un metodo create q crea un nuevo objetivo cuyo prototipo es el primer objeto
+    console.log(pantalon); // es un objeto
+    console.log(pantalon.__proto__); // es el objeto person que creamos al principio
+    console.log(pantalon.tela); // aca busca su propiedad del prototipo (ropa) pq no lo defini en pantalon
+
+    Object.assign(ropa, { precio: 3000, calidad: "buena" }); // con esto le puedo asigar nuevas propiedades con sus valores
+
+    console.log(ropa.precio);
+
+    // LA OTRA FORMA DE CREAR OBJETOS QUE HEREDEN DE UN PROTOTIPO SON LAS CLASES (aparecio en el 2015 con el ES6)
+
+    class Deporte {
+      constructor(deporte, jugadores) {
+        this.deporte = deporte,
+          this.jugadores = jugadores
+      }
+      jugar() {
+        console.log(`juguemos al ${this.deporte}! necesitamos ${this.jugadores} jugadores!`);
+      }
+    }
+
+    const futbol = new Deporte("futbol", 11);
+
+    console.log(futbol.jugar());
+
+
+    // OTRA FORMA ES LA SIGUIENTES TAMBIEN USANDO CLASS
+
+    class Rugby extends Deporte { //la clase deporte tiene un constructur. La clase rugby extiende a la clase deporte equipo y victorias
+      constructor(deporte, jugadores, equipo, victorias) {
+        super(deporte, jugadores); // super quiere decir q estoy invocando el constructor de la clase q extiendo (Deporte)
+        this.equipo = equipo;
+        this.victorias = victorias;
+      }
+    }
+
+    const sic = new Rugby("rugby", 11, "SIC", 31);
+
+    console.log(sic);
+    console.log(sic.__proto__);
+
+    console.log(sic.deporte);
+
+    // OTROS EJEMPLOS :
+
+    function Persona3(nombre, apellido, ciudad) {
+      this.nombre = nombre;
+      this.apellido = apellido;
+      this.ciudad = ciudad;
+    }
+
+    Persona3.prototype.saludar = function () {
+      console.log(`Soy ${this.nombre} de ${this.ciudad}`)
+    }
+
+    function Alumno(nombre, apellido, ciudad, curso) {
+      Persona3.call(this, nombre, apellido, ciudad); // el call es para que las propiedad de persona, quedem en bajo el objeto que va a devolver Alumno. Luego le agrego los puntos propios de Alumno
+      this.curso = curso;
+      this.empresa = "Soy Henry";
+    }
+
+    const fede2 = new Alumno("federico", "irarrazaval", "Buenos Aires", "Web Full Stack");
+
+    console.log(fede2.curso);
+
+    //fede2.saludar(); // esto no funciona porque creamos el objeto Alumno con el metodo call, en lugar del metodo new. Entonces las instancias de Alumno no tienen acceso a los metodos de Persona.
+
+    //Esto se arregla de la siguiente forma:
+
+    Alumno.prototype = Object.create(Persona3.prototype);
+
+    Alumno.prototype.constructor = Alumno;
+
+    const Franco = new Alumno("franco", "milaso", "Buenos Aires", "CIA");
+
+    Franco.saludar(); // ahora si pudo acceder a los metodos por el Object.create en el q hereda todo
+
+  </script>
+</body>
+
+</html>
