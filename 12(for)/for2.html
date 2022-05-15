@@ -1,61 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 
-    <script>
-  /*
-        var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-        
-        for (var i = 0; i < meses.length; i++) {  // el length es clave por si no sabes cual es el limite del array
-            document.write(meses[i] + "<br/>");   
-        }  
-        
-        
-        programa q nos pida con una ventana promp nombres de trabajadores y esos nombres se van almacenando en un array.
-        Rellenado el array recorrerlo con un bucle for
-    */
-/*
-    alert("Arma tu equipo de 5 trabajadores!");
-
-    var lista_trabajadores = [];
-    var contador = 0;
-
-    while (contador < 5) {
-        lista_trabajadores.push(prompt("Agrega nombre de trabajador"));
-        contador++;
-    }
-
-    for (var i = 0; i < lista_trabajadores.length; i++) {
-        document.write(lista_trabajadores[i] + "<br/>");
-    }
+  <script>
+    /*
+          var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+          
+          for (var i = 0; i < meses.length; i++) {  // el length es clave por si no sabes cual es el limite del array
+              document.write(meses[i] + "<br/>");   
+          }  
+          
+          
+          programa q nos pida con una ventana promp nombres de trabajadores y esos nombres se van almacenando en un array.
+          Rellenado el array recorrerlo con un bucle for
+      */
+    /*
+        alert("Arma tu equipo de 5 trabajadores!");
     
-// Otra forma de hacerlo
-*/
+        var lista_trabajadores = [];
+        var contador = 0;
+    
+        while (contador < 5) {
+            lista_trabajadores.push(prompt("Agrega nombre de trabajador"));
+            contador++;
+        }
+    
+        for (var i = 0; i < lista_trabajadores.length; i++) {
+            document.write(lista_trabajadores[i] + "<br/>");
+        }
+        
+    // Otra forma de hacerlo
+    */
     var trabajadores = new Array();
     var persona = "";
     var contador = 0;
 
-    while(persona!="salir") {
-        persona = prompt("Introduce trabajador");
-        trabajadores[contador] = persona;
-        contador++;
+    while (persona != "salir") {
+      persona = prompt("Introduce trabajador");
+      trabajadores[contador] = persona;
+      contador++;
     }
-    
+
     trabajadores.pop();
 
     for (var i = 0; i < trabajadores.length; i++) {
-        document.write(trabajadores[i] + "<br/>");
+      document.write(trabajadores[i] + "<br/>");
     }
 
-
-    </script>  
+    let stringInvertida = "";
+    let string = "Hola"
+    for (let i = this.length - 1; i >= 0; i--) {
+      stringInvertida = stringInvertida + string.charAt(i); // el charAlta :charAt() is a method that returns the character from the specified index. Characters in a string are indexed from left to right.The index of the first character is 0, and the index of the last character in a string, called stringName, is stringName.length – 1.
+    }
+  </script>
 
 </head>
+
 <body>
-    
+
 </body>
+
 </html>

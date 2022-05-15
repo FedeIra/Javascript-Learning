@@ -70,6 +70,25 @@
 
     console.log(billy); // ahora en la consola en lugar de tirarme prototipo object, me dice que prototipo Animal. Mientras que en los objetos q se crean en Animales te tiran prototipos objetcs. Se va creando una CADENA PROTOTIPICA. Sigue siendo un lenguage de programacion orientada a objetos, pero basada en prototipos. Esto es azucar sintactico pq es una simplificacion de como escribir prototipos.
 
+    // OTRO EJEMPLO:
+    class Persona {
+      constructor(nombre, apellido, edad, domicilio) {
+        // Tu código:
+        this.nombre = nombre,
+          this.apellido = apellido,
+          this.edad = edad,
+          this.domicilio = domicilio
+        this.detalle = function () { // OTRA FORMA DE AGREGAR FUNCION CON THIS
+          return {
+            Nombre: this.nombre, //se puede imprimir el nombre de la propiedad poniendolo en Mayuscula
+            Apellido: this.apellido,
+            Edad: this.edad,
+            Domicilio: this.domicilio
+          }
+        }
+      }
+    }
+
   </script>
 </body>
 
