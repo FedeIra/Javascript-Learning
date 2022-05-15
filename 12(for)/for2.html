@@ -57,6 +57,16 @@
     for (let i = this.length - 1; i >= 0; i--) {
       stringInvertida = stringInvertida + string.charAt(i); // el charAlta :charAt() is a method that returns the character from the specified index. Characters in a string are indexed from left to right.The index of the first character is 0, and the index of the last character in a string, called stringName, is stringName.length – 1.
     }
+
+
+
+    // FOREACH:
+
+    // Con callbacks:
+    // El foreach aca invoca la funcion de console.log(elemento) por cada elemento que hay en alumnos. Esto en lugar de ponerle lo siguiente: let i = 0; i < alumnos.length; i++
+    alumnos.forEach(function (elemento, indice) {  //esta funcion es el callback q recibe dos parametros. El indice es opcional
+      console.log(elemento);
+    })
   </script>
 
 </head>

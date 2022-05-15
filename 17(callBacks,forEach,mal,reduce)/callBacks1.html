@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CallBacks</title>
+</head>
+
+<body>
+  <script>
+    /*
+    CALLBACKS: esto es dentro del concepto de la asincronia o programacion asincrona
+    Una callback o llamada de vuelta es una funcion q se va aejecutar depsues de q otra la haga. Es el mecanismo por exelencia de JS para invocar alguna de sus funciones. Primer mecanismo para poder trabajar con la asincronia. 
+
+    */
+
+    function cuadradoCallback(valor, callback) {    // esto es parte tambien de la pogramacion funcional ya que JS es multiparadigma. Se puede escribir tambien funcionalmente. Una funcion se puede invocar a si mismo dentro de si
+      setTimeout(() => {
+        callback(valor, valor * valor)
+      }, 0 | Math.random() * 1000);
+    }
+
+    cuadradoCallback(0, (value, result) => {
+      console.log("Inicia callback");
+      console.log(`Callback: ${value}, ${result}`);
+      cuadradoCallback(1, (value, result) => {
+        console.log(`Callback: ${value}, ${result}`);
+        cuadradoCallback(2, (value, result) => {
+          console.log(`Callback: ${value}, ${result}`);
+          cuadradoCallback(3, (value, result) => {
+            console.log(`Callback: ${value}, ${result}`);
+            cuadradoCallback(4, (value, result) => {
+              console.log(`Callback: ${value}, ${result}`);
+              cuadradoCallback(5, (value, result) => {
+                console.log(`Callback: ${value}, ${result}`);
+              }); // se forma una especie de piramide q es lo q se llama PIRAMIDE DEL INFIERNO O callback Hell. Para arreglar esto estan las promesas. Es el primer mecanismo para manejar las asincronias
+            });
+          });
+        });
+      });
+    });
+
+  </script>
+</body>
+
+</html>
