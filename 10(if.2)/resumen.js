@@ -1,0 +1,35 @@
+var num1 = prompt("Introduce tu primer número");
+var num2 = prompt("Introduce tu segundo número");
+
+alert(typeof num1); // Esto te dice el tipo de valor de la variable, es decir, te dice si es string, etc. En este caso te va a decir q es string.
+
+if (!isNaN(num1) && !isNaN(num2)) {
+  //con esto le digo que chequee q num1 y num2 no sean numeros
+  // con esto estoy anidando los siguientes if pq pasan a estar dentro de este if
+  // las exclamaciones para abajo te piden lo contrario a lo que sirve para pedir la funcion
+  //en este caso te pide q confirme q no son numeros, es decir, isNaN, pero al ponerle exclamacion hace lo contrario
+  var operacion = prompt(
+    "Introduce que operación queres realizar?: suma / resta / multiplicación / división"
+  );
+
+  if (operacion == "suma") {
+    alert(parseInt(num1) + parseInt(num2)); // todo dato q metes en un prompt se toma como string. Es decir, "5" en lugar de 5. Por eso lo concatena
+  } // Para eso uso el Number(numero) o el parseInt  alert(Number(num1) + Number(num2));
+  else if (operacion == "resta") {
+    // en el caso de Number hace una simple conversion del tipo, pero si tiene una letra (ejemplo: "25nad" no te lo podria convertir mientras q el parseint si
+    alert(parseInt(num1) - parseInt(num2));
+  } else if (operacion == "multiplicación" || operacion == "multiplicacion") {
+    alert(parseInt(num1) * parseInt(num2));
+  } else if (operacion == "división" || operacion == "division") {
+    alert(parseInt(num1) / parseInt(num2));
+  } else {
+    alert("ingresaste una operación incorrecta");
+  }
+} else {
+  if (typeof num1 == "string" || typeof num2 == "string") {
+    //aca anide un if dentro del else para ver que error ocurrió
+    alert("Has introducido valores incorrectos");
+  } else {
+    alert("Ha ocurrido un error no identificado");
+  }
+}
