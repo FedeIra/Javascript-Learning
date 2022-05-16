@@ -30,3 +30,12 @@ console.log(objeto_persona2);
 //es recomendado que cuando uses constantes q no vas a modificar le pongas el nombre en mayuscula:
 
 const UNA_CONSTANTE = "soy una constante"; //es lo que se llama tecnica del UPPER_CASE
+
+// Otro ejemplo con destructuracion para crear variables:
+let persona = {
+  nombre: "Fede",
+  apellido: "Ira",
+  edad: 35,
+}; //si bien eran propiedad de persona, estas propiedades no son variables de por si.
+
+let { nombre, apellido, edad } = persona; //aca creo las variables y les asigno el valor usando el objeto persona y sus propiedades

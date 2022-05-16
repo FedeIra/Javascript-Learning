@@ -3,3 +3,5 @@ var name = prompt("Enter your name"); // el prompt es como en input. Pide un dat
 edad -= restando; // es lo mismo q decir edad = edad - restando
 
 document.write(name + " " + surname + "<br/>" + "your age is: " + edad); // aca le agrego el contenido del parrafo. Con la etiqueta <br/>
+
+console.log("Hola como estas todo bien \n todo bien y vos"); // con el \n va linea abajo
