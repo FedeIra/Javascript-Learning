@@ -79,8 +79,6 @@ while (condicion) {
     //bloque de codigo
 }
 
-
-
 var i = 0;
 
 while (i < 100) {
@@ -89,18 +87,18 @@ while (i < 100) {
 } */
 
 function matriz(n, m) {
-    var j = 0;
-    var i = 0;
-    while (i<n) {
-        while(j<m) {
-            console.log(i, j);
-            j = j+1
-        }
-       j=0;
-       i= i+1;
+  var j = 0;
+  var i = 0;
+  while (i < n) {
+    while (j < m) {
+      console.log(i, j);
+      j = j + 1;
     }
+    j = 0;
+    i = i + 1;
+  }
 }
 
-matriz (2,3);
+matriz(2, 3);
 
 // en el for sabes cuando va a terminar. Si no sabes la condicion de parada tenes que usar si o si while

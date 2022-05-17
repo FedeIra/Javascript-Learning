@@ -31,3 +31,15 @@ dos = numeros[1];
 tres = numeros[2]; //le asigno el elemento dos del array (3) a la variable 3
 
 const [one, two, three] = numeros; //le asigno una variable a cada uno de los elementos del array, pero en un solo codigo
+
+// SPREAD:
+const arr1 = [1, 2, 3, 4, 5];
+arr2 = [6, 7, 8, 9, 10];
+
+console.log(arr1, arr2);
+
+const arr3 = [arr1, arr2];
+console.log(arr3); //con este arreglo tengo un arreglo de dos posiciones con 5 numeros cada uno, como si fuera dos arreglos
+
+const arr4 = [...arr1, ...arr2];
+console.log(arr4); //ahora con los puntos suspensivos, se convierte en una posicion con un solo arreglo de 10 numeros
