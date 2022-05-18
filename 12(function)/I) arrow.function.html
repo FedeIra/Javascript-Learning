@@ -122,6 +122,19 @@
       }
     }
 
+    console.log(sumaTodosImpares([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+
+    function sumaTodosImpares2(array2) {
+      // La funcion llamada 'sumaTodosImpares" recibe como argumento un array de enteros.
+      // y debe devolver la suma total entre todos los numeros impares
+      //ej:
+      //sumaTodosImpares([1,5,2,9,6,4]) devuelve 1+5+9=15
+      //tu codigo aca:
+
+      return array2.reduce((acc, ele) => (ele % 2 !== 0 ? acc + ele : acc), 0);
+    }
+
+    console.log(sumaTodosImpares2([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
   </script>
 </body>
 

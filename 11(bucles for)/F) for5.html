@@ -10,6 +10,8 @@
 
 <body>
   <script>
+
+
     const usuario = {
       edad: 13,
       apellido: "Irarrazaval",
@@ -22,6 +24,23 @@
       console.log(usuario[value]);
     }
 
+    const objeto = {
+      D: 1,
+      B: 2,
+      C: 3,
+    };
+
+    let contador = 0;
+    let matriz = [[], [], []];
+
+    for (const key in objeto) {
+      matriz[contador].push(`${key}`);
+      matriz[contador].push(objeto[key]);
+      contador++;
+    }
+    //return matriz;
+    console.log(objeto);
+    console.log(matriz);
   </script>
 </body>
 

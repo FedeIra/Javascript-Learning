@@ -55,3 +55,33 @@ let cadena = "Hola Mundo"; //tambien es iterable un string
 for (const caracter of cadena) {
   console.log(caracter);
 }
+
+function actividadesEnComun(persona1, persona2) {
+  //La funcion llamada "actividadesEnComun" recibe como argumento dos arrays de actividades (strings) llamados "persona1" y "persona2"
+  // y debe devolver un array de strings con las actividades en comun (aquellas que se repiten) entre cada array.
+  //ej> persona1 = ["leer", "comer", "pasear", "dormir", "jugar"]
+  //      persona2 = ["comer", "dormir", "futbol"]
+  // actividadesEnComun(persona1, persona2) => ["comer", "dormir"]
+  // Tip: podes usar cilos for anidados.
+  // Tu codigo aca:
+  let res = [];
+  for (let actividad of persona1) {
+    if (persona2.includes(actividad)) res.push(actividad);
+  }
+  return res;
+}
+console.log(
+  actividadesEnComun(
+    [
+      "leer",
+      "comer",
+      "pasear",
+      "dormir",
+      "jugar",
+      "correr",
+      "tomar",
+      "estudiar",
+    ], // devuelve ["comer", "dormir", "leer", "correr"]
+    ["comer", "dormir", "futbol", "correr", "leer", "invocar"]
+  )
+);
