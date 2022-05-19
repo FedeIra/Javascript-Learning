@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prueba2</title>
+</head>
+
+<body>
+  <script>
+    function crearClaseEmprendedor() {
+      class Emprendedor {
+        constructor(nombre, apellido, libros, mascotas) {
+          //El constructor de la clase Emprendedor recibo nombre (string), apellido (string), libros (array de objetos), mascotas (array de strings)
+          //Inicializar las propiedades del emprendedor con los valores recibidos como argumento
+          //Tu codigo aca
+          this.nombre = nombre;
+          this.apellido = apellido;
+          this.libros = libros;
+          this.mascotas = mascotas;
+        }
+        addMascota(mascota) {
+          //este metodo debe agregar una mascota (mascota) al arreglo de mascotas del emprendedor.
+          //no debes retornar nada.
+          //Tu codigo aca:
+          this.mascotas.push(mascota);
+        }
+        addBook(book, autor) {
+          //El metodo "addbook" recibe un string "book" y un string "autor" y debe agregar un objeto:
+          //{nombre: book, autor: autor} al arreglo de libros del emprendedor.
+          //No debes retornar nada.
+          //Tu codigo aca:
+          this.libros.push({
+            nombre: book,
+            autor: autor,
+          })
+        }
+      }
+      return Emprendedor;
+    }
+
+    console.log(crearClaseEmprendedor());
+
+
+
+  </script>
+</body>
+
+</html>

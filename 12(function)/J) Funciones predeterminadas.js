@@ -29,3 +29,5 @@ string.charAt(i); // el charAlta :charAt() is a method that returns the characte
 document.write(hoy.toDateString()); //le agrego el toDateString() para acortar la fecha sino te tiraba uno largo
 
 // return this.charAt(0).toUpperCase() + this.slice(1); // charAt() is a string method that is used to retrieve a character at a specific position in a string. El método slice() devuelve una copia de una parte del array dentro de un nuevo array empezando por inicio hasta fin (fin no incluido). El array original no se modificará. UpperCase le pone mayuscula.
+
+// return arreglo.filter((e) => e !== num); // el filter lo elimina

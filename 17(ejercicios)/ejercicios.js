@@ -129,3 +129,114 @@ console.log(
 //  }
 //  return res;
 //}
+
+function buscaDestruye(arreglo, num) {
+  //La funcion "buscadestruye" recibe como argumento un array de enteros "arreglo" y un entero "num".
+  //esta funcion tiene que eliminar los numeros del array que coincidan el numero recibido como argumento.
+  // La funcion debe retornar el array sin los numeros sacados
+  //Ej: buscaDestruye([1, 2, 3, 4], 2) devuelve => [1, 3, 4]
+  //Nota: Si el numero se repite mas de una vez, tambien hay que eliminarlo.
+  //Ej> buscaDestruye([1, 2, 3, 4, 1] 1) devuelve => [2, 3, 4]
+  //
+  //Tu codigo aca:
+
+  let arreglo2 = [];
+
+  for (let i = 0; i < arreglo.length; i++) {
+    if (arreglo[i] !== num) {
+      arreglo2.push(arreglo[i]);
+    } else {
+      continue;
+    }
+  }
+  arreglo = arreglo2;
+  return arreglo;
+}
+
+console.log(buscaDestruye([1, 2, 4, 5, 6, 8, 9], 6));
+
+//  return arreglo.filter((e) => e !== num);
+
+function sumarelTipo(arreglo) {
+  //La funcion llamada "sumarEltipo" recibe un array de strings como argumento
+  //que contiene tipos de vehiculos y debe devolver un objeto con la cantidad
+  //de veces que se repita cada tipo
+  //Ej:
+  // sumarElTipo(["auto", "moto", "auto"]); debe retornar {auto: 2, moto: 1}
+  // Tip: podes usar el ciclo for o el metodo de Array "reduce"
+  //Tu codigo aca:
+}
+
+function crearClaseEmprendedor() {
+  class Emprendedor {
+    constructor(nombre, apellido, libros, mascotas) {
+      //El constructor de la clase Emprendedor recibo nombre (string), apellido (string), libros (array de objetos), mascotas (array de strings)
+      //Inicializar las propiedades del emprendedor con los valores recibidos como argumento
+      //Tu codigo aca
+      this.nombre = nombre;
+      this.apellido = apellido;
+      this.libros = libros;
+      this.mascotas = mascotas;
+    }
+
+    addMascota(mascota) {
+      //este metodo debe agregar una mascota (mascota) al arreglo de mascotas del emprendedor.
+      //no debes retornar nada.
+      //Tu codigo aca:
+      this.mascotas.push(mascota);
+    }
+    getMascotas() {
+      //El metodo "getMascotas" debe retornar la cantidad de mascotas que tiene el emprendedor.
+      //Ej:
+      //Suponiendo que el emprendedor tiene estas mascotas: ["perro", "gato"]
+      //emprendedor.getMascotas() deberia devolver 2
+      //Tu codigo aca:
+      return this.mascotas.length;
+    }
+    addBook(book, autor) {
+      //El metodo "addbook" recibe un string "book" y un string "autor" y debe agregar un objeto:
+      //{nombre: book, autor: autor} al arreglo de libros del emprendedor.
+      //No debes retornar nada.
+      //Tu codigo aca:
+      this.libros.push({
+        nombre: book,
+        autor,
+      });
+    }
+    getBooks() {
+      //El metodo "getBooks" debe retornar un arreglo con solo los nombres del arreglo de libros del emprendedor.
+      //Ej:
+      //Suponiendo que el emprendedor tiene estos libros: [{nombre: "El senior de las moscas", autor: "William Golding"}, {nombre: "Fundacion", autor: "Isaac Asimov"}]
+      //emprendedor.getBooks() deberia devolver ["El senior de las moscas", "Fundacion"]
+      //Tu codigo aca:
+      let arreglo = [];
+      for (let i = 0; i < this.libros.length; i++) {
+        arreglo.push(this.libros[i]["nombre"]);
+      }
+      return arreglo;
+    }
+    getFullName() {
+      //El metodo getFullName debe retornar un string con el nombre y apellido del emprendedor.
+      //ej:
+      //Suponiendo que el emprendedor tiene: nombre: "Elon" y apellido: "Musk"
+      //emprendedor.getFullName() deberia devolver "Elon Musk"
+      //Tu codigo aca:
+      return `${this.nombre} ${this.apellido}`;
+    }
+  }
+  return Emprendedor;
+}
+
+function mapear() {
+  //Escribi una funcion mapear en el prototipo del objeto global "Array"
+  //que recibe una funcion callback, que se ejecuta por cada elemento del array
+  //mapear los elementos de ese array segun la funcion callback
+  //Esta funcion tiene que devolver un array nuevo con los elementos mapeados.
+  //NO USAR LA FUNCION MAP DE ARRAYS.
+  //ej:
+  //var numeros = [1, 2, 3, 4];
+  //numeros.mapear(function(numero) {
+  //  return numero + 1;
+  // }) devuelve [2, 3, 4, 5]
+  // Tu codigo aca:
+}
