@@ -71,3 +71,19 @@ console.log(
     (personA, personB) => new Date(personB.DOB) - new Date(personA.DOB)
   )
 );
+
+//EVERY()
+// Determina si todos los elementos en el array satisfacen una condición.
+
+const isBelowThreshold = (currentValue) => currentValue < 40;
+
+const array1 = [1, 30, 39, 29, 10, 13];
+
+console.log(array1.every(isBelowThreshold));
+// expected output: true
+
+//arr.every(callback(element[, index[, array]])[, thisArg])
+
+// 3) Have all the orders been delivered?
+orders.every((delivery) => delivery.delivered);
+//false
