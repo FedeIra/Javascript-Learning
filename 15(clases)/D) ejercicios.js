@@ -21,6 +21,17 @@ function crearUsuario() {
   return Usuario;
 }
 
+// Mismo ejercicio con class:
+function crearUsuario() {
+  class Usuario {
+    constructor(opciones) {
+      (this.usuario = opciones.usuario),
+        (this.nombre = opciones.nombre),
+        (this.email = opciones.email),
+        (this.password = opciones.password);
+    }
+  }
+}
 function agregarMetodoPrototype(Constructor) {
   // Agrega un método al Constructor del `prototype`
   // El método debe llamarse "saludar" y debe devolver la string "Hello World!"
@@ -74,6 +85,16 @@ class Persona {
   }
 }
 
+// Otra forma de hacerlo:
+const Persona = function (nombre, apellido, edad, domicilio) {
+  (this.nombre = nombre),
+    (this.apellido = apellido),
+    (this.edad = edad),
+    (this.domicilio = domicilio);
+  this.detalle = function () {
+    return Object.entries(objeto);
+  };
+};
 function crearInstanciaPersona(nombre, apellido, edad, dir) {
   //Con esta función vamos a crear una nueva persona a partir de nuestro constructor de persona (creado en el ejercicio anterior)
   //Recibirá los valores "Juan", "Perez", 22, "Saavedra 123" para sus respectivas propiedades

@@ -35,3 +35,39 @@ document.write(hoy.toDateString()); //le agrego el toDateString() para acortar l
 const getFileExtension = (str) => str.slice(str.lastIndexOf("."));
 
 array = Object.entries(objeto); //devuelve tanto la clave como su valor
+
+// if (eliminar.includes(cadena[i])) continue; // el include es para chequear si un arreglo tiene cierto elemento
+
+// REVERSE, SPLIT, JOIN, TOSTRING
+function asAmirror(str) {
+  var string = [];
+  for (let i = 0; i < array.length; i++) {
+    string.unshift(str[i]);
+  }
+  return string.join("").split(" ").reverse().join(" ");
+}
+
+function capicua(numero) {
+  let reves = numero.toString().split(" ").reverse().join("");
+  if ((numero = parseInt(numeroAlReves))) return "Es capicua";
+  return "No es capicua";
+}
+//         878 --- "878"----> ["8", "7", "8"]  ---- "878"
+
+// IndexOf: este metodo retorna el primer índice en el que se puede encontrar un elemento dado en el array, ó retorna -1 si el elemento no esta presente.
+
+const arreglo1 = [12, 42, 23, 76, 12, 23, 11, 9, 9, 10];
+
+const arreglo2 = arreglo1.filter(function (numero, posicion, numeros) {
+  return posicion === numeros.indexOf(numero); // aca te dice: si la posicion del numero se encuentra en la misma posicion de la primera vez que aparece ese numero en el array, entonces ese numero (en dicha posicion) se deposita en el nuevo array. De lo contrario, si la posicion del numero no coincide con la primera posicion en el que aparece ese numero (es decir, ya habia aparecido ese numero en el array), se filtra o elimina el numero de esa posicion.
+});
+console.log(arreglo2); //[12, 42, 23, 76, 11,  9, 10]
+//
+
+//SORT:
+// El método sort() ordena los elementos de un arreglo (array) localmente y devuelve el arreglo ordenado. La ordenación no es necesariamente estable. El modo de ordenación por defecto responde a la posición del valor del string de acuerdo a su valor Unicode.
+console.log(
+  people.sort(
+    (personA, personB) => new Date(personB.DOB) - new Date(personA.DOB)
+  )
+);

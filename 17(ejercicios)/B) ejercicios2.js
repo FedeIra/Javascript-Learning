@@ -56,7 +56,7 @@ function capToFront(s) {
   //Ejemplo: soyHENRY -> HENRYsoy
   //Escribe tu código aquí
   var string = [],
-    string = 0;
+    start = 0;
 
   for (let i = 0; i < s.length; i++) {
     if (s[i] === s[i].toUpperCase()) {
