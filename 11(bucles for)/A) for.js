@@ -5,7 +5,7 @@
     
     */
 // FOR: es una estructura de 3 partes, q son las mismas q el while. El i seria el contador
-
+/*
 for (let index = 0; index < 10; index++) {
   // el index inicial es la inicializacion de la variable. La segunda parte es la condicion para que se ejecute. La tercera parte es el decremento o incremento. Todo dentro de los parentesis.
   console.log("for" + index); // lo que esta dentro del {} es lo q ejecuta o las lineas de codigo que va a ejecutar el for
@@ -21,7 +21,7 @@ for (let i = 0; i < numeros.length; i++) {
 // FOREACH: el metodo forEach es una forma mas declarativo de ejecutar ese ciclo
 
 //FOR IN: es un loop q permite recorrer las propiedades de un objeto. Es un for especial para un objeto. Permite recorrer y iterar los atributos y propiedades de un objeto
-
+*/
 const objeto = {
   nombre: "Federico",
   apellido: "Irarrazaval",
@@ -30,13 +30,13 @@ const objeto = {
 
 for (const propiedad in objeto) {
   //te recorre o itera todas las propiedades de un objeto
-  console.log(objeto);
-  console.log(objeto.apellido); // puedo pedirle q devuelva el valor de una de sus propiedades
-  console.log(`Key:${propiedad}, Value: ${objeto[propiedad]}`);
+  //console.log(objeto);
+  // console.log(objeto.apellido); // puedo pedirle q devuelva el valor de una de sus propiedades
+  console.log(`${propiedad}`);
 }
 
 // FOR OF: nos va a permitir recorrer todos los elementos de cualquier objeto q sea iterable en JS. Sirve mas para arreglos en general. Recorre cualquier elemento de JS q sea iterable, arreglos o cadenas de texto q cada caracter se puede recorrer.
-
+/*
 for (const elemento of numeros) {
   //aca le pedimos q recorra cada elemento q se encuentra dentro de numeros
   console.log(elemento); //te imprime los numeros del arreglo

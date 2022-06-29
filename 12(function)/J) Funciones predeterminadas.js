@@ -17,6 +17,7 @@ console.log(c.toFixed(0)); // el metodo toFixed te redondea (a partir de 0.5 par
 isNan(nombre); // cheque si no es numero y te devuelve true or false
 
 console.log(Object.values(fede)); // esto es casi lo mismo q key pero te lista los valores, no los atributos. Los valores son los valores del atributo. El atributo seria como una variable
+console.log(Object.keys(fede)); // mismo que antes, pero te lista los atributos
 
 console.log(fede.hasOwnProperty("nombre")); // esto te tira true si hay una propiedad en el objeto fede q sea nombre. Aca te tira true
 
