@@ -88,3 +88,7 @@ console.log(array1.every(isBelowThreshold));
 // 3) Have all the orders been delivered?
 orders.every((delivery) => delivery.delivered);
 //false
+
+const colores = () => Math.floor(Math.random() * 16).toString(16);
+
+const randomColor = () => "#" + Array.from({ length: 6 }).map(colores).join("");

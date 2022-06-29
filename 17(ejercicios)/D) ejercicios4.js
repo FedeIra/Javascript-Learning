@@ -84,18 +84,4 @@ orders.every((delivery) => delivery.delivered);
 // 5) Have any products with an id of 123 been sold?
 
 /*
-write a javascript program to convert comma-separate values (CSV) string to a 2D array. A new line indicates a new row in the array.
 
-Example: 
-abc, def, ghi
-jkl, mno, pqr
-stu, vwx, yza
-
-*/
-
-const creadorArray = (string) =>
-  string.split("\n").map((row) => row.split(","));
-
-let palabras = "abc, def, ghi \n jkl, mno, pqr \n stu, vwx, yza";
-
-console.log(creadorArray(palabras));
