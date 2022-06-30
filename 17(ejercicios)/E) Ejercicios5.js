@@ -79,3 +79,55 @@ const mayorOmenos3 = (array, funcion) => {
 };
 
 console.log(mayorOmenos3(numeros, (numero) => numero >= 0));
+
+/*
+write a javascript function that returns a passed string with letter in alphabetical order.
+
+example string: "webmaster"
+expected output: "abeemrstw"
+
+*/
+
+const convertidor = (string) => string.split("").sort().join("");
+
+const convertidor2 = (string) =>
+  string
+    .split("")
+    .sort((a, b) => (a > b ? 1 : -1))
+    .join("");
+
+console.log(convertidor("webmaster")); // "abeemrstw"
+console.log(convertidor2("webmaster")); // "abeemrstw"
+
+const convertidor3 = (string) =>
+  string
+    .split("")
+    .sort((a, b) => (a > b ? -1 : 1))
+    .join("");
+
+console.log(convertidor3("webmaster")); // wtsrmeeba;
+
+/*
+write a javascript function that accepts a string as a parameter and counts the number of vowels within the string.
+
+*/
+
+const sumVowels = (string, letters = ["a", "e", "i", "o", "u"]) =>
+  string.split("").filter((letra) => letters.indexOf(letra) > -1).length; // el menos uno significa que no esta la letra en letters pq no hay una posicion menor a menos uno
+
+// otra forma
+const sumVowels2 = (string) =>
+  string
+    .split("")
+    .filter(
+      (letra) =>
+        letra == "a" ||
+        letra == "e" ||
+        letra == "i" ||
+        letra == "o" ||
+        letra == "u"
+    )
+    .join("").length;
+
+console.log(sumVowels("hola")); // 2
+console.log(sumVowels2("hola")); // 2

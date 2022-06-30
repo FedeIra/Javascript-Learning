@@ -92,3 +92,6 @@ orders.every((delivery) => delivery.delivered);
 const colores = () => Math.floor(Math.random() * 16).toString(16);
 
 const randomColor = () => "#" + Array.from({ length: 6 }).map(colores).join("");
+
+const sumVowels = (string, letters = ["a", "e", "i", "o", "u"]) =>
+  string.split("").filter((letra) => letters.indexOf(letra) > -1).length; // el menos uno significa que no esta la letra en letters pq no hay una posicion menor a menos uno
