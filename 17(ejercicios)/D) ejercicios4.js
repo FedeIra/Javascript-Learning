@@ -80,8 +80,6 @@ orders.every((delivery) => delivery.delivered);
 //false
 
 // 4) Has the customer with ID '123' made any orders?
+orders.some();
 
 // 5) Have any products with an id of 123 been sold?
-
-/*
-
