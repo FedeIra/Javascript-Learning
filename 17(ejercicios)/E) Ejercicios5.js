@@ -131,3 +131,129 @@ const sumVowels2 = (string) =>
 
 console.log(sumVowels("hola")); // 2
 console.log(sumVowels2("hola")); // 2
+
+/*
+write a javascript function to convert an amount to coins.
+
+example input: 46 and possible coins 25, 10, 5 , 2, 1
+output: 25, 10, 10, 1
+*/
+
+const monedas = (total, tipoMonedas) => {
+  const resultado = [];
+  while (total > 0) {
+    for (let moneda = 0; moneda < tipoMonedas.length; moneda++) {
+      if (total - tipoMonedas[moneda] >= 0) {
+        resultado.push(tipoMonedas[moneda]);
+        total -= tipoMonedas[moneda];
+        break;
+      }
+    }
+  }
+  return resultado;
+};
+
+console.log(monedas(46, [25, 10, 5, 2, 1])); // [ 25, 10, 10, 1 ]
+
+// OTRA FORMA:
+const monedas2 = (total, tipoMonedas = [25, 10, 5, 2, 1]) => {
+  const resultado = [];
+  for (let moneda = 0; moneda < tipoMonedas.length; moneda++) {
+    const numeroMoneda = Math.floor(total / tipoMonedas[moneda]); // el Math.floor te redondea para abajo
+    for (let y = 0; y < numeroMoneda; y++) {
+      resultado.push(tipoMonedas[moneda]);
+    }
+    total -= tipoMonedas[moneda] * numeroMoneda;
+  }
+  return resultado;
+};
+
+console.log(monedas2(46)); // [ 25, 10, 10, 1 ]
+
+/*
+write a javascript function to extract unique characters from a string.
+
+*/
+
+//Una solucion:
+const getUniqueChars = (str) =>
+  str
+    .split("")
+    .filter((item, index, arr) => arr.slice(index + 1).indexOf(item) === -1);
+
+/* El método filter() crea un nuevo array con todos los elementos que cumplan la condición implementada por la función dada.
+-currentValue ("item"): El elemento actual del array que está siendo procesado.
+-index Opcional ("index"): El índice del elemento actual del array que está siendo procesado.
+-array Opcional ("arr"): El array sobre el que se ha llamado filter.
+*/
+
+/* El método slice() devuelve una copia de una parte del array dentro de un nuevo array empezando por inicio hasta fin (fin no incluido). El array original no se modificará.
+-inicio:
+Índice donde empieza la extracción. El primer elemento corresponde con el índice  0.
+Si el índice especificado es negativo, indica un desplazamiento desde el final del array. slice(-2)extrae los dos últimos elementos del array
+Si inicio es omitido el valor por defecto es 0.
+Si inicio es mayor a la longitud del array, se devuelve un array vacío.
+-fin:
+Índice  que marca el final de la extracción. slice extrae hasta, pero sin incluir el final.
+slice(1,4) extrae desde el segundo elemento hasta el cuarto  (los elementos con índices 1, 2,  y 3).
+
+*/
+
+console.log(getUniqueChars("aaaabbbccc")); // [ 'a', 'b', 'c' ]
+/*
+El método indexOf() retorna el primer índice en el que se puede encontrar un elemento dado en el array, ó retorna -1 si el elemento no esta presente.
+-searchElement:
+Elemento a encontrar en el array.
+-fromIndex Opcional:
+Indica el índice por el que se comienza la búsqueda. Por defecto es 0, por lo que se busca en todo el array. Si el índice es mayor o igual a la longitud del array, devuelve -1, ya que no se buscaría en el array. Si el valor es negativo, se toma restando posiciones desde el final del array. Hay que tener en cuenta que aunque el índice sea negativo, la búsqueda seguirá realizándose en un orden incremental. Si el índice calculado es menor de 0, la búsqueda se realizará por todo el array.
+*/
+
+// Otro ejemplo:
+
+const getUniqueChars2 = (str) => new Set(str.split(""));
+
+console.log(getUniqueChars2("aaaabbbccc")); // Set(3) { 'a', 'b', 'c' }
+/*
+El objeto Set le permite almacenar valores únicos de cualquier tipo, ya sea valores primitivos o referencias a objetos. Un valor en un Set solo puede ocurrir una vez.
+*/
+
+//Se puede pasar el Set a un array:
+
+const getUniqueChars3 = (str) => [...new Set(str.split(""))];
+
+console.log(getUniqueChars3("aaaabbbccc")); // [ 'a', 'b', 'c' ]
+
+//Otro ejemplo:
+const filtro = (string) =>
+  string
+    .split("")
+    .filter(
+      (letra) =>
+        letra == "a" ||
+        letra == "e" ||
+        letra == "i" ||
+        letra == "o" ||
+        letra == "u"
+    );
+
+console.log(filtro("hola")); // [ 'o', 'a' ]
+
+/*
+write a javascript function to find the first not repeated character
+example string: "abacddbec"
+expected output: "e"
+*/
+
+const valorNoRepetido = (str) =>
+  str
+    .split("") // con el split separo el string y lo convierto en un array
+    .filter(
+      (
+        item,
+        index,
+        arr // el index hay que meterlo pq quiero aclarar el array ("arr") que me va a servir para el callback filter
+      ) => arr.filter((arrItem) => arrItem === item).length === 1 //aca le digo que si el item del array ("arrItem") es igual al item del array del primer filter ("item") y esto no se repite mas de una vez, entonces cumple con la condicion y pasa al nuevo array. Por lo contrario, si fuera el mismo item, pero esto se repite mas de una vez, entonces no se cumple la condicion y no pasa al nuevo array.
+    )
+    .join(""); //con el join junto los valores del array en un string
+
+console.log(valorNoRepetido("abacddbec")); // e
