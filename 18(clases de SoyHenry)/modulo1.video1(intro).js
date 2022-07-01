@@ -38,7 +38,8 @@ function DecimalABinario(num) {
   return result;
 }
 
-console.log(DecimalABinario(10));
+console.log(DecimalABinario(20));
+
 /*
 Dividir num entre 2 hasta que llegue a 0.
 Quedarme con el resultado entero (sin el valor decimal y el resto)
