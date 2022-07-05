@@ -258,8 +258,6 @@ console.log(suma5(1)); //6 le puedo poner numero y el primer parametro al ser nu
 
 /*
 La funcion call es muy similar a la BIND.  La diferencia es q no retorna nada sino q directamente ejecuta lo q le pasamos.
-
-
 */
 
 const obj = {

@@ -97,49 +97,7 @@
     // Este tipo de funcion es declarativa pq aca no le decimos q hacer, simplemente sabemos q hace la funcion foreach
 
 
-    /*
-    REDUCE: ejecuta una funcion reductora sobre cada elemento de un array devolviendo un unico valor.
-    Recibe cuatro argumentos:
-    1) Acumulador (acc)> es obligatorio
-    2) Valor Actual (cur) > es obligatorio
-    3) Indice Actual (idx) > no es obligatorio
-    4) Array (src) > no es obligatorio
 
-    El valor devuelto de la funcion reductora se asigna al acumulador cuyo valor se recuerda en cada iteracion de la matriz y en ultima instancia se convierte en el valor final, unico y resultante.
-
-    Reduce ejecutra un bucle en nuestra matriz (array) con la intencion de reducir cada elemento que se devuelve. Como es el primer argumento, acepta un callback que toma dos argumentos, primero un "acumulador" (el resultado del metodo de reduccion hasta ahora), y el segundo es el elemento en el que se encuentra actualmente. El callback debe contener siempre una declaracio nde devolucion ("return"). reduce tambien toma un segundo argumento opcional, que seria el acumulador de arranque ("starting accumulator"). si no suministra el acumulador de arranque, la reduccion comenzara en el primer elemento de la matriz. Reduce siempre devolvera el acumulador cuando termine de recorrer los elementos.
-    */
-
-    let nums = [1, 2, 3, 4, 5, 6, 7];
-
-    //Sin callbacks:
-    let suma = 0;
-    for (let i = 0; i < nums.length; i++) {
-      suma = suma + nums[i];
-    }
-
-    //Con callbacks:
-    let sumaReduce = nums.reduce(function (acumulador, elemento) { //el sumaReduce va a ser un unico valor
-      return acumulador + elemento;                        // el resultado de acumulador que arranca desde 0 mas cada elemento del array lo va sumando en acumulador. Lo llamamos "acumulador", pero le podemos poner cualquier cosa, es como el index    
-    }, 0); // este parametro es el valor con el q el acumulador va a empezar. Esto dice acumulador = 0. Por defecto es 0, asi q en realidad no es necesario ponerle 0 si queremso empezar desde ese valor. Podemos ponerle string, arreglo, etc vacios = "" / {} / []
-
-    // acumulador = 0;
-    // return 0 + 1 = acumulador
-    // y asi sucesivamente, pero se acumula en acumulador, no en un array
-    console.log(sumaReduce); // te devuelve la suma de toda la lista de numeros, es decir, 27
-
-    // OTRO EJEMPLO Q NO ES MUY PRACTICO:
-
-    let sumaReduce2 = nums.reduce(function (acc, elemento) {
-      return elemento;
-    });
-    console.log(sumaReduce2); // en este caso, el acumulador va pasando por cada uno hasta pasar por el elemento 7. Entonces te retorna este ultimo elemento, 7
-
-
-    let MultiplicaReduce2 = nums.reduce(function (acc, elemento) {
-      return acc * elemento;
-    }); // por default al tratarse una multiplicacion, el acc arranca en 1, a diferencia q en el resto de los casos que arranca por 0. De lo contrario, cualquier resultado daria 0.
-    console.log(MultiplicaReduce2); // te va acumulando la multiplicacion de los numeros de la lista sumados, es decir, 5040
 
   </script>
 </body>
