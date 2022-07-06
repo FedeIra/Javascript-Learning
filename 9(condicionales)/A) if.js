@@ -66,6 +66,17 @@ function hola() {}
 // Todos estos datos son de por si true.
 
 // Utilidad del ===
+/* 
+Comparison with the Strict Equality Operator:
+Strict equality (===) is the counterpart to the equality operator (==). However, unlike the equality operator, which attempts to convert both values being compared to a common type, the strict equality operator does not perform a type conversion.
+
+If the values being compared have different types, they are considered unequal, and the strict equality operator will return false.
+
+Examples */
+
+3 === 3; // true
+3 === "3"; // false
+/* In the second example, 3 is a Number type and '3' is a String type. */
 
 1 == 1; // es true
 
@@ -85,3 +96,48 @@ function hola() {}
 // Se pueden hacer combinaciones con todas estas operaciones
 // ejemplo:  (!a || !b) aca te dice si es distinto a a o es distinto a b, hacer tal cosa
 // otro ejemplo !(!a || !b)  aca te dice si NO es distinto a a o es distinto a b, hacer tal cosa
+
+/* Use Conditional Logic with If Statements
+if statements are used to make decisions in code. The keyword if tells JavaScript to execute the code in the curly braces under certain conditions, defined in the parentheses. These conditions are known as Boolean conditions and they may only be true or false.
+
+When the condition evaluates to true, the program executes the statement inside the curly braces. When the Boolean condition evaluates to false, the statement inside the curly braces will not execute.
+
+Pseudocode */
+
+/* if (condition is true) {
+  statement is executed
+}
+Example */
+
+function test(myCondition) {
+  if (myCondition) {
+    return "It was true";
+  }
+  return "It was false";
+}
+
+test(true);
+test(false);
+/* test(true) returns the string It was true, and test(false) returns the string It was false.
+
+When test is called with a value of true, the if statement evaluates myCondition to see if it is true or not. Since it is true, the function returns It was true. When we call test with a value of false, myCondition is not true and the statement in the curly braces is not executed and the function returns It was false.  */
+
+/* Comparison with the Inequality Operator
+The inequality operator (!=) is the opposite of the equality operator. It means not equal and returns false where equality would return true and vice versa. Like the equality operator, the inequality operator will convert data types of values while comparing.
+
+Examples */
+
+1 != 2; // true
+1 != "1"; // false
+1 != "1"; // false
+1 != true; // false
+0 != false; // false
+
+/* Comparison with the Strict Inequality Operator:
+The strict inequality operator (!==) is the logical opposite of the strict equality operator. It means "Strictly Not Equal" and returns false where strict equality would return true and vice versa. The strict inequality operator will not convert data types.
+
+Examples */
+
+3 !== 3; // false
+3 !== "3"; // true
+4 !== 3; // true

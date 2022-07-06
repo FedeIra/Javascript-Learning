@@ -98,4 +98,49 @@ Esto es importante pq existen funciones destructivas y q no son destructivas.
 Ejemplo: la funcion splice() es un metodo destructivo pq modifica el objeto original. Te modifica el array original.
 
 En cambio el slice() no toca el original sino q te devuelve una copia en un nuevo array.
+
 */
+
+// Strings con doble comillas adentro:
+const myStr = 'I am "double quoted" string inside "double quotes".'; // Change this line
+
+console.log(myStr);
+
+const myStr2 = 'I am "double quoted" string inside "double quotes".'; // Change this line
+
+console.log(myStr2);
+
+/* Quotes are not the only characters that can be escaped inside a string. There are two reasons to use escaping characters:
+
+To allow you to use characters you may not otherwise be able to type out, such as a carriage return.
+To allow you to represent multiple quotes in a string without JavaScript misinterpreting what you mean.
+We learned this in the previous challenge.
+
+Code	Output
+\'	single quote
+\"	double quote
+\\	backslash
+\n	newline
+\r	carriage return
+\t	tab
+\b	word boundary
+\f	form feed
+Note that the backslash itself must be escaped in order to display as a backslash. */
+
+console.log(`Hola "como" \`estas todo bien`); //Hola "como" `estas todo bien
+console.log('Hola como "estas todo bien'); // Hola como "estas todo bien
+console.log("Hola como \\estas todo bien"); // Hola como \estas todo bien
+console.log("Hola como \nestas todo bien"); // Hola como
+// estas todo bien
+console.log("Hola como \restas todo bien"); //Hola como
+// estas todo bien
+console.log("Hola como \testas todo bien"); // Hola como 	estas todo bien
+console.log("Hola como \b	estas todo bien"); // Hola como 	estas todo bien
+console.log("Hola como \f	estas todo bien"); // Hola como 	estas todo bien
+
+// EJEMPLO:
+const myStr3 = "FirstLine\n\t \\SecondLine\nThirdLine";
+console.log(myStr3); /*
+First 
+ 	\SecondLine 
+ThirdLine */

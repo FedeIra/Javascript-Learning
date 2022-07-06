@@ -12,7 +12,96 @@ function nombre (parametros) {
 
 nombre_de_la_funcion(); //esto es para llamarla
 
+Global Scope and Functions:
 
+In JavaScript, scope refers to the visibility of variables. Variables which are defined outside of a function block have Global scope. This means, they can be seen everywhere in your JavaScript code.
+
+Variables which are declared without the let or const keywords are automatically created in the global scope. This can create unintended consequences elsewhere in your code or when running a function again. You should always declare your variables with let or const.
+*/
+// Declare the myGlobal variable below this line
+let myGlobal = 10;
+
+function fun1() {
+  // Assign 5 to oopsGlobal Here
+  oopsGlobal = 5;
+}
+
+// Only change code above this line
+
+function fun2() {
+  var output = "";
+  if (typeof myGlobal != "undefined") {
+    output += "myGlobal: " + myGlobal;
+  }
+  if (typeof oopsGlobal != "undefined") {
+    output += " oopsGlobal: " + oopsGlobal;
+  }
+  console.log(output);
+  //myGlobal: 10 oopsGlobal: 5
+  //myGlobal: 10 oopsGlobal: 5
+}
+
+/* Local Scope and Functions:
+Variables which are declared within a function, as well as the function parameters, have local scope. That means they are only visible within that function.
+
+Here is a function myTest with a local variable called loc. */
+
+function myTest() {
+  const loc = "foo";
+  console.log(loc);
+}
+
+myTest();
+console.log(loc);
+/* The myTest() function call will display the string foo in the console. The console.log(loc) line (outside of the myTest function) will throw an error, as loc is not defined outside of the function. */
+
+/* Global vs. Local Scope in Functions:
+It is possible to have both local and global variables with the same name. When you do this, the local variable takes precedence over the global variable.
+
+In this example: */
+
+const someVar = "Hat";
+
+function myFun() {
+  const someVar = "Head";
+  return someVar;
+}
+/* The function myFun will return the string Head because the local version of the variable is present. */
+
+/* Understanding Undefined Value returned from a Function
+A function can include the return statement but it does not have to. In the case that the function doesn't have a return statement, when you call it, the function processes the inner code but the returned value is undefined.
+
+Example */
+
+let sum = 0;
+
+function addSum(num) {
+  sum = sum + num;
+}
+
+addSum(3);
+/* addSum is a function without a return statement. The function will change the global sum variable but the returned value of the function is undefined. */
+
+/* Assignment with a Returned Value:
+If you'll recall from our discussion about Storing Values with the Assignment Operator, everything to the right of the equal sign is resolved before the value is assigned. This means we can take the return value of a function and assign it to a variable.
+
+Assume we have pre-defined a function sum which adds two numbers together, then:
+ */
+ourSum = sum(5, 12);
+/* will call the sum function, which returns a value of 17 and assigns it to the ourSum variable. */
+
+// Setup
+let processed = 0;
+
+function processArg(num) {
+  return (num + 3) / 5;
+}
+
+// Only change code below this line
+processed = processArg(7);
+console.log(processed); //2
+
+/*
 PARAMETROS DE UNA FUNCION
 
 function suma (num1, num2) {
