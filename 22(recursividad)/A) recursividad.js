@@ -88,5 +88,23 @@ Continuing from the previous challenge, we provide you another opportunity to cr
 We have defined a function named rangeOfNumbers with two parameters. The function should return an array of integers which begins with a number represented by the startNum parameter and ends with a number represented by the endNum parameter. The starting number will always be less than or equal to the ending number. Your function must use recursion by calling itself and not use loops of any kind. It should also work for cases where both startNum and endNum are the same. */
 
 function rangeOfNumbers(startNum, endNum) {
-  return [];
+  if (startNum > endNum) {
+    return [];
+  } else {
+    const array = rangeOfNumbers(startNum + 1, endNum);
+    array.unshift(startNum);
+    return array;
+  }
 }
+
+/* 
+4) retornar un array de numeros que comience con el numero de startNum y termine con el numero de endNum 
+5) el numero inicial (startNum) tiene que ser siempre menor o igual al numero final (endNum)
+6) crear una funcion recursiva que trabaje tambien en aquellos casos en los que tanto el numero inicial (startNum) y numero final (endName) sean igual.
+Tiene que retornar un array.
+*/
+
+console.log(rangeOfNumbers(6, 5)); // []
+console.log(rangeOfNumbers(1, 5)); // [1, 2, 3, 4, 5]
+console.log(rangeOfNumbers(6, 9)); // [6, 7, 8, 9]
+console.log(rangeOfNumbers(4, 4)); // [4]

@@ -8,6 +8,46 @@ Elemento a encontrar en el array.
 Indica el índice por el que se comienza la búsqueda. Por defecto es 0, por lo que se busca en todo el array. Si el índice es mayor o igual a la longitud del array, devuelve -1, ya que no se buscaría en el array. Si el valor es negativo, se toma restando posiciones desde el final del array. Hay que tener en cuenta que aunque el índice sea negativo, la búsqueda seguirá realizándose en un orden incremental. Si el índice calculado es menor de 0, la búsqueda se realizará por todo el array.
 */
 
+/* Check For The Presence of an Element With indexOf():
+Since arrays can be changed, or mutated, at any time, there's no guarantee about where a particular piece of data will be on a given array, or if that element even still exists. Luckily, JavaScript provides us with another built-in method, indexOf(), that allows us to quickly and easily check for the presence of an element on an array. indexOf() takes an element as a parameter, and when called, it returns the position, or index, of that element, or -1 if the element does not exist on the array.
+
+For example: */
+
+let fruits = ["apples", "pears", "oranges", "peaches", "pears"];
+
+fruits.indexOf("dates");
+fruits.indexOf("oranges");
+fruits.indexOf("pears");
+
+/* indexOf('dates') returns -1, indexOf('oranges') returns 2, and indexOf('pears') returns 1 (the first index at which each element exists).
+
+indexOf() can be incredibly useful for quickly checking for the presence of an element on an array. We have defined a function, quickCheck, that takes an array and an element as arguments. Modify the function using indexOf() so that it returns true if the passed element exists on the array, and false if it does not. */
+
+function filteredArray(arr, elem) {
+  let newArr = [];
+  // Only change code below this line
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].indexOf(elem) == -1) {
+      newArr.push(arr[i]);
+    }
+  }
+  // Only change code above this line
+  return newArr;
+}
+
+console.log(
+  filteredArray(
+    [
+      [10, 8, 3],
+      [14, 6, 23],
+      [3, 18, 6],
+    ],
+    18
+  )
+); // []
+
+console.log(quickCheck(["squash", "onions", "shallots"], "mushrooms"));
+
 const arreglo1 = [12, 42, 23, 76, 12, 23, 11, 9, 9, 10];
 
 const arreglo2 = arreglo1.filter(function (numero, posicion, numeros) {

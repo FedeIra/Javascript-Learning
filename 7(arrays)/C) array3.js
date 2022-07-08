@@ -53,3 +53,27 @@ var elemento_sacado_de_lista = lista_ejemplo.pop(); //en este caso la variable s
 console.log(lista_ejemplo);
 
 lista_ejemplo.pop(); // con esto te saca el elemento pero te lo devuelve
+
+let nestedArray = [
+  ["deep"],
+  [["deeper"], ["deeper"]],
+  [[["deepest"], ["deepest"]], [[["deepest-est?"]]]],
+];
+
+console.log(nestedArray[2][1][0][0][0]); // deepest-est?
+
+let myNestedArray2 = [
+  // Only change code below this line
+  [
+    "unshift",
+    [false, "deep", [1, 2, "deeper", ["deepest"], 3], "complex"],
+    "nested",
+  ],
+  ["loop", "shift", 6, 7, 1000, "method"],
+  ["concat", false, true, "spread", "array"],
+  ["mutate", 1327.98, "splice", "slice", "push"],
+  ["iterate", 1.3849, 7, "8.4876", "arbitrary", "depth"],
+  // Only change code above this line
+];
+
+console.log(myNestedArray2[0][1][2][3][0]); // deepest
