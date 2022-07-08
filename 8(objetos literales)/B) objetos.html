@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Objetos</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Objetos</title>
-
-  <p>Bienvenido a objetos</p>
-  <script>
-
-    /*     Build JavaScript Objects
+    <p>Bienvenido a objetos</p>
+    <script>
+      /*     Build JavaScript Objects
     You may have heard the term object before.
     
     Objects are similar to arrays, except that instead of using indexes to access and modify their data, you access the data in objects through what are called properties.
@@ -19,370 +17,448 @@
     
             Here's a sample cat object: */
 
-    const cat = {
-      "name": "Whiskers",
-      "legs": 4,
-      "tails": 1,
-      "enemies": ["Water", "Dogs"]
-    };
-    /* In this example, all the properties are stored as strings, such as name, legs, and tails.However, you can also use numbers as properties.You can even omit the quotes for single - word string properties, as follows: */
+      const cat = {
+        name: "Whiskers",
+        legs: 4,
+        tails: 1,
+        enemies: ["Water", "Dogs"],
+      };
+      /* In this example, all the properties are stored as strings, such as name, legs, and tails.However, you can also use numbers as properties.You can even omit the quotes for single - word string properties, as follows: */
 
-    const anotherObject = {
-      make: "Ford",
-      5: "five",
-      "model": "focus"
-    };
-    /*       However, if your object has any non - string properties, JavaScript will automatically typecast them as strings. */
+      const anotherObject = {
+        make: "Ford",
+        5: "five",
+        model: "focus",
+      };
+      /*       However, if your object has any non - string properties, JavaScript will automatically typecast them as strings. */
 
-    /* Accessing Object Properties with Dot Notation:
+      /* Accessing Object Properties with Dot Notation:
     There are two ways to access the properties of an object: dot notation(.) and bracket notation([]), similar to an array.
     
     Dot notation is what you use when you know the name of the property you're trying to access ahead of time.
     
     Here is a sample of using dot notation(.) to read an object's property: */
 
-    const myObj = {
-      prop1: "val1",
-      prop2: "val2"
-    };
+      const myObj = {
+        prop1: "val1",
+        prop2: "val2",
+      };
 
-    const prop1val = myObj.prop1;
-    const prop2val = myObj.prop2;
-    /* prop1val would have a value of the string val1, and prop2val would have a value of the string val2.
-  */
-    // Setup
-    const testObj = {
-      "an entree": "hamburger",
-      "my side": "veggies",
-      "the drink": "water"
-    };
+      const prop1val = myObj.prop1;
+      const prop2val = myObj.prop2;
+      /* prop1val would have a value of the string val1, and prop2val would have a value of the string val2.
+       */
+      // Setup
+      const testObj = {
+        "an entree": "hamburger",
+        "my side": "veggies",
+        "the drink": "water",
+      };
 
-    // Only change code below this line
-    const entreeValue = testObj["an entree"];   // Change this line
-    const drinkValue = testObj["the drink"];    // Change this line
+      // Only change code below this line
+      const entreeValue = testObj["an entree"]; // Change this line
+      const drinkValue = testObj["the drink"]; // Change this line
 
+      /* Add Key-Value Pairs to JavaScript Objects:
+At their most basic, objects are just collections of key-value pairs. In other words, they are pieces of data (values) mapped to unique identifiers called properties (keys). Take a look at an example: */
 
+      const tekkenCharacter = {
+        player: "Hwoarang",
+        fightingStyle: "Tae Kwon Doe",
+        human: true,
+      };
+      /* The above code defines a Tekken video game character object called tekkenCharacter. It has three properties, each of which map to a specific value. If you want to add an additional property, such as "origin", it can be done by assigning origin to the object: */
 
-    const b = {
-      // es bueno usar const cuando creamos objetos, para evitar q un nuevo objeto cambie la referencia a este
-    };
-    console.log(b);
+      tekkenCharacter.origin = "South Korea";
+      /* This uses dot notation. If you were to observe the tekkenCharacter object, it will now include the origin property. Hwoarang also had distinct orange hair. You can add this property with bracket notation by doing: */
 
-    // se puede crear objetos de la siguiente forma tambien
+      tekkenCharacter["hair color"] = "dyed orange";
+      /* Bracket notation is required if your property has a space in it or if you want to use a variable to name the property. In the above case, the property is enclosed in quotes to denote it as a string and will be added exactly as shown. Without quotes, it will be evaluated as a variable and the name of the property will be whatever value the variable is. Here's an example with a variable: */
 
-    const c = new Object(); // pero casi nadie utiliza esta estrcutura
-    console.log(c);
+      const eyes = "eye color";
 
-    const fede = {
-      nombre: "Fede", //va con coma en lugar de punto y coma
-      apellido: "Irarrazaval",
-      edad: 33,
-      comportamiento: ["correr", "estudiar"],
-      soltero: false, //puede tener todo tipo de datos
-      contacto: {
-        email: "fedeirar@gmail.com",
-        cell: 1567887879  //hasta puede tener sus propios objetos
-      },
-      saludos: function () {
-        console.log("HOLA!") //hasta le puedo agregar una funcion
-      },
-      decirMiNombre: function () {
-        console.log(`Hola me llamo ${this.nombre} ${this.apellido} y tengo ${this.edad} anios y me podes llamar a ${this.contacto.cell}`) //this es el contexto en el que nos encontramos. This hace referencia al mismo objeto. De vos mismo, hace tal cosa
-      }
-    }
-    console.log(fede); //con esto te imprime los datos
-    console.log(fede["apellido"]); //con esto le digo q acceda a una propiedad especifica, en este caso el nombre.Los rectangulitos son las propiedades o los ATRIBUTOS.
+      tekkenCharacter[eyes] = "brown";
+      /* After adding all the examples, the object will look like this:
+     
+      {
+  player: 'Hwoarang',
+  fightingStyle: 'Tae Kwon Doe',
+  human: true,
+  origin: 'South Korea',
+  'hair color': 'dyed orange',
+  'eye color': 'brown'
+}; 
+*/
 
-    //Los atributos son variables q tiene un objeto. Las funciones no son atributos. Es un METODO.
-    // a modo de ejemeplo, el .length es un atributo o propiedad de un objeto, su largo
-    console.log(fede.nombre); //con esto te imprime el valor del atributo del objeto (variable)
-    console.log(fede.comportamiento[1]);
-    console.log(fede.contacto); //con esto imprime todos los atributos del objeto contacto que es un objeto de fede
-    console.log(fede.contacto.email); //puede seleccionar incluso uno solo de los atributos del sub objeto
-    fede.saludos(); //con esto invoco la funcion saludos de fede
+      const b = {
+        // es bueno usar const cuando creamos objetos, para evitar q un nuevo objeto cambie la referencia a este
+      };
+      console.log(b);
 
-    fede.decirMiNombre();
+      // se puede crear objetos de la siguiente forma tambien
 
-    // hay algunos metodo de object que es el prototipo u objeto de javascrip q tiene metodos importantes o utiles
+      const c = new Object(); // pero casi nadie utiliza esta estrcutura
+      console.log(c);
 
-    console.log(Object.keys(fede)); //es un metodo del Object q me permite listar todas las llaves de un objeto. Te lista los atributos y metodos
+      const fede = {
+        nombre: "Fede", //va con coma en lugar de punto y coma
+        apellido: "Irarrazaval",
+        edad: 33,
+        comportamiento: ["correr", "estudiar"],
+        soltero: false, //puede tener todo tipo de datos
+        contacto: {
+          email: "fedeirar@gmail.com",
+          cell: 1567887879, //hasta puede tener sus propios objetos
+        },
+        saludos: function () {
+          console.log("HOLA!"); //hasta le puedo agregar una funcion
+        },
+        decirMiNombre: function () {
+          console.log(
+            `Hola me llamo ${this.nombre} ${this.apellido} y tengo ${this.edad} anios y me podes llamar a ${this.contacto.cell}`
+          ); //this es el contexto en el que nos encontramos. This hace referencia al mismo objeto. De vos mismo, hace tal cosa
+        },
+      };
+      console.log(fede); //con esto te imprime los datos
+      console.log(fede["apellido"]); //con esto le digo q acceda a una propiedad especifica, en este caso el nombre.Los rectangulitos son las propiedades o los ATRIBUTOS.
 
-    console.log(Object.values(fede)); // esto es casi lo mismo q key pero te lista los valores, no los atributos. Los valores son los valores del atributo. El atributo seria como una variable
+      //Los atributos son variables q tiene un objeto. Las funciones no son atributos. Es un METODO.
+      // a modo de ejemeplo, el .length es un atributo o propiedad de un objeto, su largo
+      console.log(fede.nombre); //con esto te imprime el valor del atributo del objeto (variable)
+      console.log(fede.comportamiento[1]);
+      console.log(fede.contacto); //con esto imprime todos los atributos del objeto contacto que es un objeto de fede
+      console.log(fede.contacto.email); //puede seleccionar incluso uno solo de los atributos del sub objeto
+      fede.saludos(); //con esto invoco la funcion saludos de fede
 
-    console.log(fede.hasOwnProperty("nombre")); // esto te tira true si hay una propiedad en el objeto fede q sea nombre. Aca te tira true
+      fede.decirMiNombre();
 
-    console.log(fede.hasOwnProperty("nacimiento")); // Aca te tira false
+      // hay algunos metodo de object que es el prototipo u objeto de javascrip q tiene metodos importantes o utiles
 
-    /* Accessing Object Properties with Variables:
+      console.log(Object.keys(fede)); //es un metodo del Object q me permite listar todas las llaves de un objeto. Te lista los atributos y metodos
+
+      console.log(Object.values(fede)); // esto es casi lo mismo q key pero te lista los valores, no los atributos. Los valores son los valores del atributo. El atributo seria como una variable
+
+      console.log(fede.hasOwnProperty("nombre")); // esto te tira true si hay una propiedad en el objeto fede q sea nombre. Aca te tira true
+
+      console.log(fede.hasOwnProperty("nacimiento")); // Aca te tira false
+
+      /* Accessing Object Properties with Variables:
     Another use of bracket notation on objects is to access a property which is stored as the value of a variable.This can be very useful for iterating through an object's properties or when accessing a lookup table.
     
     Here is an example of using a variable to access a property: */
 
-    const dogs = {
-      Fido: "Mutt",
-      Hunter: "Doberman",
-      Snoopie: "Beagle"
-    };
+      const dogs = {
+        Fido: "Mutt",
+        Hunter: "Doberman",
+        Snoopie: "Beagle",
+      };
 
-    const myDog = "Hunter";
-    const myBreed = dogs[myDog];
-    console.log(myBreed);
-    /* The string Doberman would be displayed in the console.
+      const myDog = "Hunter";
+      const myBreed = dogs[myDog];
+      console.log(myBreed);
+      /* The string Doberman would be displayed in the console.
     
     Another way you can use this concept is when the property's name is collected dynamically during the program execution, as follows: */
 
-    const someObj = {
-      propName: "John"
-    };
+      const someObj = {
+        propName: "John",
+      };
 
-    function propPrefix(str) {
-      const s = "prop";
-      return s + str;
-    }
+      function propPrefix(str) {
+        const s = "prop";
+        return s + str;
+      }
 
-    const someProp = propPrefix("Name");
-    console.log(someObj[someProp]);
-    /* someProp would have a value of the string propName, and the string John would be displayed in the console.
+      const someProp = propPrefix("Name");
+      console.log(someObj[someProp]);
+      /* someProp would have a value of the string propName, and the string John would be displayed in the console.
         
         Note that we do not use quotes around the variable name when using it to access the property because we are using the value of the variable, not the name.
          */
 
-    // Setup
-    const testObj2 = {
-      12: "Namath",
-      16: "Montana",
-      19: "Unitas"
-    };
+      // Setup
+      const testObj2 = {
+        12: "Namath",
+        16: "Montana",
+        19: "Unitas",
+      };
 
-    // Only change code below this line
-    const playerNumber = 16;  // Change this line
-    const player = testObj2[playerNumber];   // Change this line
+      // Only change code below this line
+      const playerNumber = 16; // Change this line
+      const player = testObj2[playerNumber]; // Change this line
 
-
-    /*     Updating Object Properties
+      /*     Updating Object Properties
     After you've created a JavaScript object, you can update its properties at any time just like you would update any other variable. You can use either dot or bracket notation to update.
     
     For example, let's look at ourDog: */
 
-    const ourDog = {
-      "name": "Camper",
-      "legs": 4,
-      "tails": 1,
-      "friends": ["everything!"]
-    };
-    /* Since he's a particularly happy dog, let's change his name to the string Happy Camper.Here's how we update his object's name property: ourDog.name = "Happy Camper"; or ourDog["name"] = "Happy Camper"; Now when we evaluate ourDog.name, instead of getting Camper, we'll get his new name, Happy Camper. */
+      const ourDog = {
+        name: "Camper",
+        legs: 4,
+        tails: 1,
+        friends: ["everything!"],
+      };
+      /* Since he's a particularly happy dog, let's change his name to the string Happy Camper.Here's how we update his object's name property: ourDog.name = "Happy Camper"; or ourDog["name"] = "Happy Camper"; Now when we evaluate ourDog.name, instead of getting Camper, we'll get his new name, Happy Camper. */
 
-    /* Update the myDog object's name property. Let's change her name from Coder to Happy Coder.You can use either dot or bracket notation. */
-    // Setup
-    const myDog3 = {
-      "name": "Coder",
-      "legs": 4,
-      "tails": 1,
-      "friends": ["freeCodeCamp Campers"]
-    };
-    myDog3.name = "Happy Coder";
-    // Only change code below this line
+      /* Update the myDog object's name property. Let's change her name from Coder to Happy Coder.You can use either dot or bracket notation. */
+      // Setup
+      const myDog3 = {
+        name: "Coder",
+        legs: 4,
+        tails: 1,
+        friends: ["freeCodeCamp Campers"],
+      };
+      myDog3.name = "Happy Coder";
+      // Only change code below this line
 
-    /* Add New Properties to a JavaScript Object
+      /* Add New Properties to a JavaScript Object
     You can add new properties to existing JavaScript objects the same way you would modify them.
     
           Here's how we would add a bark property to ourDog: */
 
-    ourDog.bark = "bow-wow";
-    or
+      ourDog.bark = "bow-wow";
+      or;
 
-    ourDog["bark"] = "bow-wow";
-    /* Now when we evaluate ourDog.bark, we'll get his bark, bow-wow.
+      ourDog["bark"] = "bow-wow";
+      /* Now when we evaluate ourDog.bark, we'll get his bark, bow-wow.
     
         Example: */
 
-    const ourDog = {
-      "name": "Camper",
-      "legs": 4,
-      "tails": 1,
-      "friends": ["everything!"]
-    };
+      const ourDog = {
+        name: "Camper",
+        legs: 4,
+        tails: 1,
+        friends: ["everything!"],
+      };
 
-    /*     ourDog.bark = "bow-wow";
+      /*     ourDog.bark = "bow-wow";
     Add a bark property to myDog and set it to a dog sound, such as "woof". You may use either dot or bracket notation. */
 
-    const myDog3 = {
-      "name": "Happy Coder",
-      "legs": 4,
-      "tails": 1,
-      "friends": ["freeCodeCamp Campers"]
-    };
+      const myDog3 = {
+        name: "Happy Coder",
+        legs: 4,
+        tails: 1,
+        friends: ["freeCodeCamp Campers"],
+      };
 
-    myDog3.bark = "woof";
+      myDog3.bark = "woof";
 
-    /*     Using Objects for Lookups:
+      /*     Using Objects for Lookups:
     Objects can be thought of as a key / value storage, like a dictionary.If you have tabular data, you can use an object to lookup values rather than a switch statement or an if/else chain. This is most useful when you know that your input data is limited to a certain range.
     
     Here is an example of a simple reverse alphabet lookup: */
 
-    const alpha = {
-      1: "Z",
-      2: "Y",
-      3: "X",
-      4: "W",
-      /*   ... */
-      24: "C",
-      25: "B",
-      26: "A"
-    };
-
-    alpha[2];
-    alpha[24];
-
-    const value = 2;
-    alpha[value];
-    /*      alpha[2] is the string Y, alpha[24] is the string C, and alpha[value] is the string Y. */
-
-    /* Convert the switch statement into an object called lookup. Use it to look up val and assign the associated string to the result variable. */
-
-    // Setup
-    function phoneticLookup(val) {
-      let result = "";
-
-      // Only change code below this line
-      const lookup = {
-        alpha: "Adams",
-        bravo: "Boston",
-        charlie: "Chicago",
-        delta: "Denver",
-        echo: "Easy",
-        foxtrot: "Frank",
+      const alpha = {
+        1: "Z",
+        2: "Y",
+        3: "X",
+        4: "W",
+        /*   ... */
+        24: "C",
+        25: "B",
+        26: "A",
       };
-      return lookup[val];
 
-      // Only change code above this line
-      return result;
-    }
+      alpha[2];
+      alpha[24];
 
-    console.log(phoneticLookup("charlie")); // Chicago
+      const value = 2;
+      alpha[value];
+      /*      alpha[2] is the string Y, alpha[24] is the string C, and alpha[value] is the string Y. */
 
-    /* Testing Objects for Properties
+      /* Convert the switch statement into an object called lookup. Use it to look up val and assign the associated string to the result variable. */
+
+      // Setup
+      function phoneticLookup(val) {
+        let result = "";
+
+        // Only change code below this line
+        const lookup = {
+          alpha: "Adams",
+          bravo: "Boston",
+          charlie: "Chicago",
+          delta: "Denver",
+          echo: "Easy",
+          foxtrot: "Frank",
+        };
+        return lookup[val];
+
+        // Only change code above this line
+        return result;
+      }
+
+      console.log(phoneticLookup("charlie")); // Chicago
+
+      /* Testing Objects for Properties
   Sometimes it is useful to check if the property of a given object exists or not. We can use the .hasOwnProperty(propname) method of objects to determine if that object has the given property name. .hasOwnProperty() returns true or false if the property is found or not.
   
   Example */
 
-    const myObj4 = {
-      top: "hat",
-      bottom: "pants",
-    };
+      const myObj4 = {
+        top: "hat",
+        bottom: "pants",
+      };
 
-    myObj4.hasOwnProperty("top");
-    myObj4.hasOwnProperty("middle");
-    /* The first hasOwnProperty returns true, while the second returns false.
+      myObj4.hasOwnProperty("top");
+      myObj4.hasOwnProperty("middle");
+      /* The first hasOwnProperty returns true, while the second returns false.
     
     Modify the function checkObj to test if an object passed to the function (obj) contains a specific property (checkProp). If the property is found, return that property's value. If not, return "Not Found". */
 
-    function checkObj(obj, checkProp) {
-      // Only change code below this line
-      if (obj.hasOwnProperty(checkProp)) {
-        return obj[checkProp];
-      } else {
-        return "Not Found";
+      function checkObj(obj, checkProp) {
+        // Only change code below this line
+        if (obj.hasOwnProperty(checkProp)) {
+          return obj[checkProp];
+        } else {
+          return "Not Found";
+        }
+
+        // Only change code above this line
       }
 
-      // Only change code above this line
-    }
-
-    /*     Accessing Nested Objects:
+      /*     Accessing Nested Objects:
     The sub - properties of objects can be accessed by chaining together the dot or bracket notation.
     
     Here is a nested object:
      */
-    const ourStorage = {
-      "desk": {
-        "drawer": "stapler"
-      },
-      "cabinet": {
-        "top drawer": {
-          "folder1": "a file",
-          "folder2": "secrets"
+      const ourStorage = {
+        desk: {
+          drawer: "stapler",
         },
-        "bottom drawer": "soda"
-      }
-    };
+        cabinet: {
+          "top drawer": {
+            folder1: "a file",
+            folder2: "secrets",
+          },
+          "bottom drawer": "soda",
+        },
+      };
 
-    ourStorage.cabinet["top drawer"].folder2;
-    ourStorage.desk.drawer;
+      ourStorage.cabinet["top drawer"].folder2;
+      ourStorage.desk.drawer;
 
-    /*    ourStorage.cabinet["top drawer"].folder2 would be the string secrets, and ourStorage.desk.drawer would be the string stapler.
+      /*    ourStorage.cabinet["top drawer"].folder2 would be the string secrets, and ourStorage.desk.drawer would be the string stapler.
     
    Access the myStorage object and assign the contents of the glove box property to the gloveBoxContents variable.Use dot notation for all properties where possible, otherwise use bracket notation. */
 
-    const myStorage = {
-      "car": {
-        "inside": {
-          "glove box": "maps",
-          "passenger seat": "crumbs"
+      const myStorage = {
+        car: {
+          inside: {
+            "glove box": "maps",
+            "passenger seat": "crumbs",
+          },
+          outside: {
+            trunk: "jack",
+          },
         },
-        "outside": {
-          "trunk": "jack"
-        }
-      }
-    };
+      };
 
-    const gloveBoxContents = myStorage.car.inside["glove box"];
-    /* 
+      const gloveBoxContents = myStorage.car.inside["glove box"];
+      /* 
         Accessing Nested Arrays:
     As we have seen in earlier examples, objects can contain both nested objects and nested arrays.Similar to accessing nested objects, array bracket notation can be chained to access nested arrays.
     
     Here is an example of how to access a nested array: */
 
-    const ourPets = [
-      {
-        animalType: "cat",
-        names: [
-          "Meowzer",
-          "Fluffy",
-          "Kit-Cat"
-        ]
-      },
-      {
-        animalType: "dog",
-        names: [
-          "Spot",
-          "Bowser",
-          "Frankie"
-        ]
-      }
-    ];
+      const ourPets = [
+        {
+          animalType: "cat",
+          names: ["Meowzer", "Fluffy", "Kit-Cat"],
+        },
+        {
+          animalType: "dog",
+          names: ["Spot", "Bowser", "Frankie"],
+        },
+      ];
 
-    ourPets[0].names[1];
-    ourPets[1].names[0];
-    ourPets[0].names[1] /* would be the string Fluffy, and ourPets[1].names[0] would be the string Spot.
+      ourPets[0].names[1];
+      ourPets[1].names[0];
+      ourPets[0]
+        .names[1]; /* would be the string Fluffy, and ourPets[1].names[0] would be the string Spot.
 
 Using dot and bracket notation, set the variable secondTree to the second item in the trees list from the myPlants object. */
-    const myPlants = [
-      {
-        type: "flowers",
-        list: [
-          "rose",
-          "tulip",
-          "dandelion"
-        ]
-      },
-      {
-        type: "trees",
-        list: [
-          "fir",
-          "pine",
-          "birch"
-        ]
+      const myPlants = [
+        {
+          type: "flowers",
+          list: ["rose", "tulip", "dandelion"],
+        },
+        {
+          type: "trees",
+          list: ["fir", "pine", "birch"],
+        },
+      ];
+
+      const secondTree = myPlants[1].list[1]; //pine
+
+      /* Modify an Object Nested Within an Object:
+Now let's take a look at a slightly more complex object. Object properties can be nested to an arbitrary depth, and their values can be any type of data supported by JavaScript, including arrays and even other objects. Consider the following:
+ */
+      let nestedObject = {
+        id: 28802695164,
+        date: "December 31, 2016",
+        data: {
+          totalUsers: 99,
+          online: 80,
+          onlineStatus: {
+            active: 67,
+            away: 13,
+            busy: 8,
+          },
+        },
+      };
+      /* nestedObject has three properties: id (value is a number), date (value is a string), and data (value is an object with its nested structure). While structures can quickly become complex, we can still use the same notations to access the information we need. To assign the value 10 to the busy property of the nested onlineStatus object, we use dot notation to reference the property: */
+
+      nestedObject.data.onlineStatus.busy = 10;
+      /* Here we've defined an object userActivity, which includes another object nested within it. Set the value of the online key to 45. */
+
+      let userActivity = {
+        id: 23894201352,
+        date: "January 1, 2017",
+        data: {
+          totalUsers: 51,
+          online: 42,
+        },
+      };
+
+      // Only change code below this line
+      userActivity["data"].online = 45;
+      console.log(userActivity); // va a tirar como valor de online 45
+
+      userActivity["data"]["online"] = 45;
+      console.log(userActivity); // va a tirar como valor de online 45
+
+      userActivity.data.online = 45;
+      console.log(userActivity); // va a tirar como valor de online 45
+      /* userActivity.data.online = 45; */
+      // Only change code above this line
+
+      /*   Access Property Names with Bracket Notation:
+In the first object challenge we mentioned the use of bracket notation as a way to access property values using the evaluation of a variable. For instance, imagine that our foods object is being used in a program for a supermarket cash register. We have some function that sets the selectedFood and we want to check our foods object for the presence of that food. This might look like: */
+
+      let selectedFood = getCurrentFood(scannedItem);
+      let inventory = foods[selectedFood];
+      /* This code will evaluate the value stored in the selectedFood variable and return the value of that key in the foods object, or undefined if it is not present. Bracket notation is very useful because sometimes object properties are not known before runtime or we need to access them in a more dynamic way.
+
+We've defined a function, checkInventory, which receives a scanned item as an argument. Return the current value of the scannedItem key in the foods object. You can assume that only valid keys will be provided as an argument to checkInventory. */
+
+      let foods = {
+        apples: 25,
+        oranges: 32,
+        plums: 28,
+        bananas: 13,
+        grapes: 35,
+        strawberries: 27,
+      };
+
+      function checkInventory(scannedItem) {
+        // Only change code below this line
+        return foods[scannedItem];
+        // Only change code above this line
       }
-    ];
 
-    const secondTree = myPlants[1].list[1]; //pine
+      console.log(checkInventory("apples")); // 25
+    </script>
+  </head>
 
-  </script>
-
-</head>
-
-<body>
-
-</body>
-
+  <body></body>
 </html>

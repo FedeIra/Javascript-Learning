@@ -1,0 +1,76 @@
+/* Iterate Through the Keys of an Object with a for...in Statement
+Sometimes you may need to iterate through all the keys within an object. This requires a specific syntax in JavaScript called a for...in statement. For our users object, this could look like: */
+
+let users = {
+  Alan: {
+    age: 27,
+    online: true,
+  },
+  Jeff: {
+    age: 32,
+    online: true,
+  },
+  Sarah: {
+    age: 48,
+    online: true,
+  },
+  Ryan: {
+    age: 19,
+    online: true,
+  },
+};
+
+for (let user in users) {
+  console.log(user); // This would log Alan, Jeff, Sarah, and Ryan - each value on its own line
+}
+
+/* 
+In this statement, we defined a variable user, and as you can see, this variable was reset during each iteration to each of the object's keys as the statement looped through the object, resulting in each user's name being printed to the console.
+
+NOTE: Objects do not maintain an ordering to stored keys like arrays do; thus a key's position on an object, or the relative order in which it appears, is irrelevant when referencing or accessing that key. */
+
+console.log(users[0]); // undefined
+
+/* We've defined a function countOnline which accepts one argument (a users object). Use a for...in statement within this function to loop through the users object passed into the function and return the number of users whose online property is set to true. An example of a users object which could be passed to countOnline is shown below. Each user will have an online property with either a true or false value. */
+
+const users2 = {
+  Alan: {
+    online: false,
+  },
+  Jeff: {
+    online: true,
+  },
+  Sarah: {
+    online: false,
+  },
+};
+
+function countOnline(usersObj) {
+  // Only change code below this line
+  let count = 0;
+  for (const user in usersObj) {
+    if (usersObj[user].online) {
+      count++;
+    }
+  }
+  return count;
+  // Only change code above this line
+}
+
+console.log(countOnline(users2));
+
+/*
+FOR IN: es un loop q permite recorrer las propiedades de un objeto. Es un for especial para un objeto. Permite recorrer y iterar los atributos y propiedades de un objeto */
+
+const objeto = {
+  nombre: "Federico",
+  apellido: "Irarrazaval",
+  edad: 35,
+};
+
+for (const propiedad in objeto) {
+  //te recorre o itera todas las propiedades de un objeto
+  console.log(objeto);
+  console.log(objeto.apellido); // puedo pedirle q devuelva el valor de una de sus propiedades
+  console.log(`Key:${propiedad}, Value: ${objeto[propiedad]}`);
+}
