@@ -562,3 +562,24 @@ console.log(moveCharsForward("Hola")); // Ipmb
 const SumadorDeUno = (str2) => str2.map((char2) => char2 + 1).join("");
 
 console.log(SumadorDeUno([1, 2, 3, 4])); // 2345
+
+/* Complete the code for the squareList function using any combination of map(), filter(), and reduce(). The function should return a new array containing the squares of only the positive integers (decimal numbers are not integers) when an array of real numbers is passed to it. An example of an array of real numbers is [-3, 4.8, 5, 3, -3.2].
+
+Note: Your function should not use any kind of for or while loops or the forEach() function. */
+
+const squareList = (arr) => {
+  // Only change code below this line
+
+  return arr
+    .filter((number) => number > 0 && Number.isInteger(number))
+    .map((number) => number * number);
+
+  // Only change code above this line
+};
+
+const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]); // [ 25, 9 ]
+console.log(squaredIntegers);
+
+squareList([4, 5.6, -9.8, 3.14, 42, 6, 8.34, -2]); // [ 16, 1764, 36 ]
+
+squareList([-3.7, -5, 3, 10, 12.5, 7, -4.5, -17, 0.3]); // [ 9, 100, 49 ]
