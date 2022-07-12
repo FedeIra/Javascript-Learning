@@ -1,3 +1,13 @@
+/* Return Part of an Array Using the slice Method
+The slice method returns a copy of certain elements of an array. It can take two arguments, the first gives the index of where to begin the slice, the second is the index for where to end the slice (and it's non-inclusive). If the arguments are not provided, the default is to start at the beginning of the array through the end, which is an easy way to make a copy of the entire array. The slice method does not mutate the original array, but returns a new one.
+
+Here's an example: */
+
+const arr = ["Cat", "Dog", "Tiger", "Zebra"];
+const newArray = arr.slice(1, 3);
+
+/* newArray would have the value["Dog", "Tiger"]. */
+
 /* El método slice() devuelve una copia de una parte del array dentro de un nuevo array empezando por inicio hasta fin (fin no incluido). El array original no se modificará.NO ES DESTRUCTIVA. Deja el otro array intacto.
 -inicio:
 Índice donde empieza la extracción. El primer elemento corresponde con el índice  0.
@@ -8,7 +18,17 @@ Si inicio es mayor a la longitud del array, se devuelve un array vacío.
 Índice  que marca el final de la extracción. slice extrae hasta, pero sin incluir el final.
 slice(1,4) extrae desde el segundo elemento hasta el cuarto  (los elementos con índices 1, 2,  y 3).
 
-*/
+/* Use the slice method in the sliceArray function to return part of the anim array given the provided beginSlice and endSlice indices. The function should return an array. */
+
+function sliceArray(anim, beginSlice, endSlice) {
+  // Only change code below this line
+  // Only change code above this line
+  return anim.slice(beginSlice, endSlice);
+}
+
+const inputAnim = ["Cat", "Dog", "Tiger", "Zebra", "Ant"];
+
+console.log(sliceArray(inputAnim, 1, 3)); // ["Dog", "Tiger"]
 
 /* Copy Array Items Using slice()
 The next method we will cover is slice(). Rather than modifying an array, slice() copies or extracts a given number of elements to a new array, leaving the array it is called upon untouched. slice() takes only 2 parameters — the first is the index at which to begin extraction, and the second is the index at which to stop extraction (extraction will occur up to, but not including the element at this index). Consider this: */
