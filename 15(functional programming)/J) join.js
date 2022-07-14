@@ -19,10 +19,18 @@ sentensify("May-the-force-be-with-you"); // May the force be with you
 
 // Only change code below this line
 function urlSlug(title) {
-  return title.split(/\W/).join("-").toLowerCase();
+  return title
+    .split(/\W/)
+    .filter((word) => !word == " ")
+    .join("-")
+    .toLowerCase();
 }
 // Only change code above this line
-urlSlug("A Mind Needs Books Like A Sword Needs A Whetstone");
+
+urlSlug("Winter Is Coming"); // winter-is-coming
+urlSlug(" Winter Is  Coming"); //winter-is-coming
+urlSlug("A Mind Needs Books Like A Sword Needs A Whetstone"); // a-mind-needs-books-like-a-sword-needs-a-whetstone
+urlSlug("Hold The Door"); // hold-The-Door
 
 function dePalabrasAFrase(palabras) {
   // "palabras" es un array de strings/cadenas
