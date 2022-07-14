@@ -55,18 +55,18 @@ console.log(usersObj);
 
 //Como lo hariamos normalmente
 const numeros4 = [3, 10, 20, 50];
-let total = 0;
+let total1 = 0;
 
 for (let i = 0; i < numeros4.length; i++) {
-  total += numeros4[i];
+  total1 += numeros4[i];
 }
-console.log(total); //83
+console.log(total1); //83
 
 //Con REDUCE:
-const total2 = numeros4.reduce(function (acumulador, numero) {
+const total5 = numeros4.reduce(function (acumulador, numero) {
   return acumulador + numero;
 }, 0);
-console.log(total2); //83
+console.log(total5); //83
 
 // Reduce con Arrow function:
 const total3 = numeros4.reduce((acc, num) => acc + num); //no hace falta poner el 0, porque por default arrance en 0. De lo contrario, lo indoc con ,1)  o la otra posicion desde la q quiero arrancar el contador.
@@ -83,12 +83,12 @@ console.log(total4); //83
 
 const numeros5 = [71, 41, 18, 88, 3, 65];
 
-const acumularDobles = (acumulador, numero) => {
+const acumularDobles2 = (acumulador, numero) => {
   acumulador.push(numero * 2);
   return acumulador;
 };
 
-const dobles5 = numeros5.reduce(acumularDobles, []);
+const dobles5 = numeros5.reduce(acumularDobles2, []);
 
 console.log(dobles5); // [ 142, 82, 36, 176, 6, 130 ]
 
@@ -364,3 +364,46 @@ console.log(
   )
 );
 // return str.split(" ").reduce((a, c) => (c.length > a.length ? c : a), "");
+
+// REDUCE
+
+const numeros = [3, 10, 20, 50];
+
+const total = numeros.reduce(
+  (acumulador, numero) => (acumulador += numero),
+  0
+); /*?.acumulador  */
+/* En realidad ni hace falta el 0 pq por default es 0. Pongo el número si quiero empezar que el acumulador arranque con un número distinto a 0. Si no lo ponemos, reduce va a tomar el valor del primer item como inicial y luego sumarle el resto. Por eso, no nos va a funcionar. Si vamos a hacer eso, ponerle a la función que se ejecute solo si el array tiene elementos. */
+
+console.log(total); //83
+
+// Otra forma de escribirlo mejor es:
+
+const acumular = (acumulador, numero) => acumulador + numero;
+
+let total2 = numeros.reduce(acumular, 0); //83
+
+//Obtener un array con el doble de cada número pero usando reduce
+
+const numeros2 = [71, 41, 19, 88, 3, 65];
+
+let nuevoArray2 = [];
+
+numeros2.reduce((acumulador, numero) => nuevoArray2.push(numero * 2), 0);
+
+console.log(nuevoArray2); // [ 142, 82, 38, 176, 6, 130 ]
+
+// Otra forma de solucionarlo:
+
+const numeros3 = [71, 41, 19, 88, 3, 65];
+
+const acumularDobles = (acumulador, numero) => {
+  acumulador.push(numero * 2);
+  return acumulador;
+};
+
+const dobles = numeros3.reduce(acumularDobles, []); // [ 142, 82, 38, 176, 6, 130 ]
+
+// Otra forma todavía mejor de solucionarlo:
+const acumularDobles3 = (acumulador, numero) => [...acumulador, numero * 2];
+const dobles3 = numeros3.reduce(acumularDobles, []); // [ 142, 82, 38, 176, 6, 130 ]

@@ -71,3 +71,62 @@ const numeros = [1, 2, 3, 4, 5];
 
 numeros.forEach = (el, index) =>
   console.log(`${el} esta en la posicion ${index}`);
+
+// REPASO FOR EACH
+
+const numeros = [1, 2, 3, 4, 5];
+
+// Para recorrer un arreglo podemos usar el método for Each.
+
+/* function escribirNumero(item, index, arr) {
+  console.log(`a[${ index }]=${item}`);
+}
+
+numeros.forEach(escribirNumero); */ /* Por cada elemento que se llama hace la función escribirNumero */
+/* 
+a[0]=1 
+a[1]=2 
+a[2]=3 
+a[3]=4 
+a[4]=5 */
+
+/* Esto se puede reducir en un arrow function: */
+
+numeros.forEach((item, index, arr) => {
+  console.log(`a[${index}]=${item}`);
+});
+/* a[0]=1 
+a[1]=2 
+a[2]=3 
+a[3]=4 
+a[4]=5 */
+
+//Suma de los elementos del arreglo:
+
+let suma = 0;
+
+numeros.forEach((element) => (suma += element)); /*? suma  */ // = 15
+
+const letras = ["a", "b", "c", "d", "e"];
+
+let array = [];
+
+array = letras.forEach((element) => {
+  array.push(element); /* ? */
+});
+
+// Cuantas veces se repite una letra dentro del arreglo
+
+const letras2 = ["a", "b", "a", "b", "c", "a", "d"];
+
+let contador = {};
+
+letras2.forEach((item) => {
+  if (contador[item]) {
+    contador[item]++;
+  } else {
+    contador[item] = 1; /*? contador  */
+  }
+});
+
+console.log(contador); // { a: 3, b: 2, c: 1, d: 1 }
