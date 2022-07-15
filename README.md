@@ -1,8 +1,9 @@
 # Javascript-Learning
 
 Contenido:
-Curso Pildoras informaticas
-Curso JonMircha
-Curso Prep-SoyHenry
-Ejercicios codebubb
-Ejercicios freeCodeCamp
+
+1. Curso Pildoras informaticas
+2. Curso JonMircha
+3. Curso Prep-SoyHenry
+4. Ejercicios codebubb
+5. Ejercicios freeCodeCamp
