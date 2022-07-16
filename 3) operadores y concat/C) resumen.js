@@ -37,6 +37,45 @@ En el link anterior aparecen los operadores por precedencia del 19 al 1, siendo 
 Ademas de esto, en principio, el orden siempre es de izquierda a derecha. Digo en principio, pq hay algunas que se hacen de derecha a izquierda (ejemplo, los de precedencia 17 = ! ... , ++ ..., typeof, delete ..., exponencial (**)). Hay otras n/a, es decir no tiene importancia si es de derecha a izquierda o viceversa.
 */
 
+// OPERADORES
+/*
+Los operadores son los que nos hacen trabajar con distintas operaciones matematicas. Dependiendo la posicion en los que esten, su efecto.
+Ejemplo= + e =
+*/
+var a = 2 + 3; // 5
+function suma(a, b) {
+  return a + b;
+  // usamos el mismo operador como ejemplo
+  // Si no deberiamos hacer sumas binarias!
+}
+var a = suma(2, 3); // 5
+
+var i = 0;
+function suma1() {
+  return i++;
+}
+
+console.log(suma1()); // 0 . Te devuelve el 0 porque el ++ esta despues del i que es lo q retorna. En el proximo va ya a estar guardado el ++, por lo que en la siguiente te tira 1...y  asi sucesivamente
+console.log(suma1()); // 1
+
+var ii = 0;
+function suma2() {
+  return ++ii;
+}
+
+console.log(suma2()); // 1 Aca te devuelve de una el 1 porque los ++ estan adelante de ii
+console.log(suma2()); // 2
+
+// PRECEDENCIA DE OPERADORES Y
+
+/*
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#table
+
+En el link anterior aparecen los operadores por precedencia del 19 al 1, siendo 1 el menos precedente y 19 el mas. Mientras mas precedencia, mayor prioridad se les da. Un ejemplo es el operador + (precedencia 14) y * (precedencia 15). Primero se hace la multiplicacion y luego la suma. El parentesis (predencia 1) es el mas importante.
+
+Ademas de esto, en principio, el orden siempre es de izquierda a derecha. Digo en principio, pq hay algunas que se hacen de derecha a izquierda (ejemplo, los de precedencia 17 = ! ... , ++ ..., typeof, delete ..., exponencial (**)). Hay otras n/a, es decir no tiene importancia si es de derecha a izquierda o viceversa.
+*/
+
 // COERCION DE DATOS
 
 console.log(Number("3")); // devuelve el número 3. Obvio!
@@ -112,3 +151,16 @@ function test() {
 test();
 //hola(); // ReferenceError: hola is not defined. No la puedo invocar pq esta en el scope de la funcion test
 //foo(); // ReferenceError: foo is not defined. Lo mismo q la funcion hola()
+
+// COERCION DE DATOS
+
+console.log(Number("3")); // devuelve el número 3. Obvio!
+console.log(Number(false)); // devuelve el número 0. mini Obvio.
+console.log(Number(true)); // devuelve el número 1. menos mini Obvio.
+console.log(Number(undefined)); // devuelve `NaN`. No era obvio, pero tiene sentido.
+console.log(Number(null)); // devuelve el numero 0. WTFFFF!!! porqueeEE no debería ser `NaN`??
+
+// undefined es la falta de un valor y null es un valor nulo q se podria asociar a un false y por eso 0.
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness#a_model_for_understanding_equality_comparisons
+// en el link de arriba estan todos estos ejemplos.

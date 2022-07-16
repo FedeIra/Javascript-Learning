@@ -68,3 +68,27 @@ const monedas2 = (total, tipoMonedas = [25, 10, 5, 2, 1]) => {
 console.log(monedas2(46)); // [ 25, 10, 10, 1 ]
 
 Math.floor(6.98) = 6; /* Esto te lo redondea siempre para abajo */
+
+/*
+recibo un string "110" / output 6
+En este caso la base es 2
+hay que ir a cada uno de los elementos y multiplicarlo por su potencia y sumarlos
+
+1) convertir el string a array
+2) dar vuelta los numeros, revertirlos
+3) recorrer el array usando la posicion y esa posicion q sea el factor por el q lo voy a hacer
+4) multiplicar el resultado por el valor del elemento del array
+5) sumar los resultados
+*/
+
+function DecimalABinario(num) {
+  let result = "";
+
+  while (num > 0) {
+    result = (num % 2) + result;
+    num = Math.floor(num / 2);
+  }
+  return result;
+}
+
+console.log(DecimalABinario(20));

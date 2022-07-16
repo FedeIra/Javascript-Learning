@@ -1,3 +1,14 @@
+// TIPOS DE DATOS
+
+/*
+Tipado estatico y tipado dinamico.
+Cada vez que guardamos una variable puede o no tener un tipo de dato especifico.
+
+JS es un lenguaje de tipado dinamico. Creo una variable, le asigno un valor, y luego lo puedo modificar a cualqueir cosa (array, booleano, lo que quiera). 
+
+Fuertemente tipado es estricto el dato q le voy a meter, tipado dinamico lo contrario. Le asigno el valor q quiera. El problema de los lengujaes de tipado dinamico yo le asigno a una variable y cuando la voy a usar no es el tipo de dato esperado. El problema es q te rompe el codigo despues.
+*/
+
 // Para consultass de javascript se puede ir a MDN en google: mozzila developer o developer.mozilla.org
 
 /*

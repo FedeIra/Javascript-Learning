@@ -1,3 +1,11 @@
+// FIRST CLASS FUNCTIONS
+
+/*
+Es primera clase pq tiene los mismos privilegios q un primitivo, objeto, cualquier cosa con la diferencia que puede ser invocable y puede tener un nombre (a menos que sea anonima).
+
+Incluso le puedo pasar a una funcion como argumento otra funcion y el hoisting la va a reconocer. A esto lo llamamos call back.
+*/
+
 /* FUNCIONES
 
 Es un bloque de codigo con su propio contenido independiente al scope o ambito global. Se define una sola vez y se puede ejecutar en cualquier momento. Puede o no recibir parametros. Puede devolver o no valores.

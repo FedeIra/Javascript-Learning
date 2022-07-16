@@ -56,3 +56,22 @@ function filtrar(funcion) {
 // No modifiques nada debajo de esta linea //
 
 module.exports = filtrar;
+
+/* 
+Recibir un numero en formato binario y convertirlo a decimal y viceversa
+
+*/
+
+function BinarioADecimal(num) {
+  // el numero arranca siendo "110"
+  let data = num.split("").reverse(), // con el split pasa a ser [1, 1, 0]. Con el reverse pasa a ser [0, 1, 1]
+    result = 0;
+
+  for (let i = 0; i < data.length; i++) {
+    // igual a Math.pow(2, i) . Aca creo un  valor que va guardando los numeros del array a la potencia por su posicion
+    result += 2 ** i * data[i]; // aca agarra el valor de factor y lo multiplica por el valor del array y luego lo suma a result
+  }
+  return result;
+}
+
+//console.log(BinarioADecimal("110"));

@@ -83,3 +83,15 @@ console.log(operacionPromedio(Object.values(notasAlumnos)));
 /* operacionMatematica(multiplica(10, 2), 5, 2);
 operacionMatematica(divide(10, 2), 5, 2);  */
 /* superOperacionMatematicaSimplificada(suma, divide, multiplica, resta, 2, 2); */
+
+/*
+Todas las llamadas asincronas, se van a agregando al callstack (callback queue). 
+
+Si una de esas funciones hacen uso de la asincronia.
+
+Es el paralelo de que tengo una pila de platos para lavar y de repente uno tiene mucha comida pegada, entonces lo tengo en remojo y lo dejo a un costado. Antes de terminar de lavar ese plato aunque ya este listo para lavar, lavo todo el resto y solo cuando termino de lavar el resto lavo ese plato.
+
+La web api, adonde va la funcion asincronica lo q hace es "ir aflojandole la comida pegada y una vez q se aflojo mandarla a la lista de espera".
+
+Le da una prioridad diferente. Priorizo lo q estoy ejecutando en hilo.
+*/

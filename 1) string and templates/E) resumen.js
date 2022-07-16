@@ -1,3 +1,29 @@
+// EXPRESIONES Y STATEMENTS
+
+/*
+
+
+*/
+
+// Expresion
+1 + 1;
+a = 3;
+//Statement
+if (condicion) {
+  // bloque de código
+}
+// function statement (declarada)
+function saludo() {
+  console.log("hola");
+}
+// function expression. Es una variable que esta igualada a una funcion. La accedo desde una variable. Al ser variable el hositing no la reconoce si no esta declarada todavia.
+var saludo = function () {
+  console.log("Hola!");
+};
+console.log(function () {
+  //hola;
+});
+
 console.log("Hola, como estas");
 
 let saludo = "Hola mi nombre es " + nombre + " " + apellido + ".";
