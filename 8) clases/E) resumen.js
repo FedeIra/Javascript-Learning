@@ -78,7 +78,13 @@ class Perro extends Animal3 {
   }
 }
 
+Animal.prototype.comer = function () {
+  return "tengo hambre";
+};
+
 const billy = new Perro("Billy", "macho", 15);
+
+Perro.comer(); // tengo hambre
 
 console.log(billy);
 billy.ladrar();
