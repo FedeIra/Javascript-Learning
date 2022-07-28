@@ -160,3 +160,6 @@ function myFunc() {
     console.log("Still going!");
   }
 }
+
+let clave = 2;
+if (typeof clave !== "string") throw new TypeError("Keys must be strings"); // TypeError: Keys must be strings
