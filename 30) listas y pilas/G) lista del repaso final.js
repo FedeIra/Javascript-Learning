@@ -177,6 +177,7 @@ OrderedLinkedList.prototype.toArray = function () {
   this.head = null;
 
   for (let i = 0; i < arr.length; i++) {
+    //arr.sort((a, b) => (a < b ? -1 : 1)); si lo quiero ordenar de menor a mayor
     this.insert(arr[i]);
   }
 };
@@ -222,3 +223,55 @@ LinkedList.prototype.changeNotNumbers = function () {
   //retorno la cantidad de cambios
   return counter;
 };
+
+// REVERSE LIST
+LinkedList.prototype.reverseLinkedList = function () {
+  // Tu código aca:
+  if (this.head === null) return false;
+
+  let current = this.head,
+    arr = [];
+
+  while (current) {
+    arr.push(current.value);
+    current = current.next;
+  }
+  arr.reverse();
+
+  this.head = null;
+
+  for (let i = 0; i < arr.length; i++) {
+    this.add(arr[i]);
+  }
+};
+
+// INTENTO DE MERGEAR DOS LISTAS: el tema es como pasarle después a una lista.
+// Tu código aca:
+
+function listToArray(list) {
+  if (list.head === null) return false;
+
+  let current = list.head,
+    arr = [];
+
+  while (current) {
+    arr.push(current.value);
+    current = current.next;
+  }
+  return arr;
+}
+
+function joinLinkedList(linkedListOne, linkedListTwo) {
+  // Tu código aca:
+
+  let array1 = listToArray(linkedListOne),
+    array2 = listToArray(linkedListTwo),
+    mergedArray = [];
+
+  for (let i = 0; i < array1.length; i++) {
+    for (let j = 0; j < array2.length; j++) {
+      this.add(array1[i]);
+      this.add(array2[j]);
+    }
+  }
+}
