@@ -130,6 +130,21 @@ class linkedList {
     }
     return counter;
   }
+  // OTRO CONTADOR DE NODOS SIN TESTEAR
+  nodeCounter() {
+    let current = this.head,
+      counter = 0;
+
+    if (!current) {
+      return counter;
+    }
+
+    while (current) {
+      counter += 1;
+      current = current.next;
+    }
+    return counter;
+  }
 
   removeSpecificNode(specificNode) {
     let current = this.head,

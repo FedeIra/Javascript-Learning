@@ -65,3 +65,42 @@ multByFour(2); // 8
 
 var multBySix = closureMult(6);
 multBySix(4); // 24 */
+
+// Implementar la función crearStack, la cual recibirá por parámetro un string.
+// El string recibido tendrá un formato de sucesión de letras y astericos, de la siguiente manera:
+// "UN*A*PAL*AB*RA"
+// "OTR*A**PAL**ABR*A"
+// crearStack debe retornar false en caso de recibir un string vacío.
+// Caso contrario, deberá crear un Stack, al que se agregarán y retirarán valores EN ORDEN según la secuencia recibida
+// en el string, siguiendo la siguiente lógica:
+//  - Una letra (A , B , C) -> Agregar la letra al Stack
+//  - Un asterisco (*) -> Retirar un elemento del Stack
+// Finalmente, la función deberá retornar el Stack resultante.
+// Asimismo, debo prevenir que la función intente retirar un elemento del Stack si el mismo está vacío, en cuyo caso
+// la función deberá retornar el string "Stack vacío"
+//
+// EJEMPLOS:
+//   ✔️crearStack("EJ*EMP*LO") => [E,E,M,L,O]
+//   ✔️crearStack("OTR**OEJEM***PL*O") => [O,O,E,P,O]
+//   ✔️crearStack("") => false
+//   ✔️crearStack("RET****ORNA**R*FA*L**SO") => "Stack vacío"
+
+function crearStack(palabra) {
+  if (palabra === "") {
+    return false;
+  }
+
+  let stackExample = new Stack();
+
+  for (let i = 0; i < palabra.length; i++) {
+    if (palabra[i] === "*" && !stackExample.size()) {
+      return "Stack vacío";
+    } else if (palabra[i] === "*") {
+      stackExample.pop(palabra[i - 1]);
+    } else if (palabra[i]) {
+      stackExample.push(palabra[i]);
+    }
+  }
+
+  return stackExample;
+}

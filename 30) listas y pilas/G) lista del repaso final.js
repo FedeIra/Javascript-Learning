@@ -162,6 +162,7 @@ OrderedLinkedList.prototype.insert = function (value) {
   }
 };
 
+// PARA ORDENAR LISTAS
 OrderedLinkedList.prototype.toArray = function () {
   if (this.head === null) return false;
 

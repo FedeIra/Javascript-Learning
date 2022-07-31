@@ -234,3 +234,84 @@ var isAncestor = function (genealogyTree, ancestor, descendant) {
     return false;
   }
 };
+
+// ---- Recursión ----
+// EJERCICIO 7
+// Implementar la función restArray: a partir de un array en el cual cada posición puede ser un único
+// número u otro array anidado de números, determinar la suma de todos los números contenidos en el array.
+// El array será recibido por parámetro.
+// Ejemplo:
+//    const array = [3, [7, [5,6]], [9,6], 4];
+//    restArray(array); --> Debería devolver 40 y al resultado lo restas por la cantidad de arrays, sin contar al padre.
+// Ejemplo:
+//      40-3 = 37
+// Pista: utilizar el método Array.isArray() para determinar si algun elemento de array es un array anidado
+// [Para más información del método: https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/isArray]
+
+var restArray = function (array) {
+  // Tu código acá
+  let arrayCounter = 0,
+    sumArray = 0;
+
+  for (let i = 0; i < array.length; i++) {
+    if (Array.isArray(array[i])) {
+      arrayCounter += 1;
+      sumArray += restArray(array[i]);
+    } else {
+      sumArray += array[i];
+    }
+  }
+  return sumArray - arrayCounter;
+};
+
+// ---- Recursión ----
+// EJERCICIO 8
+// La función countDeep recibe por parámetro un arreglo que contiene numbers, strings, booleanos, undefined y/o arreglos
+// (este ultimo contienen, a su vez, más numbers, strings, booleanos, undefined y/o arreglos).
+// Deberas contar la cantidad de cada uno y realizar las siguientes operaciones para llegar al resultado final.
+// la cantidad de arrays (contando el array padre) menos la cantidad de numbers, al resultado multiplicarlo por la cantidad de strings, al resultado dividirlo por la cantidad de booleanos y a ese resultado elevarlo a la cantidad de undefined.
+
+// Ejemplo:
+// countDeep( [ 1, 2, 3, ["hi"], [ undefined, "hola", [ true, "bye" ] ], undefined, [ false ], "9"] ) ----> Debería retornar 2
+// number = 3, string = 4, boolean = 2, undefined = 2, array = 5:
+// la ecuacion quedaria 5-3 = 2, 2*4 = 8, 8/2 = 4, 4^2 ------> resultado = 16
+
+function countDeep(arr) {
+  // Tu código aca:
+  function countArray(arr) {
+    let arrays = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+      if (Array.isArray(arr[i])) {
+        arrays += countArray(arr[i]);
+      }
+    }
+    return arrays + 1;
+  }
+
+  let totalArrays = countArray(arr);
+
+  let numbers = 0,
+    strings = 0,
+    booleans = 0,
+    undefineds = 0;
+
+  arr = arr.flat(Infinity);
+
+  for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] === "number") {
+      numbers += 1;
+    }
+    if (typeof arr[i] === "string") {
+      strings += 1;
+    }
+    if (typeof arr[i] === "boolean") {
+      booleans += 1;
+    }
+    if (arr[i] === undefined) {
+      undefineds += 1;
+    }
+  }
+
+  return (((totalArrays - numbers) * strings) / booleans) ** undefineds;
+}

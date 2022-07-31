@@ -85,3 +85,103 @@ class linkedList {
 }
 
 let lista = new linkedList();
+
+/*
+  EJERCICIO 1
+   Agregar el método sortList al prototipo de LinkedList. Este método deberá ordenar los elementos de nuestra lista enlazada de mayor a menor.
+   Si la lista está vacía, debe retornar false;
+   Ejemplo:
+     Suponiendo que la lista actual es: Head --> [8] --> [12] --> [3] --> [16]
+     LinkedList.sortList();
+     Ahora la lista quedaría: Head --> [16] --> [12] --> [8] --> [3]
+*/
+
+LinkedList.prototype.sortList = function () {
+  // Tu código aca:
+  if (this.head === null) return false;
+
+  let current = this.head,
+    arr = [];
+
+  while (current) {
+    arr.push(current.value);
+    current = current.next;
+  }
+  arr.sort((a, b) => (a < b ? 1 : -1));
+
+  this.head = null;
+
+  for (let i = 0; i < arr.length; i++) {
+    this.add(arr[i]);
+  }
+};
+
+/*
+EJERCICIO 2
+Agregar el método simplifyList al prototipo de LinkedList. Este método deberá filtrar 
+los elementos repetidos de nuestra lista enlazada y crear una nueva lista con los elementos 
+extraídos para finalmente reemplazar la lista original.
+Si la lista está vacía, debe retornar false
+Ejemplo:
+    Suponiendo que la lista actual es: Head --> [2] --> [5] --> [1] --> [5] --> [7] --> [2] --> null
+    lista.simplifyList();
+    Ahora la lista resultante es: Head --> [2] --> [5] --> [1] --> [7] --> null
+ACLARACIÓN: Se debe reemplazar la lista original por la nueva.
+Pista: Podes usar el metodo search() ya incorporado dentro del prototype de LinkedList
+  */
+
+LinkedList.prototype.simplifyList = function () {
+  // Tu código aca:
+  let current = this.head,
+    array = [],
+    setArr = null;
+
+  if (!current) {
+    return false;
+  }
+
+  if (!current.next) {
+    return current.value;
+  }
+
+  while (current) {
+    array.push(current.value);
+    current = current.next;
+  }
+
+  setArr = new Set(array);
+  array = [];
+  setArr.forEach((nodeElement) => array.push(nodeElement));
+
+  this.head = null;
+
+  for (let i = 0; i < array.length; i++) {
+    this.add(array[i]);
+  }
+};
+
+/* 
+  EJERCICIO 3
+  Implementar el método count dentro del prototype de LinkedList que deberá retornar la suma de todos los
+  valores dentro de la lista.
+  En caso de que la lista esté vacía, retornar 0
+  Ejemplo:
+  Dada esta lista: [4] --> [2] --> [7] -- > null
+  LinkedList.count() --> 13
+*/
+
+LinkedList.prototype.count = function () {
+  // Tu código aca:
+  let current = this.head,
+    counter = 0;
+
+  if (!current) {
+    return counter;
+  }
+
+  while (current) {
+    counter += current.value;
+    current = current.next;
+  }
+  return counter;
+};
