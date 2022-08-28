@@ -3,7 +3,7 @@ The slice method returns a copy of certain elements of an array. It can take two
 
 Here's an example: */
 
-const arr = ["Cat", "Dog", "Tiger", "Zebra"];
+const arr = ['Cat', 'Dog', 'Tiger', 'Zebra'];
 const newArray = arr.slice(1, 3);
 
 /* newArray would have the value["Dog", "Tiger"]. */
@@ -26,14 +26,14 @@ function sliceArray(anim, beginSlice, endSlice) {
   return anim.slice(beginSlice, endSlice);
 }
 
-const inputAnim = ["Cat", "Dog", "Tiger", "Zebra", "Ant"];
+const inputAnim = ['Cat', 'Dog', 'Tiger', 'Zebra', 'Ant'];
 
 console.log(sliceArray(inputAnim, 1, 3)); // ["Dog", "Tiger"]
 
 /* Copy Array Items Using slice()
 The next method we will cover is slice(). Rather than modifying an array, slice() copies or extracts a given number of elements to a new array, leaving the array it is called upon untouched. slice() takes only 2 parameters — the first is the index at which to begin extraction, and the second is the index at which to stop extraction (extraction will occur up to, but not including the element at this index). Consider this: */
 
-let weatherConditions = ["rain", "snow", "sleet", "hail", "clear"];
+let weatherConditions = ['rain', 'snow', 'sleet', 'hail', 'clear'];
 
 let todaysWeather = weatherConditions.slice(1, 3);
 /* todaysWeather would have the value ['snow', 'sleet'], while weatherConditions would still have ['rain', 'snow', 'sleet', 'hail', 'clear'].
@@ -50,10 +50,10 @@ function forecast(arr) {
 
 // Only change code above this line
 console.log(
-  forecast(["cold", "rainy", "warm", "sunny", "cool", "thunderstorms"])
+  forecast(['cold', 'rainy', 'warm', 'sunny', 'cool', 'thunderstorms'])
 );
 
-const getFileExtension = (str) => str.slice(str.lastIndexOf("."));
+const getFileExtension = (str) => str.slice(str.lastIndexOf('.'));
 
 // Write a javascript program to create a new string from a given string taking the first 3 characters and the last 3 characters of a string.
 
@@ -61,29 +61,29 @@ const nuevaString = (string) =>
   string.length < 3 ? string : string.slice(0, 3) + string.slice(-3);
 
 console.log(
-  nuevaString("Hola Federico como va todo bien anda a cagar q mala onda")
+  nuevaString('Hola Federico como va todo bien anda a cagar q mala onda')
 ); // Holnda
 
-console.log("hola".slice(-3)); // usos de slice
+console.log('hola'.slice(-3)); // usos de slice
 
 // write a javascript program to extract the first half of a string of even length
 
 const nuevaString2 = (string) => string.slice(0, string.length / 2);
 
-console.log(nuevaString2("Holas")); //Ho
+console.log(nuevaString2('Holas')); //Ho
 
 function nuevaString3(string) {
   return string.slice(0, string.length / 2);
 }
 
-console.log(nuevaString3("Fede")); // Fe
+console.log(nuevaString3('Fede')); // Fe
 
 // Write a Javascript program to concatenate two strings except their first character
 // add two strings togteher removing first character of both strings
 
 const newString3 = (string1, string2) => string1.slice(1) + string2.slice(1); // por default, el slice te lo hace hasta el final del string, y arranca en 0
 
-console.log(newString3("Hola", "Fede"));
+console.log(newString3('Hola', 'Fede'));
 
 /*
 write a javascript function to extract unique characters from a string.
@@ -93,5 +93,21 @@ write a javascript function to extract unique characters from a string.
 //Una solucion:
 const getUniqueChars = (str) =>
   str
-    .split("")
+    .split('')
     .filter((item, index, arr) => arr.slice(index + 1).indexOf(item) === -1);
+
+// Devuelve la cadena proporcionada con la primera letra de cada palabra en mayúsculas. Asegúrate de que el resto de la palabra esté en minúsculas.
+
+// Como propósito de este ejercicio, debes también usar mayúsculas conectando palabras como the y of.
+//-------------------------------------------------------
+
+const titleCase = (str) =>
+  str
+    .toLowerCase()
+    .split(' ')
+    .map((string) => string[0].toUpperCase().concat(string.slice(1)))
+    .join(' ');
+
+titleCase("I'm a little tea pot"); // I'm A Little Tea Pot
+titleCase('sHoRt AnD sToUt'); // Short And Stout
+titleCase('HERE IS MY HANDLE HERE IS MY SPOUT'); // Here Is My Handle Here Is My Spout

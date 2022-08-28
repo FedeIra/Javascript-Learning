@@ -33,3 +33,34 @@ const inventario2 = [
 const resultado = inventario2.find((fruta) => fruta.nombre === 'cerezas');
 
 console.log(resultado); // { nombre: 'cerezas', cantidad: 5 }
+
+//-------------------------------------------------------
+const findElement = (arr, func) => arr.filter((number) => func(number))[0];
+
+// Otra Forma:
+const findElement2 = (arr, func) => arr.find(func);
+
+findElement([1, 3, 5, 8, 9, 10], function (num) {
+  return num % 2 === 0;
+}); // 8
+
+findElement([1, 3, 5, 9], function (num) {
+  return num % 2 === 0;
+}); // undefined
+
+// Comprueba si el valor está clasificado como booleano primitivo. Devuelve true o false.
+
+// Booleanos primitivos son true y false.
+//-------------------------------------------------------
+const booWho = (bool) => typeof bool === 'boolean';
+
+booWho(null); // false
+booWho(true); // true
+booWho(false); // true
+booWho([1, 2, 3]); // false
+booWho([].slice); // false
+booWho({ a: 1 }); // false
+booWho(1); // false
+booWho(NaN); // false
+booWho('a'); // false
+booWho('true'); // false

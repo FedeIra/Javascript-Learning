@@ -4,12 +4,12 @@ Sometimes it is useful to check if the property of a given object exists or not.
 Example */
 
 const myObj = {
-  top: "hat",
-  bottom: "pants",
+  top: 'hat',
+  bottom: 'pants',
 };
 
-myObj.hasOwnProperty("top");
-myObj.hasOwnProperty("middle");
+myObj.hasOwnProperty('top');
+myObj.hasOwnProperty('middle');
 /* The first hasOwnProperty returns true, while the second returns false.
 
 Modify the function checkObj to test if an object passed to the function (obj) contains a specific property (checkProp). If the property is found, return that property's value. If not, return "Not Found". */
@@ -19,7 +19,7 @@ function checkObj(obj, checkProp) {
   if (obj.hasOwnProperty(checkProp)) {
     return obj[checkProp];
   } else {
-    return "Not Found";
+    return 'Not Found';
   }
 
   // Only change code above this line
@@ -28,28 +28,28 @@ function checkObj(obj, checkProp) {
 // Setup
 const contacts = [
   {
-    firstName: "Akira",
-    lastName: "Laine",
-    number: "0543236543",
-    likes: ["Pizza", "Coding", "Brownie Points"],
+    firstName: 'Akira',
+    lastName: 'Laine',
+    number: '0543236543',
+    likes: ['Pizza', 'Coding', 'Brownie Points'],
   },
   {
-    firstName: "Harry",
-    lastName: "Potter",
-    number: "0994372684",
-    likes: ["Hogwarts", "Magic", "Hagrid"],
+    firstName: 'Harry',
+    lastName: 'Potter',
+    number: '0994372684',
+    likes: ['Hogwarts', 'Magic', 'Hagrid'],
   },
   {
-    firstName: "Sherlock",
-    lastName: "Holmes",
-    number: "0487345643",
-    likes: ["Intriguing Cases", "Violin"],
+    firstName: 'Sherlock',
+    lastName: 'Holmes',
+    number: '0487345643',
+    likes: ['Intriguing Cases', 'Violin'],
   },
   {
-    firstName: "Kristian",
-    lastName: "Vos",
-    number: "unknown",
-    likes: ["JavaScript", "Gaming", "Foxes"],
+    firstName: 'Kristian',
+    lastName: 'Vos',
+    number: 'unknown',
+    likes: ['JavaScript', 'Gaming', 'Foxes'],
   },
 ];
 
@@ -83,26 +83,26 @@ function lookUpProfile(name, prop) {
       if (contacts[i].hasOwnProperty(prop)) {
         return contacts[i][prop];
       } else {
-        return "No such property";
+        return 'No such property';
       }
     }
   }
-  return "No such contact";
+  return 'No such contact';
 }
 
-console.log(lookUpProfile("Kristian", "lastName")); // Vos
-console.log(lookUpProfile("Sherlock", "likes")); // ["Intriguing Cases", "Violin"]
-console.log(lookUpProfile("Harry", "likes")); // array
-console.log(lookUpProfile("Bob", "number")); // No such contact
-console.log(lookUpProfile("Bob", "potato")); // No such contact
-console.log(lookUpProfile("Akira", "address")); // No such property
+console.log(lookUpProfile('Kristian', 'lastName')); // Vos
+console.log(lookUpProfile('Sherlock', 'likes')); // ["Intriguing Cases", "Violin"]
+console.log(lookUpProfile('Harry', 'likes')); // array
+console.log(lookUpProfile('Bob', 'number')); // No such contact
+console.log(lookUpProfile('Bob', 'potato')); // No such contact
+console.log(lookUpProfile('Akira', 'address')); // No such property
 
 /* Check if an Object has a Property:
 Now we can add, modify, and remove keys from objects. But what if we just wanted to know if an object has a specific property? JavaScript provides us with two different ways to do this. One uses the hasOwnProperty() method and the other uses the in keyword. If we have an object users with a property of Alan, we could check for its presence in either of the following ways:
  */
 
-users.hasOwnProperty("Alan");
-"Alan" in users;
+users.hasOwnProperty('Alan');
+'Alan' in users;
 
 /* Both of these would return true.
 
@@ -130,10 +130,10 @@ let users = {
 function isEveryoneHere(userObj) {
   // Only change code below this line
   if (
-    "Alan" in userObj &&
-    "Jeff" in userObj &&
-    "Sarah" in userObj &&
-    "Ryan" in userObj
+    'Alan' in userObj &&
+    'Jeff' in userObj &&
+    'Sarah' in userObj &&
+    'Ryan' in userObj
   ) {
     return true;
   } else {
