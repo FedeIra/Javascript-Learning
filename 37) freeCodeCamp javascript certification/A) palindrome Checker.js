@@ -9,58 +9,59 @@ Note: You'll need to remove all non-alphanumeric characters (punctuation, spaces
 We'll pass strings with varying formats, such as racecar, RaceCar, and race CAR among others.
 
 We'll also pass strings with special symbols, such as 2A3*3a2, 2A3 3a2, and 2_A3*3#A2.
-
 */
 
 function palindrome(str) {
-  // 1) remove all except letters
+  // 1) remove all except letters and numbers
+  const strClean = str.replace(/[^a-z0-9]+/gi, '');
+
   // 2) all to lowercase
-  // 3) rule out if lenght is not impair
-  // 4) if pair, remove middle letter
-  // 4) make two arrays diving first and second half without middle
-  // 5) compare arrays and if equal return true, else false
+  const strLowerCase = strClean.toLowerCase();
 
-  // 1) remove all except letters
-  // 2) all to lowercase
+  // 3) make two arrays diving first and second half without middle
+  const splitStrPart1 = strLowerCase
+    .slice(0, strLowerCase.length / 2)
+    .split('');
 
-  let str2 = str;
-
-  str = str
-    .replace(/[^a-z]+/gi, '')
-    .toLowerCase()
+  const splitStrPart2 = strLowerCase
+    .slice(Math.round(strLowerCase.length / 2))
     .split('')
-    .filter((e, index) => index /* ? */ === str2.length / 2 + 1 /*  */);
+    .reverse();
 
-  console.log(str);
-
-  // 3) rule out if length is not impair
-  // 4) if pair, remove middle letter
-  console.log(str.length);
-  console.log(str);
-  // if (str.length % 2 !== 0) {
-  //   str.split(str.length/2, str.length/2+1)
-  // }
-
-  let part_one = str.slice(0, str.length / 2);
-  let part_two = str
-    .slice(str.length / 2 + 1)
-    .split('')
-    .reverse()
-    .join('');
-
-  console.log(part_one);
-  console.log(part_two);
-
-  if (part_one === part_two) {
-    return true;
+  // 4) compare arrays and if equal return true, else false
+  for (let index = 0; index < splitStrPart1.length; index++) {
+    if (splitStrPart1[index] !== splitStrPart2[index]) {
+      console.log('is not the same letter');
+      return false;
+    }
   }
-
-  return false;
+  return true;
 }
 
-palindrome('eye');
-// palindrome('_eYe');
+// palindrome('efcsYacfe');
+// palindrome('_e1Y1e');
 // palindrome('race car');
 // palindrome('not a palindrome');
 // palindrome('A man, a plan, a canal. Panama');
-// palindrome('never odd or even');
+// palindrome('neveroddoreven');
+// palindrome('0_0 (: /- :) 0-0');
+
+// OPTIMIZED SOLUTION
+function palindrome(str) {
+  // Limpiar la cadena y convertirla a minúsculas
+  const strClean = str.replace(/[^a-z0-9]/gi, '').toLowerCase();
+
+  // Calcular la mitad de la longitud de la cadena limpia
+  const halfLength = Math.floor(strClean.length / 2);
+
+  // Comparar caracteres desde los extremos hacia el centro
+  for (let i = 0; i < halfLength; i++) {
+    if (strClean[i] !== strClean[strClean.length - 1 - i]) {
+      console.log('No es un palíndromo');
+      return false;
+    }
+  }
+
+  console.log('Es un palíndromo');
+  return true;
+}
