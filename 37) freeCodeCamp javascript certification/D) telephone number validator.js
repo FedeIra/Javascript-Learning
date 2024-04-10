@@ -55,15 +55,19 @@ const validSymbols = (str) => {
 
   let phoneNumberArray = str.split('');
 
-  phoneNumberArray.map((key) => {
-    key === ')' || key === '('
+  phoneNumberArray.map((key, index) => {
+    console.log(phoneNumberArray.length - 1);
+    console.log(index);
+    console.log(key);
+    console.log(key === ')' && index === phoneNumberArray.length - 1);
+    key === ')' && index === phoneNumberArray.length - 1
+      ? false
+      : key === ')' || key === '('
       ? symbolsConditions.parenthesis.push(key)
       : key === '-'
       ? symbolsConditions.middleGuin.push(key)
       : null;
   });
-
-  // console.log(symbolsConditions);
 
   if (
     symbolsConditions.middleGuin.length > 2 ||
@@ -74,32 +78,32 @@ const validSymbols = (str) => {
   return true;
 };
 
-telephoneCheck('555-555-5555'); // 1) true
-telephoneCheck('1 555-555-5555'); // 2) true
-telephoneCheck('1 (555) 555-5555'); // 3) true
-telephoneCheck('5555555555'); // 4) true
-telephoneCheck('555-555-5555'); // 5) true
-telephoneCheck('(555)555-5555'); // 6) true
-telephoneCheck('1(555)555-5555'); // 7) true
-telephoneCheck('555-5555'); // 8) false
-telephoneCheck('5555555'); // 9) false
-telephoneCheck('1 555)555-5555'); // 10) false
-telephoneCheck('1 555 555 5555'); // 11) true
-telephoneCheck('1 456 789 4444'); // 12) true
-telephoneCheck('123**&!!asdf#'); // 13) false
-telephoneCheck('55555555'); // 14) false
-telephoneCheck('(6054756961)'); // 15) false //TODO: REVISAR ESTE
-telephoneCheck('2 (757) 622-7382'); // 16) false //TODO: REVISAR ESTE
-telephoneCheck('0 (757) 622-7382'); // 17) false //TODO: REVISAR ESTE
-telephoneCheck('-1 (757) 622-7382'); // 18) false
-telephoneCheck('2 757 622-7382'); // 19) false //TODO: REVISAR ESTE
-telephoneCheck('10 (757) 622-7382'); // 20) false
-telephoneCheck('27576227382'); // 21) false //TODO: REVISAR ESTE
-telephoneCheck('(275)76227382'); // 22) false //TODO: REVISAR ESTE
-telephoneCheck('2(757)6227382'); // 23) false //TODO: REVISAR ESTE
-telephoneCheck('2(757)622-7382'); // 24) false //TODO: REVISAR ESTE
-telephoneCheck('555)-555-5555'); // 25) false
-telephoneCheck('(555-555-5555'); // 26) false
-telephoneCheck('(555)5(55?)-5555'); // 26) false
-telephoneCheck('55 55-55-555-5'); // 27) false
-telephoneCheck('11 555-555-5555'); // 28) false //TODO: REVISAR ESTE
+// telephoneCheck('555-555-5555'); // 1) true
+// telephoneCheck('1 555-555-5555'); // 2) true
+// telephoneCheck('1 (555) 555-5555'); // 3) true
+// telephoneCheck('5555555555'); // 4) true
+// telephoneCheck('555-555-5555'); // 5) true
+// telephoneCheck('(555)555-5555'); // 6) true
+// telephoneCheck('1(555)555-5555'); // 7) true
+// telephoneCheck('555-5555'); // 8) false
+// telephoneCheck('5555555'); // 9) false
+// telephoneCheck('1 555)555-5555'); // 10) false
+// telephoneCheck('1 555 555 5555'); // 11) true
+// telephoneCheck('1 456 789 4444'); // 12) true
+// telephoneCheck('123**&!!asdf#'); // 13) false
+// telephoneCheck('55555555'); // 14) false
+telephoneCheck('(6054756961)'); // 15) false
+// telephoneCheck('2 (757) 622-7382'); // 16) false //TODO: REVISAR ESTE
+// telephoneCheck('0 (757) 622-7382'); // 17) false //TODO: REVISAR ESTE
+// telephoneCheck('-1 (757) 622-7382'); // 18) false
+// telephoneCheck('2 757 622-7382'); // 19) false //TODO: REVISAR ESTE
+// telephoneCheck('10 (757) 622-7382'); // 20) false
+// telephoneCheck('27576227382'); // 21) false //TODO: REVISAR ESTE
+// telephoneCheck('(275)76227382'); // 22) false //TODO: REVISAR ESTE
+// telephoneCheck('2(757)6227382'); // 23) false //TODO: REVISAR ESTE
+// telephoneCheck('2(757)622-7382'); // 24) false //TODO: REVISAR ESTE
+// telephoneCheck('555)-555-5555'); // 25) false
+// telephoneCheck('(555-555-5555'); // 26) false
+// telephoneCheck('(555)5(55?)-5555'); // 26) false
+// telephoneCheck('55 55-55-555-5'); // 27) false
+// telephoneCheck('11 555-555-5555'); // 28) false //TODO: REVISAR ESTE
