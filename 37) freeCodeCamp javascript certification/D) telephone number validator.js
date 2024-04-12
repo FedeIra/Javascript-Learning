@@ -28,8 +28,7 @@ Conditions to be a valid phone number:
 
 */
 function telephoneCheck(str) {
-  // 1) only symbols permitted: ( , ), - and no letters permitted
-
+  console.time('telephoneCheck');
   if (!isValidFormat(str)) {
     console.log("It's NOT a phone number");
     return false;
@@ -80,20 +79,28 @@ const validSymbols = (str) => {
   ) {
     return false;
   }
-
-  console.log(symbolsConditions.numbers);
-
-  console.log(symbolsConditions.numbers);
-
   if (symbolsConditions.numbers.length > 11) {
-    // console.log(symbolsConditions.numbers);
     return false;
   }
   return true;
 };
 
+// optimized version:
+function telephoneCheck2(str) {
+  // Consolidated and optimized regex pattern checks all conditions at once
+  const phoneRegex = /^(1\s?)?(\(\d{3}\)|\d{3})([-\s]?)\d{3}([-\s]?)\d{4}$/;
+
+  if (phoneRegex.test(str)) {
+    console.log("It's a valid phone number.");
+    return true;
+  } else {
+    console.log("It's NOT a valid phone number.");
+    return false;
+  }
+}
+
 // telephoneCheck('555-555-5555'); // 1) true
-telephoneCheck('1 555-555-5555'); // 2) true
+// telephoneCheck('1 555-555-5555'); // 2) true
 // telephoneCheck('1 (555) 555-5555'); // 3) true
 // telephoneCheck('5555555555'); // 4) true
 // telephoneCheck('555-555-5555'); // 5) true
