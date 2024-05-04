@@ -1,6 +1,7 @@
 /*
 Cash Register
-Design a cash register drawer function checkCashRegister() that accepts purchase price as the first argument (price), payment as the second argument (cash), and cash-in-drawer (cid) as the third argument.
+Design a cash register drawer function checkCashRegister() that accepts purchase price as the first argument (price),
+payment as the second argument (cash), and cash-in-drawer (cid) as the third argument.
 
 cid is a 2D array listing available currency.
 
@@ -10,7 +11,8 @@ Return {status: "INSUFFICIENT_FUNDS", change: []} if cash-in-drawer is less than
 
 Return {status: "CLOSED", change: [...]} with cash-in-drawer as the value for the key change if it is equal to the change due.
 
-Otherwise, return {status: "OPEN", change: [...]}, with the change due in coins and bills, sorted in highest to lowest order, as the value of the change key.
+Otherwise, return {status: "OPEN", change: [...]}, with the change due in coins and bills,
+sorted in highest to lowest order, as the value of the change key.
 
 Currency Unit	Amount
 Penny	$0.01 (PENNY)
@@ -38,17 +40,74 @@ See below for an example of a cash-in-drawer array:
 
 */
 
+// Build function to calculate change array
+
+// MAIN FUNCTION
 function checkCashRegister(price, cash, cid) {
   let change = {
-    status: 'PENDING',
+    status: 'OPEN',
     change: [],
   };
 
+  let totalAmountCID = 0;
+
+  // 1) Build object with type of currency unit amount (example: PENNY) and its correspondent total value (example: 0.01)
+  const amountsCurrency = {
+    ONE_HUNDRED: 100,
+    TWENTY: 20,
+    TEN: 10,
+    FIVE: 5,
+    ONE: 1,
+    QUARTER: 0.25,
+    DIME: 0.1,
+    NICKEL: 0.05,
+    PENNY: 0.01,
+  };
+
   for (let index = cid.length - 1; index >= 0; index--) {
-    console.log(cid[index]);
+    // 2) TURN ONE HUNDRED to ONE_HUNDRED FOR OBJECT amountsCurrency purposes
+    if (cid[index][0] === 'ONE HUNDRED') {
+      cid[index][0] = 'ONE_HUNDRED';
+    }
+    // console.log(cid[index][1] * amountsCurrency[cid[index][0]]);
+    totalAmountCID += cid[index][1] * amountsCurrency[cid[index][0]];
   }
+
+  // console.log(totalAmountCID);
+
+  // 3) if total cash in cid is less than cash - price return: "INSUFFICIENT_FUNDS" AND  change: []
+  let cashReturn = cash - price;
+  if (cashReturn > totalAmountCID) {
+    // console.log(cashReturn);
+    change.status = 'INSUFFICIENT_FUNDS';
+    // console.log(`THERE IS SUFFICIENT CID`);
+  }
+
+  // 4) use calculate change array function
+  change.change = calculateChange(cashReturn, cid);
+
+  // 5) if total cash in cid is equal than cash - price return: "CLOSED" AND change: [...]
+  if (totalAmountCID === cash - price) {
+    change.status = 'CLOSED';
+    console.log(`CID CLOSED WITH CHANGE ${JSON.stringify(change)}`);
+    return change;
+  }
+
+  // 6) else return: "OPEN" AND change: [...]
+  console.log(`CID OPEN WITH CHANGE ${JSON.stringify(change)}`);
   return change;
 }
+
+// 5) Calculate total cash in cid mapping cid array
+const calculateChange = (cashReturn, cid) => {
+  for (let index = cid.length - 1; index >= 0; index--) {
+    // 2) TURN ONE HUNDRED to ONE_HUNDRED FOR OBJECT amountsCurrency purposes
+    if (cid[index][0] === 'ONE HUNDRED') {
+      cid[index][0] = 'ONE_HUNDRED';
+    }
+    // console.log(cid[index][1] * amountsCurrency[cid[index][0]]);
+  }
+};
 
 checkCashRegister(19.5, 20, [
   ['PENNY', 1.01],
@@ -61,6 +120,19 @@ checkCashRegister(19.5, 20, [
   ['TWENTY', 60],
   ['ONE HUNDRED', 100],
 ]);
+
+// checkCashRegister(19.5, 20, [
+//   ['PENNY', 1.01], * 0.01 = 0.0101
+//   ['NICKEL', 2.05], * 0.05 = 0.1025
+//   ['DIME', 3.1], * 0.1 = 0.31
+//   ['QUARTER', 4.25], * 0.25 = 1.0625
+//   ['ONE', 90], * 1 = 90
+//   ['FIVE', 55], * 5 = 275
+//   ['TEN', 20], * 10 = 200
+//   ['TWENTY', 60], * 20 = 1200
+//   ['ONE HUNDRED', 100], * 100= 10000
+// ]);
+// TOTAL AMOUNT CID = 11,766.4851
 
 // checkCashRegister(19.5, 20, [
 //   ['PENNY', 1.01],
