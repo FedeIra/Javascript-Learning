@@ -1,4 +1,5 @@
 /*
+https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/javascript-algorithms-and-data-structures-projects/cash-register
 Cash Register
 Design a cash register drawer function checkCashRegister() that accepts purchase price as the first argument (price),
 payment as the second argument (cash), and cash-in-drawer (cid) as the third argument.
@@ -40,7 +41,30 @@ See below for an example of a cash-in-drawer array:
 
 */
 
-// Build function to calculate change array
+// 5) Calculate total cash in cid mapping cid array
+const calculateChange = (
+  cashToReturn,
+  amountCurrencyUnit,
+  currencyUnitValue
+) => {
+  console.log(`Cash to return: ${cashToReturn}`);
+  console.log(`Amount of units for this currency: ${amountCurrencyUnit}`);
+  console.log(`Currency unit value: ${currencyUnitValue}`);
+  let totalUnitCurrencyReturn = 0;
+  for (let index = 0; index <= amountCurrencyUnit; index++) {
+    totalUnitCurrencyReturn = totalUnitCurrencyReturn + 1;
+    cashToReturn = cashToReturn - currencyUnitValue;
+    console.log(`CASH TO RETURN IS NOW ${cashToReturn}`);
+    if (cashToReturn <= 0) {
+      console.log(`NO MORE CASH TO RETURN`);
+      return;
+    }
+  }
+  console.log(`CHANGE FOR THIS CURRENCY IS ${totalUnitCurrencyReturn}`);
+  return totalUnitCurrencyReturn;
+};
+
+calculateChange(100, 100, 100);
 
 // MAIN FUNCTION
 function checkCashRegister(price, cash, cid) {
@@ -84,7 +108,8 @@ function checkCashRegister(price, cash, cid) {
   }
 
   // 4) use calculate change array function
-  change.change = calculateChange(cashReturn, cid);
+  const ONE_HUNDRED = calculateChange(cashReturn, cid[8][1], 100);
+  // const TWENTY = calculateChange(cashReturn, cid);
 
   // 5) if total cash in cid is equal than cash - price return: "CLOSED" AND change: [...]
   if (totalAmountCID === cash - price) {
@@ -98,28 +123,17 @@ function checkCashRegister(price, cash, cid) {
   return change;
 }
 
-// 5) Calculate total cash in cid mapping cid array
-const calculateChange = (cashReturn, cid) => {
-  for (let index = cid.length - 1; index >= 0; index--) {
-    // 2) TURN ONE HUNDRED to ONE_HUNDRED FOR OBJECT amountsCurrency purposes
-    if (cid[index][0] === 'ONE HUNDRED') {
-      cid[index][0] = 'ONE_HUNDRED';
-    }
-    // console.log(cid[index][1] * amountsCurrency[cid[index][0]]);
-  }
-};
-
-checkCashRegister(19.5, 20, [
-  ['PENNY', 1.01],
-  ['NICKEL', 2.05],
-  ['DIME', 3.1],
-  ['QUARTER', 4.25],
-  ['ONE', 90],
-  ['FIVE', 55],
-  ['TEN', 20],
-  ['TWENTY', 60],
-  ['ONE HUNDRED', 100],
-]);
+// checkCashRegister(19.5, 20, [
+//   ['PENNY', 1.01],
+//   ['NICKEL', 2.05],
+//   ['DIME', 3.1],
+//   ['QUARTER', 4.25],
+//   ['ONE', 90],
+//   ['FIVE', 55],
+//   ['TEN', 20],
+//   ['TWENTY', 60],
+//   ['ONE HUNDRED', 100],
+// ]);
 
 // checkCashRegister(19.5, 20, [
 //   ['PENNY', 1.01], * 0.01 = 0.0101
