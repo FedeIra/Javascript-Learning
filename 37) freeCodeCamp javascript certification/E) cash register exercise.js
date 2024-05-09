@@ -41,49 +41,84 @@ See below for an example of a cash-in-drawer array:
 
 */
 
-// 5) Calculate total cash in cid mapping cid array
-const calculateChange = (
-  cashToReturn,
-  amountCurrencyUnit,
-  currencyUnitValue
-) => {
-  let totalUnitCurrencyReturn = 0;
-  for (let index = 0; cashToReturn > 0; index++) {
-    totalUnitCurrencyReturn += 1;
-    cashToReturn -= currencyUnitValue;
-    amountCurrencyUnit -= 1;
-    if (amountCurrencyUnit === 0) {
-      console.log(`CHANGE FOR THIS CURRENCY IS ${totalUnitCurrencyReturn}`);
-      const response = {
-        cashToReturn,
-        totalUnitCurrencyReturn,
-      };
+// 5) Function to calculate total cash in cid mapping cid array
+const calculateChange = (cashToReturn, unitCurrencyCid, currencyUnitValue) => {
+  let totalUnitCurrencyReturn = Math.floor(cashToReturn / currencyUnitValue);
 
-      console.log(response);
-    }
-    if (cashToReturn - currencyUnitValue < 0) {
-      console.log(`CHANGE FOR THIS CURRENCY IS ${totalUnitCurrencyReturn}`);
-      const response = {
-        cashToReturn,
-        totalUnitCurrencyReturn,
-      };
-
-      console.log(response);
-    }
+  if (totalUnitCurrencyReturn > unitCurrencyCid) {
+    totalUnitCurrencyReturn = unitCurrencyCid;
   }
-  console.log(`CHANGE FOR THIS CURRENCY IS ${totalUnitCurrencyReturn}`);
+
+  cashToReturn -= totalUnitCurrencyReturn * currencyUnitValue;
 
   const response = {
     cashToReturn,
     totalUnitCurrencyReturn,
   };
 
-  console.log(response);
   return response;
 };
 
 // MAIN FUNCTION
 function checkCashRegister(price, cash, cid) {
+  // 1) Build object with type of currency unit amount (example: PENNY) and its correspondent total value (example: 0.01)
+  const valuesPerCurrency = [
+    {
+      nameValue: `ONE HUNDRED`,
+      currencyValue: 100,
+      unitCurrencyCid: 0,
+      unitCurrencyReturn: 0,
+    },
+    {
+      nameValue: `TWENTY`,
+      currencyValue: 20,
+      unitCurrencyCid: 0,
+      unitCurrencyReturn: 0,
+    },
+    {
+      nameValue: `TEN`,
+      currencyValue: 10,
+      unitCurrencyCid: 0,
+      unitCurrencyReturn: 0,
+    },
+    {
+      nameValue: `FIVE`,
+      currencyValue: 5,
+      unitCurrencyCid: 0,
+      unitCurrencyReturn: 0,
+    },
+    {
+      nameValue: `ONE`,
+      currencyValue: 1,
+      unitCurrencyCid: 0,
+      unitCurrencyReturn: 0,
+    },
+    {
+      nameValue: `QUARTER`,
+      currencyValue: 0.25,
+      unitCurrencyCid: 0,
+      unitCurrencyReturn: 0,
+    },
+    {
+      nameValue: `DIME`,
+      currencyValue: 0.1,
+      unitCurrencyCid: 0,
+      unitCurrencyReturn: 0,
+    },
+    {
+      nameValue: `NICKEL`,
+      currencyValue: 0.05,
+      unitCurrencyCid: 0,
+      unitCurrencyReturn: 0,
+    },
+    {
+      nameValue: `PENNY`,
+      currencyValue: 0.01,
+      unitCurrencyCid: 0,
+      unitCurrencyReturn: 0,
+    },
+  ];
+
   let change = {
     status: 'OPEN',
     change: [],
@@ -91,28 +126,41 @@ function checkCashRegister(price, cash, cid) {
 
   let totalAmountCID = 0;
 
-  // 1) Build object with type of currency unit amount (example: PENNY) and its correspondent total value (example: 0.01)
-  const amountsCurrency = {
-    ONE_HUNDRED: 100,
-    TWENTY: 20,
-    TEN: 10,
-    FIVE: 5,
-    ONE: 1,
-    QUARTER: 0.25,
-    DIME: 0.1,
-    NICKEL: 0.05,
-    PENNY: 0.01,
-  };
+  let cashToReturn = cash - price;
 
   for (let index = cid.length - 1; index >= 0; index--) {
-    // 2) TURN ONE HUNDRED to ONE_HUNDRED FOR OBJECT amountsCurrency purposes
-    if (cid[index][0] === 'ONE HUNDRED') {
-      cid[index][0] = 'ONE_HUNDRED';
-    }
-    // console.log(cid[index][1] * amountsCurrency[cid[index][0]]);
-    totalAmountCID += cid[index][1] * amountsCurrency[cid[index][0]];
+    let unitCurrencyCid = cid[index][1];
+    let currencyUnitValue =
+      valuesPerCurrency[valuesPerCurrency.length - 1 - index].currencyValue;
+    valuesPerCurrency[valuesPerCurrency.length - 1 - index].unitCurrencyCid =
+      unitCurrencyCid;
+    let response = calculateChange(
+      cashToReturn,
+      unitCurrencyCid,
+      currencyUnitValue
+    );
+
+    cashToReturn = response.cashToReturn;
+
+    valuesPerCurrency[valuesPerCurrency.length - 1 - index].unitCurrencyReturn =
+      response.totalUnitCurrencyReturn;
+    // cashToReturn,
+    // amountCurrencyUnit,
+    // currencyUnitValue
+    // totalAmountCID +=
+    //   cid[index][1] *
+    //   valuesPerCurrency[valuesPerCurrency.length - index + 1].currencyValue;
   }
 
+  let totalToReturn = 0;
+  for (let index = 0; index < valuesPerCurrency.length; index++) {
+    totalToReturn +=
+      valuesPerCurrency[index].currencyValue *
+      valuesPerCurrency[index].unitCurrencyReturn;
+  }
+  console.log(`Total to return ${totalToReturn}`);
+  console.log(valuesPerCurrency);
+  return;
   // console.log(totalAmountCID);
 
   // 3) if total cash in cid is less than cash - price return: "INSUFFICIENT_FUNDS" AND  change: []
@@ -124,15 +172,16 @@ function checkCashRegister(price, cash, cid) {
   }
 
   // 4) use calculate change array function
-  const ONE_HUNDRED = calculateChange(cashReturn, cid[8][1], 100);
-  const ONE_HUNDRED_RETURN = ONE_HUNDRED.totalUnitCurrencyReturn;
-  console.log(
-    '🚀 ~ checkCashRegister ~ ONE_HUNDRED_RETURN:',
-    ONE_HUNDRED_RETURN
-  );
-  const TWENTY = calculateChange(ONE_HUNDRED.cashToReturn, cid[7][2], 20);
-  const TWENTY_RETURN = TWENTY.totalUnitCurrencyReturn;
-  console.log('🚀 ~ checkCashRegister ~ TWENTY_RETURN:', TWENTY_RETURN);
+  for (let index = 0; index < array.length; index++) {}
+  // const ONE_HUNDRED = calculateChange(cashReturn, cid[8][1], 100);
+  // const ONE_HUNDRED_RETURN = ONE_HUNDRED.totalUnitCurrencyReturn;
+  // console.log(
+  //   '🚀 ~ checkCashRegister ~ ONE_HUNDRED_RETURN:',
+  //   ONE_HUNDRED_RETURN
+  // );
+  // const TWENTY = calculateChange(ONE_HUNDRED.cashToReturn, cid[7][2], 20);
+  // const TWENTY_RETURN = TWENTY.totalUnitCurrencyReturn;
+  // console.log('🚀 ~ checkCashRegister ~ TWENTY_RETURN:', TWENTY_RETURN);
   // const TEN = calculateChange(TWENTY.cashToReturn, cid[7][2], 20);
   // const TEN_RETURN = TEN.totalUnitCurrencyReturn
   // const FIVE = calculateChange(TEN.cashToReturn, cid[7][2], 20);
@@ -160,7 +209,8 @@ function checkCashRegister(price, cash, cid) {
   return change;
 }
 
-checkCashRegister(120, 240, [
+// price, cash, cid
+checkCashRegister(120, 340, [
   ['PENNY', 1.01],
   ['NICKEL', 2.05],
   ['DIME', 3.1],
