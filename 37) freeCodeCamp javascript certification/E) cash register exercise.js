@@ -48,10 +48,8 @@ const calculateChange = (
   currencyUnitValue
 ) => {
   let totalAmountCurrencyReturn = Math.floor(cashToReturn / currencyUnitValue);
-  console.log('🚀 ~ totalAmountCurrencyReturn:', totalAmountCurrencyReturn);
 
   if (totalAmountCurrencyReturn * currencyUnitValue > totalAmountCurrencyCid) {
-    console.info(`ENTRE AL IF`);
     totalAmountCurrencyReturn = totalAmountCurrencyCid;
   } else {
     totalAmountCurrencyReturn = totalAmountCurrencyReturn * currencyUnitValue;
@@ -59,12 +57,25 @@ const calculateChange = (
 
   cashToReturn -= totalAmountCurrencyReturn;
 
+  console.log(`CASH TO RETURN IS ${cashToReturn}`);
+  console.log(currencyUnitValue);
+
+  if (currencyUnitValue === 0.01 && cashToReturn < 0) {
+    console.log(`INSUFFICIENT FUNDS`);
+    change.status = 'INSUFFICIENT_FUNDS';
+    return change;
+  }
+
   const response = {
     cashToReturn,
     totalAmountCurrencyReturn,
   };
 
-  console.log('🚀 ~ response:', response);
+  if (cashToReturn <= 0) {
+    console.log(`NO MORE CASH TO RETURN`);
+    return response;
+  }
+
   return response;
 };
 
@@ -129,11 +140,9 @@ function checkCashRegister(price, cash, cid) {
   ];
 
   let change = {
-    status: 'OPEN',
+    status: 'INSUFFICIENT_FUNDS',
     change: [],
   };
-
-  let totalAmountCID = 0;
 
   let cashToReturn = cash - price;
 
@@ -157,22 +166,18 @@ function checkCashRegister(price, cash, cid) {
     ].totalAmountCurrencyReturn = response.totalAmountCurrencyReturn;
   }
 
+  console.log(`FINAL RESPONSE IS: ${JSON.stringify(change)}`);
+  return;
+
+  let totalAmountCID = 0;
+
   let totalToReturn = 0;
   for (let index = 0; index < valuesPerCurrency.length; index++) {
     totalToReturn += valuesPerCurrency[index].totalAmountCurrencyReturn;
   }
   console.log(`Total to return ${totalToReturn}`);
   console.log(valuesPerCurrency);
-  return;
-  // console.log(totalAmountCID);
-
-  // 3) if total cash in cid is less than cash - price return: "INSUFFICIENT_FUNDS" AND  change: []
-  let cashReturn = cash - price;
-  if (cashReturn > totalAmountCID) {
-    // console.log(cashReturn);
-    change.status = 'INSUFFICIENT_FUNDS';
-    // console.log(`THERE IS SUFFICIENT CID`);
-  }
+  // return;
 
   // 4) use calculate change array function
   for (let index = 0; index < array.length; index++) {}
@@ -189,7 +194,7 @@ function checkCashRegister(price, cash, cid) {
 }
 
 // price, cash, cid
-checkCashRegister(120, 340, [
+checkCashRegister(120, 140, [
   ['PENNY', 1.01],
   ['NICKEL', 2.05],
   ['DIME', 3.1],
