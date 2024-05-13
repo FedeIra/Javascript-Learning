@@ -47,7 +47,7 @@ const calculateChange = (
   totalAmountCurrencyCid,
   currencyUnitValue
 ) => {
-  let totalAmountCurrencyReturn = Math.floor(cashToReturn / currencyUnitValue);
+  let totalAmountCurrencyReturn = Math.floor(cashToReturn) * currencyUnitValue;
 
   if (totalAmountCurrencyReturn * currencyUnitValue > totalAmountCurrencyCid) {
     totalAmountCurrencyReturn = totalAmountCurrencyCid;
@@ -55,10 +55,9 @@ const calculateChange = (
     totalAmountCurrencyReturn = totalAmountCurrencyReturn * currencyUnitValue;
   }
 
-  cashToReturn -= totalAmountCurrencyReturn;
+  cashToReturn -= totalAmountCurrencyReturn * currencyUnitValue;
 
-  console.log(`CASH TO RETURN IS ${cashToReturn}`);
-  console.log(currencyUnitValue);
+  // console.log(`CASH TO RETURN IS ${cashToReturn}`);
 
   if (currencyUnitValue === 0.01 && cashToReturn < 0) {
     console.log(`INSUFFICIENT FUNDS`);
@@ -68,8 +67,9 @@ const calculateChange = (
 
   const response = {
     cashToReturn,
-    totalAmountCurrencyReturn,
+    totalAmountCurrencyReturn: totalAmountCurrencyReturn * currencyUnitValue,
   };
+  console.log('🚀 ~ response:', response);
 
   if (cashToReturn <= 0) {
     console.log(`NO MORE CASH TO RETURN`);
@@ -140,11 +140,12 @@ function checkCashRegister(price, cash, cid) {
   ];
 
   let change = {
-    status: 'INSUFFICIENT_FUNDS',
+    status: 'OPEN',
     change: [],
   };
 
   let cashToReturn = cash - price;
+  console.log('🚀 ~ checkCashRegister ~ cashToReturn:', cashToReturn);
 
   for (let index = cid.length - 1; index >= 0; index--) {
     let totalAmountCurrencyCid = cid[index][1];
@@ -164,9 +165,35 @@ function checkCashRegister(price, cash, cid) {
     valuesPerCurrency[
       valuesPerCurrency.length - 1 - index
     ].totalAmountCurrencyReturn = response.totalAmountCurrencyReturn;
+
+    const changeToAdd = {
+      nameValue:
+        valuesPerCurrency[valuesPerCurrency.length - 1 - index].nameValue,
+      totalAmountCurrencyReturn: response.totalAmountCurrencyReturn,
+    };
+
+    if (response.totalAmountCurrencyReturn > 0) {
+      change.change.push(changeToAdd);
+    }
   }
 
-  console.log(`FINAL RESPONSE IS: ${JSON.stringify(change)}`);
+  // If no more money in CID:
+  if (cashToReturn > 0) {
+    change = {
+      status: 'INSUFFICIENT_FUNDS',
+      change: [],
+    };
+  }
+
+  // If no more money in CID and cash return === 0
+  // TODO: calculate totalAmountCurrencyCID
+  if (totalAmountCID === cash - price) {
+    change.status = 'CLOSED';
+    console.log(`CID CLOSED WITH CHANGE ${JSON.stringify(change)}`);
+    return change;
+  }
+
+  console.info(`FINAL RESPONSE ${JSON.stringify(change)}`);
   return;
 
   let totalAmountCID = 0;
@@ -194,16 +221,16 @@ function checkCashRegister(price, cash, cid) {
 }
 
 // price, cash, cid
-checkCashRegister(120, 140, [
-  ['PENNY', 1.01],
-  ['NICKEL', 2.05],
-  ['DIME', 3.1],
-  ['QUARTER', 4.25],
-  ['ONE', 90],
-  ['FIVE', 55],
-  ['TEN', 20],
-  ['TWENTY', 40],
-  ['ONE HUNDRED', 100],
+checkCashRegister(120, 320, [
+  ['PENNY', 0],
+  ['NICKEL', 0],
+  ['DIME', 0],
+  ['QUARTER', 0],
+  ['ONE', 0],
+  ['FIVE', 0],
+  ['TEN', 0],
+  ['TWENTY', 2],
+  ['ONE HUNDRED', 1],
 ]);
 // checkCashRegister(19.5, 20, [
 //   ['PENNY', 1.01],
