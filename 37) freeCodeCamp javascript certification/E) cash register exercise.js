@@ -49,22 +49,14 @@ const calculateChange = (
 ) => {
   let totalAmountCurrencyReturn =
     Math.floor(cashToReturn / currencyUnitValue) * currencyUnitValue;
-  console.log('🚀 ~ totalAmountCurrencyReturn:', totalAmountCurrencyReturn);
-
-  console.log(
-    `If totalAmountCurrencyReturn: ${totalAmountCurrencyReturn} is bigger than totalAmountCurrencyCid: ${totalAmountCurrencyCid} then totalAmountCurrencyReturn will be equal to totalAmountCurrencyCid`
-  );
   if (totalAmountCurrencyReturn > totalAmountCurrencyCid) {
     totalAmountCurrencyReturn = totalAmountCurrencyCid;
   }
 
   cashToReturn -= totalAmountCurrencyReturn;
-
-  // console.log(`CASH TO RETURN IS ${cashToReturn}`);
+  cashToReturn = Math.round(cashToReturn * 100) / 100;
 
   if (currencyUnitValue === 0.01 && cashToReturn < 0) {
-    console.log(`INSUFFICIENT FUNDS`);
-    change.status = 'INSUFFICIENT_FUNDS';
     return change;
   }
 
@@ -72,19 +64,12 @@ const calculateChange = (
     cashToReturn,
     totalAmountCurrencyReturn: totalAmountCurrencyReturn,
   };
-  console.log('🚀 ~ response:', response);
-
-  if (cashToReturn <= 0) {
-    console.log(`NO MORE CASH TO RETURN`);
-    return response;
-  }
 
   return response;
 };
 
 // MAIN FUNCTION
 function checkCashRegister(price, cash, cid) {
-  // 1) Build object with type of currency unit amount (example: PENNY) and its correspondent total value (example: 0.01)
   const valuesPerCurrency = [
     {
       nameValue: `ONE HUNDRED`,
@@ -149,14 +134,9 @@ function checkCashRegister(price, cash, cid) {
 
   let cashToReturn = cash - price;
   let totalCashCid = 0;
-  console.log('🚀 ~ checkCashRegister ~ cashToReturn:', cashToReturn);
 
   for (let index = cid.length - 1; index >= 0; index--) {
     let totalAmountCurrencyCid = cid[index][1];
-    console.log(
-      '🚀 ~ checkCashRegister ~ totalAmountCurrencyCid:',
-      totalAmountCurrencyCid
-    );
     totalCashCid += totalAmountCurrencyCid;
     let currencyUnitValue =
       valuesPerCurrency[valuesPerCurrency.length - 1 - index].currencyValue;
@@ -180,17 +160,9 @@ function checkCashRegister(price, cash, cid) {
       response.totalAmountCurrencyReturn,
     ];
 
-    // if (response.totalAmountCurrencyReturn > 0) {
     change.change.unshift(changeToAdd);
-    // }
-
-    if (response.cashToReturn <= 0) {
-      console.info(`Leaving for because there is no more cash to return`);
-      break;
-    }
   }
 
-  // If no more money in CID:
   if (cashToReturn > 0) {
     change = {
       status: 'INSUFFICIENT_FUNDS',
@@ -198,51 +170,37 @@ function checkCashRegister(price, cash, cid) {
     };
   }
 
-  // If no more money in CID and cash return === 0
-  // TODO: calculate totalAmountCurrencyCID
-  console.log(`TOTAL AMOUNT FOR CID IS ${totalCashCid}`);
-  console.log(`TOTAL AMOUNT OF CASH IS ${cash}`);
-  console.log(`TOTAL AMOUNT FOR PRICE IS ${price}`);
   if (totalCashCid === cash - price) {
     change.status = 'CLOSED';
-    console.log(`CID CLOSED WITH CHANGE ${JSON.stringify(change)}`);
     return change;
   }
 
   if (change.status === 'OPEN') {
-    change.change.map((currency, index) => {
-      currency[1] ? 0 : change.change.pop(index);
+    let openChange = [];
+    change.change.map((currency) => {
+      if (currency[1] !== 0) {
+        openChange.unshift(currency);
+      }
     });
-    change.change = change.change.reverse();
+    change.change = openChange;
   }
 
   console.info(`FINAL RESPONSE ${JSON.stringify(change)}`);
-  return;
+  return change;
 }
 
 // price, cash, cid
-checkCashRegister(121, 150, [
-  ['PENNY', 0],
-  ['NICKEL', 0],
-  ['DIME', 0],
-  ['QUARTER', 0],
-  ['ONE', 9],
-  ['FIVE', 0],
-  ['TEN', 0],
-  ['TWENTY', 20],
-  ['ONE HUNDRED', 0],
+checkCashRegister(19.5, 20, [
+  ['PENNY', 1.01],
+  ['NICKEL', 2.05],
+  ['DIME', 3.1],
+  ['QUARTER', 4.25],
+  ['ONE', 90],
+  ['FIVE', 55],
+  ['TEN', 20],
+  ['TWENTY', 60],
+  ['ONE HUNDRED', 100],
 ]);
-// checkCashRegister(19.5, 20, [
-//   ['PENNY', 1.01],
-//   ['NICKEL', 2.05],
-//   ['DIME', 3.1],
-//   ['QUARTER', 4.25],
-//   ['ONE', 90],
-//   ['FIVE', 55],
-//   ['TEN', 20],
-//   ['TWENTY', 60],
-//   ['ONE HUNDRED', 100],
-// ]);
 
 // checkCashRegister(19.5, 20, [
 //   ['PENNY', 1.01], * 0.01 = 0.0101
