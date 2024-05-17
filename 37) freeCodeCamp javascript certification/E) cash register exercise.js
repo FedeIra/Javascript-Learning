@@ -175,15 +175,14 @@ function checkCashRegister(price, cash, cid) {
       valuesPerCurrency.length - 1 - index
     ].totalAmountCurrencyReturn = response.totalAmountCurrencyReturn;
 
-    const changeToAdd = {
-      nameValue:
-        valuesPerCurrency[valuesPerCurrency.length - 1 - index].nameValue,
-      totalAmountCurrencyReturn: response.totalAmountCurrencyReturn,
-    };
+    const changeToAdd = [
+      valuesPerCurrency[valuesPerCurrency.length - 1 - index].nameValue,
+      response.totalAmountCurrencyReturn,
+    ];
 
-    if (response.totalAmountCurrencyReturn > 0) {
-      change.change.push(changeToAdd);
-    }
+    // if (response.totalAmountCurrencyReturn > 0) {
+    change.change.unshift(changeToAdd);
+    // }
 
     if (response.cashToReturn <= 0) {
       console.info(`Leaving for because there is no more cash to return`);
@@ -210,6 +209,13 @@ function checkCashRegister(price, cash, cid) {
     return change;
   }
 
+  if (change.status === 'OPEN') {
+    change.change.map((currency, index) => {
+      currency[1] ? 0 : change.change.pop(index);
+    });
+    change.change = change.change.reverse();
+  }
+
   console.info(`FINAL RESPONSE ${JSON.stringify(change)}`);
   return;
 }
@@ -220,9 +226,9 @@ checkCashRegister(121, 150, [
   ['NICKEL', 0],
   ['DIME', 0],
   ['QUARTER', 0],
-  ['ONE', 1],
+  ['ONE', 9],
   ['FIVE', 0],
-  ['TEN', 10],
+  ['TEN', 0],
   ['TWENTY', 20],
   ['ONE HUNDRED', 0],
 ]);
