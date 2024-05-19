@@ -1,13 +1,13 @@
-//FUNCIONES PREDETERMINADAS:
-
+// FUNCIONES PREDETERMINADAS:
+let nombre = 'fede';
 console.log(nombre.toLowerCase()); // se puede convertir lo escrito a minusculas
 console.log(nombre.toUpperCase()); // se puede convertir lo escrito a mayusculas
-
-console.log(lorem.includes("panqueques")); // con el includes te busca si esta la palabra en el string y te tira un booleano. Aca te tira true
+let lorem = 'lorem';
+console.log(lorem.includes('panqueques')); // con el includes te busca si esta la palabra en el string y te tira un booleano. Aca te tira true
 
 console.log(lorem.trim()); // el trim te saca los espacios en blanco antes y al final de la string
-
-console.log(frase.split(" ")); // agarra un string y separa cada elemento separado por un espacio y crea un arreglo con cada uno.
+let frase = 'frase';
+console.log(frase.split(' ')); // agarra un string y separa cada elemento separado por un espacio y crea un arreglo con cada uno.
 
 console.log(parseInt(c)); //el parseInt te va a devolver la parte entera
 console.log(parseFloat(c)); // te devuelve el numero con comas, es decir te devuele un float
@@ -19,9 +19,9 @@ isNan(nombre); // cheque si no es numero y te devuelve true or false
 console.log(Object.values(fede)); // esto es casi lo mismo q key pero te lista los valores, no los atributos. Los valores son los valores del atributo. El atributo seria como una variable
 console.log(Object.keys(fede)); // mismo que antes, pero te lista los atributos
 
-console.log(fede.hasOwnProperty("nombre")); // esto te tira true si hay una propiedad en el objeto fede q sea nombre. Aca te tira true
+console.log(fede.hasOwnProperty('nombre')); // esto te tira true si hay una propiedad en el objeto fede q sea nombre. Aca te tira true
 
-var miboton = document.getElementById("boton1"); // almacenamos dentro de la variable miboton el objeto boton1 dentro del document // a partir de ahora con poner miboton js sabe q nos referimos a boton1
+var miboton = document.getElementById('boton1'); // almacenamos dentro de la variable miboton el objeto boton1 dentro del document // a partir de ahora con poner miboton js sabe q nos referimos a boton1
 
 alert(typeof num1); // Esto te dice el tipo de valor de la variable, es decir, te dice si es string, etc. En este caso te va a decir q es string.
 
@@ -33,7 +33,7 @@ document.write(hoy.toDateString()); //le agrego el toDateString() para acortar l
 
 // return arreglo.filter((e) => e !== num); // el filter lo elimina
 
-const getFileExtension = (str) => str.slice(str.lastIndexOf("."));
+const getFileExtension = (str) => str.slice(str.lastIndexOf('.'));
 
 array = Object.entries(objeto); //devuelve tanto la clave como su valor
 
@@ -45,13 +45,13 @@ function asAmirror(str) {
   for (let i = 0; i < array.length; i++) {
     string.unshift(str[i]);
   }
-  return string.join("").split(" ").reverse().join(" ");
+  return string.join('').split(' ').reverse().join(' ');
 }
 
 function capicua(numero) {
-  let reves = numero.toString().split(" ").reverse().join("");
-  if ((numero = parseInt(numeroAlReves))) return "Es capicua";
-  return "No es capicua";
+  let reves = numero.toString().split(' ').reverse().join('');
+  if ((numero = parseInt(numeroAlReves))) return 'Es capicua';
+  return 'No es capicua';
 }
 //         878 --- "878"----> ["8", "7", "8"]  ---- "878"
 
@@ -64,6 +64,9 @@ const arreglo2 = arreglo1.filter(function (numero, posicion, numeros) {
 });
 console.log(arreglo2); //[12, 42, 23, 76, 11,  9, 10]
 //
+
+// indexOf funciona también para strings:
+console.log('cocunut'.indexOf('u')); // 3
 
 //SORT:
 // El método sort() ordena los elementos de un arreglo (array) localmente y devuelve el arreglo ordenado. La ordenación no es necesariamente estable. El modo de ordenación por defecto responde a la posición del valor del string de acuerdo a su valor Unicode.
@@ -91,7 +94,14 @@ orders.every((delivery) => delivery.delivered);
 
 const colores = () => Math.floor(Math.random() * 16).toString(16);
 
-const randomColor = () => "#" + Array.from({ length: 6 }).map(colores).join("");
+const randomColor = () => '#' + Array.from({ length: 6 }).map(colores).join('');
 
-const sumVowels = (string, letters = ["a", "e", "i", "o", "u"]) =>
-  string.split("").filter((letra) => letters.indexOf(letra) > -1).length; // el menos uno significa que no esta la letra en letters pq no hay una posicion menor a menos uno
+const sumVowels = (string, letters = ['a', 'e', 'i', 'o', 'u']) =>
+  string.split('').filter((letra) => letters.indexOf(letra) > -1).length; // el menos uno significa que no esta la letra en letters pq no hay una posicion menor a menos uno
+
+// padStart: funciona para strings
+// takes the desired lenght and padding character as arguments:
+console.log(String(6).padStart(3, '0')); // 006
+
+// padEnd
+console.log(String(6).padEnd(3, '0')); // 600

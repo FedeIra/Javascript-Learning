@@ -13,11 +13,11 @@ Since arrays can be changed, or mutated, at any time, there's no guarantee about
 
 For example: */
 
-let fruits = ["apples", "pears", "oranges", "peaches", "pears"];
+let fruits = ['apples', 'pears', 'oranges', 'peaches', 'pears'];
 
-fruits.indexOf("dates");
-fruits.indexOf("oranges");
-fruits.indexOf("pears");
+fruits.indexOf('dates');
+fruits.indexOf('oranges', 2); // le decis que empiece a buscar en el indice 2
+fruits.indexOf('pears');
 
 /* indexOf('dates') returns -1, indexOf('oranges') returns 2, and indexOf('pears') returns 1 (the first index at which each element exists).
 
@@ -46,7 +46,7 @@ console.log(
   )
 ); // []
 
-console.log(quickCheck(["squash", "onions", "shallots"], "mushrooms"));
+console.log(quickCheck(['squash', 'onions', 'shallots'], 'mushrooms'));
 
 const arreglo1 = [12, 42, 23, 76, 12, 23, 11, 9, 9, 10];
 
@@ -64,10 +64,10 @@ write a javascript function to extract unique characters from a string.
 //Una solucion:
 const getUniqueChars = (str) =>
   str
-    .split("")
+    .split('')
     .filter((item, index, arr) => arr.slice(index + 1).indexOf(item) === -1);
 
-const getFileExtension = (str) => str.slice(str.lastIndexOf("."));
+const getFileExtension = (str) => str.slice(str.lastIndexOf('.')); // en lastIndexOf empieza a buscar desde el último indice del array
 
 // OTRO EJERCICIO
 
@@ -87,15 +87,15 @@ console.log(numerosPares); // [ 2, 4 ]
 // Utilizando el objeto productos de antes:
 const productos2 = [
   {
-    nombre: "Pera",
+    nombre: 'Pera',
     precio: 10,
   },
   {
-    nombre: "Manzana",
+    nombre: 'Manzana',
     precio: 15,
   },
   {
-    nombre: "banana",
+    nombre: 'banana',
     precio: 20,
   },
 ];
@@ -115,14 +115,14 @@ write a javascript function to extract unique characters from a string.
 //Una solucion:
 const getUniqueChars2 = (str) =>
   str
-    .split("")
+    .split('')
     .filter((item, index, arr) => arr.slice(index + 1).indexOf(item) === -1);
 
 // Write a javascript program to create a new string adding "New!" in front of a given string.
 // If the given string begins with "New!" already then return the original string.
 // if the string has the new at the start we have to leave it as it was at the start
 
-const addNew = (str) => (str.indexOf("New!") === 0 ? str : `New! ${str}`);
+const addNew = (str) => (str.indexOf('New!') === 0 ? str : `New! ${str}`);
 
-console.log(addNew("New! Product")); // New! Product
-console.log(addNew("Product")); // New! Product
+console.log(addNew('New! Product')); // New! Product
+console.log(addNew('Product')); // New! Product
