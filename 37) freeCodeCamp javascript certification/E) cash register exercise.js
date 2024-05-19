@@ -69,6 +69,7 @@ const calculateChange = (
 };
 
 // MAIN FUNCTION
+// console.time(`FIRST FUNCTION`);
 function checkCashRegister(price, cash, cid) {
   const valuesPerCurrency = [
     {
@@ -186,11 +187,78 @@ function checkCashRegister(price, cash, cid) {
   }
 
   console.info(`FINAL RESPONSE ${JSON.stringify(change)}`);
+  // console.timeEnd(`FIRST FUNCTION`);
   return change;
 }
 
+// SECOND OPTION SOLUTION
+const CURRENCY_UNITS = [
+  { name: 'ONE HUNDRED', val: 100.0 },
+  { name: 'TWENTY', val: 20.0 },
+  { name: 'TEN', val: 10.0 },
+  { name: 'FIVE', val: 5.0 },
+  { name: 'ONE', val: 1.0 },
+  { name: 'QUARTER', val: 0.25 },
+  { name: 'DIME', val: 0.1 },
+  { name: 'NICKEL', val: 0.05 },
+  { name: 'PENNY', val: 0.01 },
+];
+
+function checkCashRegister2(price, cash, cid) {
+  console.time('FUNCTION');
+  let changeDue = cash - price;
+  const change = [];
+  let totalCID = 0;
+
+  // Calculate total cash in drawer
+  for (let element of cid) {
+    totalCID += element[1];
+  }
+  totalCID = totalCID.toFixed(2);
+
+  // Handle exact change
+  if (Number(totalCID) === changeDue) {
+    return { status: 'CLOSED', change: cid };
+  }
+
+  // Handle insufficient funds
+  if (Number(totalCID) < changeDue) {
+    return { status: 'INSUFFICIENT_FUNDS', change: [] };
+  }
+
+  // Reverse to handle highest currency unit first
+  cid = cid.reverse();
+
+  // Compute change to return
+  CURRENCY_UNITS.forEach((unit, index) => {
+    let valueInDrawer = cid[index][1];
+    let amount = 0;
+    while (changeDue >= unit.val && valueInDrawer > 0) {
+      changeDue -= unit.val;
+      valueInDrawer -= unit.val;
+      amount += unit.val;
+
+      // Round changeDue to avoid precision issues
+      changeDue = Math.round(changeDue * 100) / 100;
+    }
+
+    if (amount > 0) {
+      change.push([unit.name, amount]);
+    }
+
+    // If changeDue > 0 then we have insufficient funds to return the correct change
+    if (changeDue > 0) {
+      return { status: 'INSUFFICIENT_FUNDS', change: [] };
+    }
+
+    // Return the change object
+    return { status: 'OPEN', change };
+  });
+  console.timeEnd('FUNCTION');
+}
+
 // price, cash, cid
-checkCashRegister(19.5, 20, [
+checkCashRegister2(19.5, 20, [
   ['PENNY', 1.01],
   ['NICKEL', 2.05],
   ['DIME', 3.1],
